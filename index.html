@@ -287,10 +287,13 @@
         import { getFirestore, doc, setDoc, onSnapshot, serverTimestamp, collection, addDoc, getDocs, deleteDoc } 
         from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-            apiKey: "AIzaSyDMBE9BjTJb70xm8c5WOZaIITxI0PmYWNc",
-            authDomain: "tanji-ccus.firebaseapp.com",
-            projectId: "tanji-ccus"
+        const firebaseConfig = {
+            apiKey: "AIzaSyCxwGkhc2qI4wVcR0B9rsMkj4gb6cd5z60",
+            authDomain: "bluecarbon-bd497.firebaseapp.com",
+            projectId: "bluecarbon-bd497",
+            storageBucket: "bluecarbon-bd497.firebasestorage.app",
+            messagingSenderId: "1023404396895",
+            appId: "1:1023404396895:web:e09faccf368d36d58f66ea"
         };
         
         let db, auth, currentUser, unsubscribe;
