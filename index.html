@@ -12,11 +12,7 @@
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; overscroll-behavior-y: none; background-color: #0f172a; color: #f8fafc; }
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%;
-            background: #ffffff; border: 2px solid currentColor; cursor: pointer; margin-top: -10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.1s;
-        }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #ffffff; border: 2px solid currentColor; cursor: pointer; margin-top: -10px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.1s; }
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #334155; border-radius: 9999px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .dashboard-enter { animation: slideUp 0.5s ease-out forwards; }
@@ -30,220 +26,229 @@
         button:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
 </head>
-<body class="h-[100dvh] flex flex-col overflow-hidden">
+<body class="h-[100dvh] flex flex-col overflow-hidden relative">
 
     <div id="intro-splash" class="fixed inset-0 bg-gradient-to-br from-blue-900 to-cyan-900 z-[100] flex flex-col items-center justify-center p-6 text-white transition-all duration-700">
-        <div class="relative mb-10 flex flex-col items-center">
-            <div class="mb-4 bg-slate-900 text-cyan-400 px-6 py-3 rounded-2xl shadow-xl transform -rotate-2 relative max-w-xs text-center border-2 border-cyan-500 animate-bounce" style="animation-duration: 2s;">
+        <div class="relative mb-6 flex flex-col items-center">
+            <div class="mb-2 bg-slate-900 text-cyan-400 px-6 py-3 rounded-2xl shadow-xl transform -rotate-2 relative max-w-xs text-center border-2 border-cyan-500 animate-bounce" style="animation-duration: 2s;">
                 <p class="font-bold text-lg">嗨！我是碳吉 🌊</p>
                 <p class="text-sm text-cyan-100 font-bold">準備好找尋藍碳密碼了嗎？</p>
                 <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[12px] border-t-cyan-500"></div>
             </div>
-            <div class="w-64 h-64 md:w-80 md:h-80 animate-float drop-shadow-2xl filter hover:brightness-110 transition-all cursor-pointer" onclick="dismissIntro()">
-                <img src="./assets/images/tanjibaby.png" alt="碳吉吉祥物" class="w-full h-full object-contain" id="mascot-img" onerror="this.src='https://raw.githubusercontent.com/tanji2026/ccus/main/tanjibaby.png'">
+            <div class="w-48 h-48 md:w-64 md:h-64 animate-float drop-shadow-2xl filter hover:brightness-110 transition-all cursor-pointer" onclick="dismissIntro()">
+                <img src="./assets/images/tanjibaby.png" alt="碳吉" class="w-full h-full object-contain" id="mascot-img" onerror="this.src='https://raw.githubusercontent.com/tanji2026/ccus/main/tanjibaby.png'">
             </div>
         </div>
-        <div class="space-y-4 text-center w-full max-w-sm">
-            <h1 class="text-4xl font-black tracking-tight text-white drop-shadow-md">碳吉 TanJi</h1>
-            <p class="text-cyan-300 font-bold tracking-widest text-sm mb-8">藍碳特搜隊 — NODASS大數據平台</p>
-            <button onclick="dismissIntro()" class="w-full bg-cyan-500 text-slate-900 px-8 py-4 rounded-2xl font-black text-xl shadow-[0_10px_20px_rgba(6,182,212,0.3)] hover:shadow-[0_15px_30px_rgba(6,182,212,0.5)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 group">
+        <div class="space-y-4 text-center w-full max-w-sm relative z-10 flex-grow flex flex-col justify-center">
+            <h1 class="text-3xl md:text-4xl font-black tracking-tight text-white drop-shadow-md">碳吉 TanJi</h1>
+            <p class="text-cyan-300 font-bold tracking-widest text-xs md:text-sm mb-6">藍碳特搜隊 — NODASS大數據平台</p>
+            <button onclick="dismissIntro()" class="w-full bg-cyan-500 text-slate-900 px-8 py-4 rounded-2xl font-black text-lg md:text-xl shadow-[0_10px_20px_rgba(6,182,212,0.3)] hover:shadow-[0_15px_30px_rgba(6,182,212,0.5)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 group">
                 啟動任務
                 <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
             </button>
         </div>
+        <div class="w-full text-[10px] md:text-xs text-cyan-600/50 font-bold text-center mt-auto pb-4 absolute bottom-0 left-0">
+            115年度NODASS大數據競賽教案｜著作權保護，未經授權勿轉載｜tanji2026@gmail.com
+        </div>
     </div>
 
-    <div id="login-screen" class="fixed inset-0 bg-slate-900 z-50 flex flex-col p-6 text-white transition-opacity duration-500 overflow-y-auto">
-        <div class="flex-grow flex flex-col items-center justify-center w-full max-w-sm mx-auto min-h-max py-10">
-            <div class="w-16 h-16 bg-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-cyan-600/50">
-                <i data-lucide="droplets" class="w-8 h-8 text-white"></i>
+    <div id="login-screen" class="fixed inset-0 bg-slate-900 z-50 flex flex-col p-4 md:p-6 text-white transition-opacity duration-500 overflow-y-auto hidden">
+        <div class="flex-grow flex flex-col items-center justify-center w-full max-w-sm mx-auto min-h-max py-6">
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-cyan-600 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-2xl shadow-cyan-600/50">
+                <i data-lucide="droplets" class="w-6 h-6 md:w-8 md:h-8 text-white"></i>
             </div>
-            <h1 class="text-3xl font-black mb-2 tracking-tight">碳吉 TanJi</h1>
-            <p class="text-cyan-400 mb-8 text-sm font-bold">藍碳特搜隊</p>
-            <div class="w-full space-y-4">
+            <h1 class="text-2xl md:text-3xl font-black mb-1 md:mb-2 tracking-tight">碳吉 TanJi</h1>
+            <p class="text-cyan-400 mb-6 md:mb-8 text-xs md:text-sm font-bold">藍碳特搜隊</p>
+            <div class="w-full space-y-3 md:space-y-4">
                 <div>
-                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">特搜小組名稱 / 教師代碼</label>
-                    <input type="text" id="login-team" placeholder="輸入小組名稱" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 mt-1 text-white font-bold focus:ring-2 focus:ring-cyan-500 outline-none transition-all">
+                    <label class="text-[10px] md:text-xs font-bold text-slate-400 uppercase ml-1">特搜小組名稱 / 教師代碼</label>
+                    <input type="text" id="login-team" placeholder="輸入小組名稱" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 mt-1 text-white font-bold focus:ring-2 focus:ring-cyan-500 outline-none transition-all text-sm md:text-base">
                 </div>
                 <div id="role-selector" class="transition-all duration-300">
-                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">選擇您的專屬職位</label>
+                    <label class="text-[10px] md:text-xs font-bold text-slate-400 uppercase ml-1">選擇您的專屬職位</label>
                     <div class="grid grid-cols-2 gap-2 mt-1">
-                        <button onclick="selectRole('engineer')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="engineer">
-                            <div class="text-xl mb-1">🌊</div>
-                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">海洋物理員</div>
+                        <button onclick="selectRole('engineer')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="engineer">
+                            <div class="text-lg md:text-xl mb-0.5 md:mb-1">🌊</div>
+                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white">海洋物理員</div>
                         </button>
-                        <button onclick="selectRole('eco')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="eco">
-                            <div class="text-xl mb-1">🌱</div>
-                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">海洋生態員</div>
+                        <button onclick="selectRole('eco')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="eco">
+                            <div class="text-lg md:text-xl mb-0.5 md:mb-1">🌱</div>
+                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white">海洋生態員</div>
                         </button>
-                        <button onclick="selectRole('pr')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="pr">
-                            <div class="text-xl mb-1">🚢</div>
-                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">社會溝通員</div>
+                        <button onclick="selectRole('pr')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="pr">
+                            <div class="text-lg md:text-xl mb-0.5 md:mb-1">🚢</div>
+                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white">社會溝通員</div>
                         </button>
-                        <button onclick="selectRole('cfo')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="cfo">
-                            <div class="text-xl mb-1">💰</div>
-                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">財務長</div>
+                        <button onclick="selectRole('cfo')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="cfo">
+                            <div class="text-lg md:text-xl mb-0.5 md:mb-1">💰</div>
+                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white">財務長</div>
                         </button>
-                        <button onclick="selectRole('policy')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group col-span-2" data-role="policy">
-                            <div class="text-xl mb-1 flex items-center gap-2">📜 <span class="text-xs bg-cyan-900 text-cyan-400 px-1.5 rounded">隊長</span></div>
-                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">政策分析師</div>
+                        <button onclick="selectRole('policy')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group col-span-2" data-role="policy">
+                            <div class="text-lg md:text-xl mb-0.5 md:mb-1 flex items-center gap-2">📜 <span class="text-[10px] bg-cyan-900 text-cyan-400 px-1.5 py-0.5 rounded">隊長</span></div>
+                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white">政策分析師</div>
                         </button>
                     </div>
                 </div>
-                <button id="start-btn" onclick="enterSimulation()" disabled class="w-full bg-slate-800 text-slate-500 py-4 rounded-xl font-bold mt-4 transition-all shadow-lg border border-slate-700">
-                    數據載入中...
+                <button id="start-btn" onclick="enterSimulation()" disabled class="w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all shadow-lg border border-slate-700 text-sm md:text-base">
+                    請選擇職位
                 </button>
             </div>
         </div>
-        <div class="w-full text-[10px] text-slate-500 font-bold text-center pb-4 mt-auto">
-            115年度NODASS大數據競賽教案｜作品受著作權法保護，未經授權請勿複製轉載｜tanji2026@gmail.com
+        <div class="w-full text-[9px] md:text-[10px] text-slate-600 font-bold text-center mt-auto pb-2">
+            115年度NODASS大數據競賽教案｜tanji2026@gmail.com
         </div>
     </div>
 
-    <nav class="bg-slate-900 border-b border-slate-800 flex-none z-30">
-        <div class="container mx-auto px-4 h-14 flex justify-between items-center">
+    <nav class="bg-slate-900 border-b border-slate-800 flex-none z-30 hidden" id="main-nav">
+        <div class="container mx-auto px-4 h-12 md:h-14 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-cyan-900 rounded-lg flex items-center justify-center text-cyan-400 shrink-0">
-                    <i data-lucide="droplets" class="w-5 h-5"></i>
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-cyan-900 rounded-lg flex items-center justify-center text-cyan-400 shrink-0">
+                    <i data-lucide="droplets" class="w-4 h-4 md:w-5 md:h-5"></i>
                 </div>
                 <div class="min-w-0">
-                    <h1 class="text-base font-bold text-slate-100 truncate">碳吉 TanJi</h1>
-                    <p class="text-[10px] text-cyan-500 font-bold truncate" id="header-team-info">未登入</p>
+                    <h1 class="text-sm md:text-base font-bold text-slate-100 truncate">碳吉 TanJi</h1>
+                    <p class="text-[9px] md:text-[10px] text-cyan-500 font-bold truncate" id="header-team-info">未登入</p>
                 </div>
             </div>
-            <div id="connection-indicator" class="flex items-center gap-1.5 px-2 py-1 bg-slate-800 rounded-full border border-slate-700 shrink-0 ml-2">
-                <div class="w-2 h-2 bg-slate-500 rounded-full"></div>
-                <span class="text-[10px] font-bold text-slate-400 whitespace-nowrap">連線中...</span>
+            <div class="flex items-center gap-2 md:gap-3">
+                <div id="connection-indicator" class="flex items-center gap-1 md:gap-1.5 px-2 py-1 bg-slate-800 rounded-full border border-slate-700 shrink-0">
+                    <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-slate-500 rounded-full"></div>
+                    <span class="text-[9px] md:text-[10px] font-bold text-slate-400 whitespace-nowrap">連線中</span>
+                </div>
+                <button onclick="logout()" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 md:px-3 md:py-1.5 rounded-lg border border-slate-700 transition-colors flex items-center gap-1 md:gap-1.5 text-[10px] md:text-xs font-bold">
+                    <i data-lucide="log-out" class="w-3 h-3 md:w-4 md:h-4"></i>
+                    <span class="hidden sm:inline">登出</span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <main id="main-student" class="flex-1 overflow-y-auto p-4 pb-48 lg:pb-32 no-scrollbar relative hidden">
-        <div id="view-phase-1" class="container mx-auto max-w-5xl space-y-6">
+    <main id="main-student" class="flex-1 overflow-y-auto p-3 md:p-4 pb-36 md:pb-40 no-scrollbar relative hidden">
+        <div id="view-phase-1" class="container mx-auto max-w-5xl space-y-4 md:space-y-6">
             <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-xl">
-                <div class="px-4 md:px-6 py-4 bg-slate-900 border-b border-slate-700 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                <div class="px-4 md:px-6 py-3 md:py-4 bg-slate-900 border-b border-slate-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                     <div>
-                        <h2 class="text-lg font-black text-cyan-400">階段一：全台大排雷</h2>
-                        <p class="text-xs text-slate-400 mt-1">口頭回報數據，共同淘汰不適合的復育場址</p>
+                        <h2 class="text-base md:text-lg font-black text-cyan-400">階段一：全台大排雷</h2>
+                        <p class="text-[10px] md:text-xs text-slate-400 mt-0.5">口頭回報數據，共同淘汰不適合的復育場址</p>
                     </div>
                 </div>
                 
-                <div id="phase1-header-container" class="border-b border-slate-700"></div>
-                <div class="p-4 md:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="site-cards-container"></div>
+                <div id="phase1-header-container" class="border-b border-slate-700 p-3 md:p-6 bg-slate-800"></div>
+                <div class="p-3 md:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6" id="site-cards-container"></div>
 
-                <div class="p-4 md:p-6 bg-slate-900 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div class="text-sm text-slate-400 w-full text-center md:text-left">
-                        目前剩餘 <span id="surviving-count" class="font-bold text-cyan-400 text-xl mx-1">0</span> 個候選場址
+                <div class="p-4 md:p-6 bg-slate-900 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
+                    <div class="text-xs md:text-sm text-slate-400 w-full text-center md:text-left">
+                        目前剩餘 <span id="surviving-count" class="font-bold text-cyan-400 text-lg md:text-xl mx-1">0</span> 個候選場址
                     </div>
-                    <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4 w-full md:w-auto">
-                        <div id="lock-msg" class="text-xs text-amber-500 font-bold hidden md:block text-center w-full"></div>
-                        <button id="btn-lock-site" onclick="proceedToPhase2()" disabled class="w-full md:w-auto whitespace-nowrap bg-cyan-600 text-slate-900 font-bold px-6 py-3 rounded-xl hover:bg-cyan-500 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] disabled:shadow-none disabled:bg-slate-700 disabled:text-slate-500 flex items-center justify-center gap-2">
-                            鎖定目標 <span class="hidden sm:inline">，進入配置</span> <i data-lucide="target" class="w-4 h-4"></i>
+                    <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4 w-full md:w-auto">
+                        <div id="lock-msg" class="text-[10px] md:text-xs text-amber-500 font-bold text-center w-full hidden md:block"></div>
+                        <button id="btn-lock-site" onclick="proceedToPhase2()" disabled class="w-full sm:w-auto whitespace-nowrap bg-cyan-600 text-slate-900 font-bold px-4 md:px-6 py-2.5 md:py-3 rounded-xl hover:bg-cyan-500 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] disabled:shadow-none disabled:bg-slate-700 disabled:text-slate-500 flex items-center justify-center gap-1.5 md:gap-2 text-sm md:text-base">
+                            鎖定目標 <span class="hidden sm:inline">，進入配置</span> <i data-lucide="target" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="w-full text-[10px] text-slate-500 font-bold text-center mt-6">
-                115年度NODASS大數據競賽教案｜作品受著作權法保護，未經授權請勿複製轉載｜tanji2026@gmail.com
+            <div class="w-full text-[9px] md:text-[10px] text-slate-600 font-bold text-center mt-4">
+                115年度NODASS大數據競賽教案｜tanji2026@gmail.com
             </div>
         </div>
 
-        <div id="view-phase-2" class="container mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-6 hidden">
+        <div id="view-phase-2" class="container mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 hidden">
             <div class="col-span-12">
-                <div class="bg-slate-800 rounded-xl border border-slate-700 p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div class="w-full md:w-auto">
-                        <h2 class="text-lg font-black text-blue-400">階段二：SROI 資源配置戰情室</h2>
-                        <p class="text-xs text-slate-400 mt-1">鎖定場址：<span id="locked-site-name" class="font-bold text-cyan-400 ml-1 truncate block sm:inline"></span></p>
+                <div class="bg-slate-800 rounded-xl border border-slate-700 p-3 md:p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <div class="w-full sm:w-auto">
+                        <h2 class="text-base md:text-lg font-black text-blue-400">階段二：SROI 資源配置戰情室</h2>
+                        <p class="text-[10px] md:text-xs text-slate-400 mt-0.5">鎖定場址：<span id="locked-site-name" class="font-bold text-cyan-400 ml-1 block sm:inline"></span></p>
                     </div>
-                    <button onclick="returnToPhase1()" id="btn-return" class="w-full md:w-auto text-xs bg-slate-700 text-slate-300 px-4 py-2 rounded-lg hover:bg-slate-600 border border-slate-600 whitespace-nowrap">返回重新選址</button>
+                    <button onclick="returnToPhase1()" id="btn-return" class="w-full sm:w-auto text-[10px] md:text-xs bg-slate-700 text-slate-300 px-3 md:px-4 py-2 rounded-lg hover:bg-slate-600 border border-slate-600 whitespace-nowrap font-bold">返回重新選址</button>
                 </div>
-                <div id="phase2-policy-msg" class="mt-4 p-4 bg-cyan-900/30 border border-cyan-500/50 rounded-xl hidden text-sm text-cyan-100">
-                    💡 <span class="font-bold text-white">隊長專屬任務：</span>您的滑桿已全數鎖定。請觀察下方雷達圖與預算表，透過語音指揮各專員拉動滑桿，找出 SROI 總分最高的最佳解，並按下提交。
+                <div id="phase2-policy-msg" class="mt-3 md:mt-4 p-3 md:p-4 bg-cyan-900/30 border border-cyan-500/50 rounded-xl hidden text-xs md:text-sm text-cyan-100">
+                    💡 <span class="font-bold text-white">隊長專屬任務：</span>您的滑桿已全數鎖定。請觀察下方雷達圖與預算表，透過語音指揮各專員拉動滑桿，找出最佳解並按下提交。
                 </div>
             </div>
 
-            <div class="lg:col-span-7 space-y-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-5 relative overflow-hidden flex flex-col h-full min-h-[140px]">
-                        <div class="flex flex-col sm:flex-row justify-between mb-3 items-start sm:items-center gap-2">
-                            <label class="text-sm font-bold text-slate-200 flex gap-2 items-center"><div class="w-6 h-6 bg-blue-900 text-blue-400 rounded flex items-center justify-center shrink-0"><i data-lucide="shield" class="w-3 h-3"></i></div> <span class="truncate">工程防護</span></label>
-                            <span class="text-[10px] bg-blue-900/50 text-blue-400 border border-blue-800 px-2 py-0.5 rounded font-bold whitespace-nowrap">海洋物理員</span>
+            <div class="lg:col-span-7 space-y-3 md:space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                    <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 md:p-5 relative flex flex-col min-h-[120px] md:min-h-[140px]">
+                        <div class="flex justify-between mb-2 md:mb-3 items-center">
+                            <label class="text-xs md:text-sm font-bold text-slate-200 flex gap-1.5 md:gap-2 items-center"><div class="w-5 h-5 md:w-6 md:h-6 bg-blue-900 text-blue-400 rounded flex items-center justify-center shrink-0"><i data-lucide="shield" class="w-2.5 h-2.5 md:w-3 md:h-3"></i></div> <span class="truncate">工程防護</span></label>
+                            <span class="text-[9px] md:text-[10px] bg-blue-900/50 text-blue-400 border border-blue-800 px-1.5 py-0.5 rounded font-bold whitespace-nowrap">海洋物理員</span>
                         </div>
                         <div class="flex-grow flex items-center w-full">
                            <input type="range" min="1" max="5" value="3" id="slider-safety" class="text-blue-500 w-full" oninput="handleSliderInput('safety', this.value)" onchange="handleSliderChange('safety', this.value)">
                         </div>
-                        <div class="flex justify-between text-[10px] text-slate-500 mt-3 w-full"><span>無防護</span><span id="val-safety" class="font-bold text-blue-400 text-center">標準</span><span>重型防波堤</span></div>
-                        <div id="lock-safety" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-blue-400">等待操作</span></div>
+                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-500 mt-2 md:mt-3 w-full"><span>無防護</span><span id="val-safety" class="font-bold text-blue-400">標準</span><span>重型防波堤</span></div>
+                        <div id="lock-safety" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2 rounded-xl md:rounded-2xl"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-blue-400">等待操作</span></div>
                     </div>
-                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-5 relative overflow-hidden flex flex-col h-full min-h-[140px]">
-                        <div class="flex flex-col sm:flex-row justify-between mb-3 items-start sm:items-center gap-2">
-                            <label class="text-sm font-bold text-slate-200 flex gap-2 items-center"><div class="w-6 h-6 bg-emerald-900 text-emerald-400 rounded flex items-center justify-center shrink-0"><i data-lucide="leaf" class="w-3 h-3"></i></div> <span class="truncate">生態規模</span></label>
-                            <span class="text-[10px] bg-emerald-900/50 text-emerald-400 border border-emerald-800 px-2 py-0.5 rounded font-bold whitespace-nowrap">海洋生態員</span>
+                    <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 md:p-5 relative flex flex-col min-h-[120px] md:min-h-[140px]">
+                        <div class="flex justify-between mb-2 md:mb-3 items-center">
+                            <label class="text-xs md:text-sm font-bold text-slate-200 flex gap-1.5 md:gap-2 items-center"><div class="w-5 h-5 md:w-6 md:h-6 bg-emerald-900 text-emerald-400 rounded flex items-center justify-center shrink-0"><i data-lucide="leaf" class="w-2.5 h-2.5 md:w-3 md:h-3"></i></div> <span class="truncate">生態規模</span></label>
+                            <span class="text-[9px] md:text-[10px] bg-emerald-900/50 text-emerald-400 border border-emerald-800 px-1.5 py-0.5 rounded font-bold whitespace-nowrap">海洋生態員</span>
                         </div>
                         <div class="flex-grow flex items-center w-full">
                            <input type="range" min="1" max="5" value="2" id="slider-eco" class="text-emerald-500 w-full" oninput="handleSliderInput('eco', this.value)" onchange="handleSliderChange('eco', this.value)">
                         </div>
-                        <div class="flex justify-between text-[10px] text-slate-500 mt-3 w-full"><span>單一試驗</span><span id="val-eco" class="font-bold text-emerald-400 text-center">標準</span><span>大規模多物種</span></div>
-                        <div id="lock-eco" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-emerald-400">等待操作</span></div>
+                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-500 mt-2 md:mt-3 w-full"><span>單一試驗</span><span id="val-eco" class="font-bold text-emerald-400">標準</span><span>大規模復育</span></div>
+                        <div id="lock-eco" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2 rounded-xl md:rounded-2xl"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-emerald-400">等待操作</span></div>
                     </div>
-                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-5 relative overflow-hidden flex flex-col h-full min-h-[140px]">
-                        <div class="flex flex-col sm:flex-row justify-between mb-3 items-start sm:items-center gap-2">
-                            <label class="text-sm font-bold text-slate-200 flex gap-2 items-center"><div class="w-6 h-6 bg-amber-900 text-amber-400 rounded flex items-center justify-center shrink-0"><i data-lucide="users" class="w-3 h-3"></i></div> <span class="truncate">社區溝通</span></label>
-                            <span class="text-[10px] bg-amber-900/50 text-amber-400 border border-amber-800 px-2 py-0.5 rounded font-bold whitespace-nowrap">社會溝通員</span>
+                    <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 md:p-5 relative flex flex-col min-h-[120px] md:min-h-[140px]">
+                        <div class="flex justify-between mb-2 md:mb-3 items-center">
+                            <label class="text-xs md:text-sm font-bold text-slate-200 flex gap-1.5 md:gap-2 items-center"><div class="w-5 h-5 md:w-6 md:h-6 bg-amber-900 text-amber-400 rounded flex items-center justify-center shrink-0"><i data-lucide="users" class="w-2.5 h-2.5 md:w-3 md:h-3"></i></div> <span class="truncate">社區溝通</span></label>
+                            <span class="text-[9px] md:text-[10px] bg-amber-900/50 text-amber-400 border border-amber-800 px-1.5 py-0.5 rounded font-bold whitespace-nowrap">社會溝通員</span>
                         </div>
                         <div class="flex-grow flex items-center w-full">
                             <input type="range" min="1" max="5" value="2" id="slider-pr" class="text-amber-500 w-full" oninput="handleSliderInput('pr', this.value)" onchange="handleSliderChange('pr', this.value)">
                         </div>
-                        <div class="flex justify-between text-[10px] text-slate-500 mt-3 w-full"><span>零互動</span><span id="val-pr" class="font-bold text-amber-400 text-center">標準</span><span>高額回饋金</span></div>
-                        <div id="lock-pr" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-amber-400">等待操作</span></div>
+                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-500 mt-2 md:mt-3 w-full"><span>零互動</span><span id="val-pr" class="font-bold text-amber-400">標準</span><span>高額回饋金</span></div>
+                        <div id="lock-pr" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2 rounded-xl md:rounded-2xl"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-amber-400">等待操作</span></div>
                     </div>
-                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-5 relative overflow-hidden flex flex-col h-full min-h-[140px]">
-                        <div class="flex flex-col sm:flex-row justify-between mb-3 items-start sm:items-center gap-2">
-                            <label class="text-sm font-bold text-slate-200 flex gap-2 items-center"><div class="w-6 h-6 bg-purple-900 text-purple-400 rounded flex items-center justify-center shrink-0"><i data-lucide="circle-dollar-sign" class="w-3 h-3"></i></div> <span class="truncate">預算總量</span></label>
-                            <span class="text-[10px] bg-purple-900/50 text-purple-400 border border-purple-800 px-2 py-0.5 rounded font-bold whitespace-nowrap">財務長</span>
+                    <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 md:p-5 relative flex flex-col min-h-[120px] md:min-h-[140px]">
+                        <div class="flex justify-between mb-2 md:mb-3 items-center">
+                            <label class="text-xs md:text-sm font-bold text-slate-200 flex gap-1.5 md:gap-2 items-center"><div class="w-5 h-5 md:w-6 md:h-6 bg-purple-900 text-purple-400 rounded flex items-center justify-center shrink-0"><i data-lucide="circle-dollar-sign" class="w-2.5 h-2.5 md:w-3 md:h-3"></i></div> <span class="truncate">預算總量</span></label>
+                            <span class="text-[9px] md:text-[10px] bg-purple-900/50 text-purple-400 border border-purple-800 px-1.5 py-0.5 rounded font-bold whitespace-nowrap">財務長</span>
                         </div>
                         <div class="flex-grow flex items-center w-full">
                             <input type="range" min="1" max="5" value="3" id="slider-cfo" class="text-purple-500 w-full" oninput="handleSliderInput('cfo', this.value)" onchange="handleSliderChange('cfo', this.value)">
                         </div>
-                        <div class="flex justify-between text-[10px] text-slate-500 mt-3 w-full"><span>極度緊縮</span><span id="val-cfo" class="font-bold text-purple-400 text-center">標準預算</span><span>無上限</span></div>
-                        <div id="lock-cfo" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-purple-400">等待操作</span></div>
+                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-500 mt-2 md:mt-3 w-full"><span>極度緊縮</span><span id="val-cfo" class="font-bold text-purple-400">標準預算</span><span>無上限</span></div>
+                        <div id="lock-cfo" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2 rounded-xl md:rounded-2xl"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-purple-400">等待操作</span></div>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-5 space-y-4">
-                <div class="bg-slate-800 rounded-2xl shadow-lg border border-slate-700 p-4 md:p-5 relative">
-                    <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-slate-100">SROI 即時運算模型</h3><div class="w-2 h-2 bg-green-500 rounded-full animate-pulse shrink-0"></div></div>
-                    <div class="h-[200px] sm:h-[220px] relative w-full"><canvas id="radarChart"></canvas></div>
+            <div class="lg:col-span-5 space-y-3 md:space-y-4">
+                <div class="bg-slate-800 rounded-xl md:rounded-2xl shadow-lg border border-slate-700 p-3 md:p-5">
+                    <div class="flex justify-between items-center mb-3 md:mb-4"><h3 class="font-bold text-slate-100 text-sm md:text-base">SROI 即時運算模型</h3><div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full animate-pulse shrink-0"></div></div>
+                    <div class="h-[180px] sm:h-[220px] relative w-full"><canvas id="radarChart"></canvas></div>
                     
-                    <div class="mt-6 pt-4 border-t border-slate-700">
+                    <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-slate-700">
                         <div class="flex justify-between items-end mb-1">
-                            <span class="text-xs font-bold text-slate-300">總體預算使用率</span>
-                            <span id="budget-status" class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-700 text-slate-300 whitespace-nowrap">計算中</span>
+                            <span class="text-[10px] md:text-xs font-bold text-slate-300">總體預算使用率</span>
+                            <span id="budget-status" class="text-[9px] md:text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 whitespace-nowrap">計算中</span>
                         </div>
-                        <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800 relative">
+                        <div class="w-full bg-slate-900 h-2 md:h-2.5 rounded-full overflow-hidden border border-slate-800 relative">
                             <div id="bar-budget" class="bg-purple-500 h-full w-0 transition-all duration-300 relative"></div>
-                            <div id="budget-limit-marker" class="absolute top-0 bottom-0 w-1 bg-red-500 z-10 transition-all duration-300 shadow-[0_0_5px_rgba(239,68,68,1)]"></div>
+                            <div id="budget-limit-marker" class="absolute top-0 bottom-0 w-0.5 md:w-1 bg-red-500 z-10 transition-all duration-300 shadow-[0_0_5px_rgba(239,68,68,1)]"></div>
                         </div>
-                        <div class="flex justify-between text-[9px] text-slate-500 mt-1"><span>0</span><span id="budget-limit-text">上限</span></div>
+                        <div class="flex justify-between text-[8px] md:text-[9px] text-slate-500 mt-1"><span>0</span><span id="budget-limit-text">上限</span></div>
                     </div>
 
-                    <div class="mt-4 space-y-2">
-                        <div class="flex justify-between text-xs items-center"><span class="text-slate-400">環境效益 (Environment)</span><span id="score-safety" class="font-bold text-blue-400 text-sm">0</span></div>
-                        <div class="flex justify-between text-xs mt-2 items-center"><span class="text-slate-400">經濟效益 (Economy)</span><span id="score-economy" class="font-bold text-amber-400 text-sm">0</span></div>
-                        <div class="flex justify-between text-xs mt-2 items-center"><span class="text-slate-400">社會效益 (Social)</span><span id="score-social" class="font-bold text-cyan-400 text-sm">0</span></div>
+                    <div class="mt-3 md:mt-4 space-y-1.5 md:space-y-2">
+                        <div class="flex justify-between text-[10px] md:text-xs items-center"><span class="text-slate-400">環境效益 (Env)</span><span id="score-safety" class="font-bold text-blue-400 text-xs md:text-sm">0</span></div>
+                        <div class="flex justify-between text-[10px] md:text-xs mt-1 md:mt-2 items-center"><span class="text-slate-400">經濟效益 (Eco)</span><span id="score-economy" class="font-bold text-amber-400 text-xs md:text-sm">0</span></div>
+                        <div class="flex justify-between text-[10px] md:text-xs mt-1 md:mt-2 items-center"><span class="text-slate-400">社會效益 (Soc)</span><span id="score-social" class="font-bold text-cyan-400 text-xs md:text-sm">0</span></div>
                     </div>
                 </div>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
-                    <h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center gap-1"><i data-lucide="terminal" class="w-3 h-3"></i> 即時通訊記錄</h4>
-                    <div id="system-log" class="text-xs text-slate-400 h-20 overflow-y-auto space-y-1.5 font-mono">
+                <div class="bg-slate-900 p-3 md:p-4 rounded-xl border border-slate-800">
+                    <h4 class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 md:mb-2 flex items-center gap-1"><i data-lucide="terminal" class="w-2.5 h-2.5 md:w-3 md:h-3"></i> 系統通訊紀錄</h4>
+                    <div id="system-log" class="text-[10px] md:text-xs text-slate-400 h-16 md:h-20 overflow-y-auto space-y-1 md:space-y-1.5 font-mono">
                         <div>> 系統初始化完成...</div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-span-12 text-[10px] text-slate-500 font-bold text-center mt-6">
-                115年度NODASS大數據競賽教案｜作品受著作權法保護，未經授權請勿複製轉載｜tanji2026@gmail.com
+            <div class="col-span-12 text-[9px] md:text-[10px] text-slate-600 font-bold text-center mt-2 md:mt-4">
+                115年度NODASS大數據競賽教案｜tanji2026@gmail.com
             </div>
         </div>
     </main>
@@ -253,52 +258,55 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
                 <div>
                     <h2 class="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">戰情室總覽</h2>
-                    <p class="text-slate-400 text-sm mt-1">NODASS 大數據決策監控中心</p>
+                    <p class="text-slate-400 text-xs md:text-sm mt-1">NODASS 大數據決策監控中心</p>
                 </div>
                 <div class="flex items-center gap-2 md:gap-4 w-full md:w-auto">
                     <div class="bg-slate-800 px-3 md:px-4 py-2 rounded-lg border border-slate-700 flex-1 md:flex-none text-center md:text-left">
-                        <span class="text-[10px] md:text-xs text-slate-400 block whitespace-nowrap">在線特搜隊</span>
+                        <span class="text-[10px] md:text-xs text-slate-400 block whitespace-nowrap">在線小組</span>
                         <span class="text-lg md:text-xl font-bold text-cyan-400" id="admin-team-count">0</span>
                     </div>
-                    <button onclick="clearAllData()" class="bg-red-900/40 hover:bg-red-600 text-red-400 hover:text-white px-3 md:px-4 py-2 md:py-3 rounded-lg border border-red-800 transition-colors flex items-center justify-center gap-2 flex-1 md:flex-none whitespace-nowrap">
-                        <i data-lucide="trash-2" class="w-4 h-4"></i> 重置任務
+                    <button onclick="clearAllData()" class="bg-red-900/40 hover:bg-red-600 text-red-400 hover:text-white px-3 md:px-4 py-2 md:py-3 rounded-lg border border-red-800 transition-colors flex items-center justify-center gap-2 flex-1 md:flex-none whitespace-nowrap text-xs md:text-sm font-bold">
+                        <i data-lucide="trash-2" class="w-3 h-3 md:w-4 md:h-4"></i> 重置任務
+                    </button>
+                    <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-3 md:px-4 py-2 md:py-3 rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-2 flex-none whitespace-nowrap text-xs md:text-sm font-bold">
+                        <i data-lucide="log-out" class="w-3 h-3 md:w-4 md:h-4"></i> 登出
                     </button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
                 <div class="bg-slate-800 p-4 md:p-6 rounded-2xl border border-slate-700">
-                    <h3 class="font-bold text-slate-300 mb-4 flex items-center gap-2"><i data-lucide="pie-chart" class="w-4 h-4"></i> 最終選址分佈</h3>
-                    <div class="h-[180px] md:h-[200px] relative w-full"><canvas id="adminPieChart"></canvas></div>
+                    <h3 class="font-bold text-slate-300 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base"><i data-lucide="pie-chart" class="w-3.5 h-3.5 md:w-4 md:h-4"></i> 最終選址分佈</h3>
+                    <div class="h-[160px] md:h-[200px] relative w-full"><canvas id="adminPieChart"></canvas></div>
                 </div>
                 <div class="bg-slate-800 p-4 md:p-6 rounded-2xl border border-slate-700">
-                    <h3 class="font-bold text-slate-300 mb-4 flex items-center gap-2"><i data-lucide="bar-chart-2" class="w-4 h-4"></i> 平均SROI指標</h3>
-                    <div class="h-[180px] md:h-[200px] relative w-full"><canvas id="adminBarChart"></canvas></div>
+                    <h3 class="font-bold text-slate-300 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base"><i data-lucide="bar-chart-2" class="w-3.5 h-3.5 md:w-4 md:h-4"></i> 平均SROI指標</h3>
+                    <div class="h-[160px] md:h-[200px] relative w-full"><canvas id="adminBarChart"></canvas></div>
                 </div>
                 <div class="bg-slate-800 p-4 md:p-6 rounded-2xl border border-slate-700 md:col-span-2 lg:col-span-1">
-                    <h3 class="font-bold text-slate-300 mb-4 flex items-center gap-2"><i data-lucide="trophy" class="w-4 h-4"></i> 決策排行榜</h3>
-                    <div class="overflow-y-auto h-[180px] md:h-[200px] space-y-2 pr-2" id="leaderboard"></div>
+                    <h3 class="font-bold text-slate-300 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base"><i data-lucide="trophy" class="w-3.5 h-3.5 md:w-4 md:h-4"></i> 決策排行榜</h3>
+                    <div class="overflow-y-auto h-[160px] md:h-[200px] space-y-1.5 md:space-y-2 pr-1 md:pr-2" id="leaderboard"></div>
                 </div>
             </div>
 
-            <h3 class="font-bold text-slate-300 mb-4 flex items-center gap-2"><i data-lucide="grid" class="w-4 h-4"></i> 各組即時決策狀態</h3>
-            <div id="team-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+            <h3 class="font-bold text-slate-300 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base"><i data-lucide="grid" class="w-3.5 h-3.5 md:w-4 md:h-4"></i> 各組即時決策狀態</h3>
+            <div id="team-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4"></div>
             
-            <div class="mt-12 text-[10px] text-slate-500 font-bold text-center pb-8">
-                115年度NODASS大數據競賽教案｜作品受著作權法保護，未經授權請勿複製轉載｜tanji2026@gmail.com
+            <div class="mt-8 md:mt-12 text-[9px] md:text-[10px] text-slate-600 font-bold text-center pb-6 md:pb-8">
+                115年度NODASS大數據競賽教案｜tanji2026@gmail.com
             </div>
         </div>
     </main>
 
     <div id="student-footer" class="fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 p-3 md:p-4 z-40 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] hidden">
-        <div class="container mx-auto max-w-5xl flex flex-row justify-between items-center gap-4">
-            <div class="flex flex-col min-w-[120px]">
-                <div class="text-[9px] md:text-[10px] text-slate-500 uppercase font-bold tracking-widest whitespace-nowrap">SROI 綜合評分</div>
-                <div class="text-3xl md:text-4xl font-black text-cyan-400 leading-none tabular-nums" id="footer-score">0.0</div>
+        <div class="container mx-auto max-w-5xl flex flex-row justify-between items-center gap-3 md:gap-4">
+            <div class="flex flex-col min-w-[100px] md:min-w-[120px]">
+                <div class="text-[8px] md:text-[10px] text-slate-500 uppercase font-bold tracking-widest whitespace-nowrap">SROI 綜合評分</div>
+                <div class="text-2xl md:text-4xl font-black text-cyan-400 leading-none tabular-nums" id="footer-score">0.0</div>
             </div>
-            <div id="submit-wrapper" class="relative w-full max-w-xs md:max-w-none md:w-auto">
-                <button onclick="submitFinalDecision()" id="submit-btn" class="w-full md:w-auto bg-cyan-600 hover:bg-cyan-500 text-slate-900 px-4 md:px-8 py-3 rounded-xl font-black shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base whitespace-nowrap">
-                    <span class="hidden sm:inline">提交最終決策</span><span class="sm:hidden">確認提交</span> <i data-lucide="send" class="w-4 h-4"></i>
+            <div id="submit-wrapper" class="relative w-full max-w-[200px] sm:max-w-xs md:max-w-none md:w-auto">
+                <button onclick="toggleSubmitDecision()" id="submit-btn" class="w-full md:w-auto bg-cyan-600 hover:bg-cyan-500 text-slate-900 px-3 md:px-8 py-2.5 md:py-3 rounded-xl font-black shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center gap-1.5 md:gap-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-xs md:text-base whitespace-nowrap">
+                    <span id="submit-btn-text">提交最終決策</span> <i data-lucide="send" id="submit-btn-icon" class="w-3.5 h-3.5 md:w-4 md:h-4"></i>
                 </button>
             </div>
         </div>
@@ -307,7 +315,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot, serverTimestamp, collection, addDoc, getDocs, deleteDoc, getDoc } 
+        import { getFirestore, doc, setDoc, onSnapshot, serverTimestamp, collection, addDoc, getDocs, deleteDoc, getDoc, query, where } 
         from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -319,34 +327,31 @@
             appId: "1:1023404396895:web:e09faccf368d36d58f66ea"
         };
         
-        let db, auth, currentUser, unsubscribe;
+        let db, auth, currentUser, unsubscribeSync, unsubscribeAdmin;
         const appId = typeof __app_id !== 'undefined' ? __app_id : "tanji-bluecarbon-v5";
         let NODASS_DB = {};
-
+        
         window.userState = { team: "", role: "", isAdmin: false };
         window.teamState = { 
             phase: 1, site: null, safety: 3, pr: 2, eco: 2, cfo: 3, 
-            rejections: {}, 
-            lastLog: "", isSubmitted: false
+            rejections: {}, lastLog: "", isSubmitted: false
         };
         let isDemoMode = false;
         let radarChartInstance = null;
         let isDragging = {};
+        let adminPie, adminBar;
 
         function getDefaultRejections() {
             const defaultRejections = {};
-            Object.keys(NODASS_DB).forEach(key => {
-                defaultRejections[key] = [];
-            });
+            Object.keys(NODASS_DB).forEach(key => { defaultRejections[key] = []; });
             return defaultRejections;
         }
 
-        async function loadSiteData() {
+        async function loadGameData() {
             try {
                 const response = await fetch('https://raw.githubusercontent.com/tanji2026/ccus/main/bluecarbon_sites.json'); 
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 NODASS_DB = await response.json();
-                
                 window.teamState.rejections = getDefaultRejections();
                 initApp();
             } catch (error) {
@@ -359,7 +364,6 @@
                     'E': { name: '澎湖青螺', icon: '🏝️', wave: 0.8, depth: -4, substrate: '泥灘', ais: 25, costLvl: '低', s:75, e:50, o:85 },
                     'F': { name: '彰化王功', icon: '🦀', wave: 0.6, depth: -3, substrate: '泥灘', ais: 85, costLvl: '中', s:55, e:75, o:45 }
                 };
-                
                 window.teamState.rejections = getDefaultRejections();
                 initApp();
             }
@@ -388,11 +392,11 @@
         
         function enableOnlineMode() {
             isDemoMode = false;
-            document.getElementById('connection-indicator').innerHTML = `<div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div><span class="text-[10px] font-bold text-cyan-400 whitespace-nowrap">已連線</span>`;
+            document.getElementById('connection-indicator').innerHTML = `<div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div><span class="text-[9px] md:text-[10px] font-bold text-cyan-400 whitespace-nowrap">已連線</span>`;
             const startBtn = document.getElementById('start-btn');
             if (startBtn.innerText === "系統載入中..." || startBtn.innerText === "數據載入中..." || startBtn.innerText.includes("離線")) {
                 startBtn.disabled = true;
-                startBtn.className = "w-full bg-slate-800 text-slate-500 py-4 rounded-xl font-bold mt-4 transition-all shadow-lg border border-slate-700";
+                startBtn.className = "w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all shadow-lg border border-slate-700 text-sm md:text-base";
                 startBtn.innerText = "請輸入小組名稱";
                 checkLoginInput();
             }
@@ -401,17 +405,17 @@
         function startDemoMode(reason) {
             isDemoMode = true;
             currentUser = { uid: 'demo-user', isAnonymous: true };
-            document.getElementById('connection-indicator').innerHTML = `<div class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div><span class="text-[10px] font-bold text-amber-500 whitespace-nowrap">本機模式</span>`;
+            document.getElementById('connection-indicator').innerHTML = `<div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-amber-500 rounded-full animate-pulse"></div><span class="text-[9px] md:text-[10px] font-bold text-amber-500 whitespace-nowrap">本機模式</span>`;
             const startBtn = document.getElementById('start-btn');
             if (startBtn.innerText === "系統載入中..." || startBtn.innerText === "數據載入中..." || startBtn.innerText.includes("連線失敗")) {
                 startBtn.disabled = true;
-                startBtn.className = "w-full bg-slate-800 text-slate-500 py-4 rounded-xl font-bold mt-4 transition-all shadow-lg border border-slate-700";
+                startBtn.className = "w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all shadow-lg border border-slate-700 text-sm md:text-base";
                 startBtn.innerText = "請輸入小組名稱";
                 checkLoginInput();
             }
         }
         
-        loadSiteData();
+        loadGameData();
 
         window.selectRole = (role) => {
             window.userState.role = role;
@@ -432,7 +436,7 @@
             const btn = document.getElementById('start-btn');
             if (!t) {
                 btn.disabled = true;
-                btn.className = "w-full bg-slate-800 text-slate-500 py-4 rounded-xl font-bold mt-4 transition-all border border-slate-700";
+                btn.className = "w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all border border-slate-700 text-sm md:text-base";
                 btn.innerText = "請輸入小組名稱";
                 return;
             }
@@ -441,19 +445,19 @@
                 window.userState.isAdmin = true;
                 document.getElementById('role-selector').style.display = 'none';
                 btn.disabled = false;
-                btn.className = "w-full bg-cyan-600 text-slate-900 py-4 rounded-xl font-black mt-4 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500";
-                btn.innerHTML = `進入戰情室 <i data-lucide="layout-dashboard" class="w-4 h-4 inline ml-1"></i>`;
+                btn.className = "w-full bg-cyan-600 text-slate-900 py-3 md:py-4 rounded-xl font-black mt-2 md:mt-4 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-sm md:text-base flex items-center justify-center gap-1";
+                btn.innerHTML = `進入戰情室 <i data-lucide="layout-dashboard" class="w-4 h-4"></i>`;
                 lucide.createIcons();
             } else {
                 window.userState.isAdmin = false;
                 document.getElementById('role-selector').style.display = 'block';
                 if (window.userState.role) {
                     btn.disabled = false;
-                    btn.className = "w-full bg-cyan-600 text-slate-900 py-4 rounded-xl font-black mt-4 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500";
+                    btn.className = "w-full bg-cyan-600 text-slate-900 py-3 md:py-4 rounded-xl font-black mt-2 md:mt-4 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-sm md:text-base";
                     btn.innerText = "開始模擬任務";
                 } else {
                     btn.disabled = true;
-                    btn.className = "w-full bg-slate-800 text-slate-500 py-4 rounded-xl font-bold mt-4 transition-all border border-slate-700";
+                    btn.className = "w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all border border-slate-700 text-sm md:text-base";
                     btn.innerText = "請選擇職位";
                 }
             }
@@ -489,8 +493,9 @@
                 } catch(e) {}
             }
 
-            document.getElementById('login-screen').style.opacity = '0';
-            setTimeout(() => { document.getElementById('login-screen').style.display = 'none'; }, 500);
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('intro-splash').classList.add('hidden');
+            document.getElementById('main-nav').classList.remove('hidden');
 
             if (window.userState.isAdmin) {
                 initAdminDashboard();
@@ -500,23 +505,44 @@
             }
         };
 
+        window.logout = () => {
+            if(unsubscribeSync) unsubscribeSync();
+            if(unsubscribeAdmin) unsubscribeAdmin();
+            
+            window.userState = { team: "", role: "", isAdmin: false };
+            window.teamState = { 
+                phase: 1, site: null, safety: 3, pr: 2, eco: 2, cfo: 3, 
+                rejections: getDefaultRejections(), lastLog: "", isSubmitted: false
+            };
+            
+            document.getElementById('login-team').value = "";
+            window.selectRole('');
+            
+            document.getElementById('main-admin').classList.add('hidden');
+            document.getElementById('main-student').classList.add('hidden');
+            document.getElementById('student-footer').classList.add('hidden');
+            document.getElementById('main-nav').classList.add('hidden');
+            
+            document.getElementById('login-screen').classList.remove('hidden');
+            document.getElementById('login-screen').style.opacity = '1';
+        };
+
         function initStudentView() {
             document.getElementById('main-student').classList.remove('hidden');
             const roleMap = { 'engineer':'海洋物理員', 'cfo':'財務長', 'pr':'社會溝通員', 'policy':'政策分析師', 'eco':'海洋生態員' };
             document.getElementById('header-team-info').innerText = `${window.userState.team} | ${roleMap[window.userState.role]}`;
             
             const headerContainer = document.getElementById('phase1-header-container');
-            headerContainer.className = "p-4 md:p-6 bg-slate-800 border-b border-slate-700";
             if (window.userState.role === 'policy') {
                 headerContainer.innerHTML = `
-                    <div class="bg-blue-900/30 border border-blue-500/50 rounded-xl p-4">
-                        <h3 class="text-blue-400 font-bold mb-3 flex items-center gap-2 text-sm md:text-base"><i data-lucide="book-open" class="w-4 h-4 md:w-5 md:h-5"></i> 藍碳復育環境標準面板（隊長專屬）</h3>
-                        <ul class="text-xs md:text-sm text-slate-300 space-y-2">
-                            <li class="flex items-start gap-2"><span class="bg-slate-700 px-2 py-0.5 rounded text-blue-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap">物理標準</span> <span>波浪不大於 <b>1.5m</b>。</span></li>
-                            <li class="flex items-start gap-2"><span class="bg-slate-700 px-2 py-0.5 rounded text-emerald-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap">生態標準</span> <span>底質必須為 <b>泥灘</b>。</span></li>
-                            <li class="flex items-start gap-2"><span class="bg-slate-700 px-2 py-0.5 rounded text-amber-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap">社會標準</span> <span>AIS 船舶密度 <b>小於 80</b>。</span></li>
+                    <div class="bg-blue-900/30 border border-blue-500/50 rounded-xl p-3 md:p-4">
+                        <h3 class="text-blue-400 font-bold mb-2 md:mb-3 flex items-center gap-1.5 md:gap-2 text-xs md:text-sm"><i data-lucide="book-open" class="w-3.5 h-3.5 md:w-4 md:h-4"></i> 藍碳復育環境標準面板（隊長專屬）</h3>
+                        <ul class="text-[10px] md:text-xs text-slate-300 space-y-1.5 md:space-y-2">
+                            <li class="flex items-start gap-1.5 md:gap-2"><span class="bg-slate-700 px-1.5 py-0.5 rounded text-blue-300 font-mono text-[9px] md:text-[10px] mt-0.5 whitespace-nowrap">物理標準</span> <span>波浪不大於 <b>1.5m</b>。</span></li>
+                            <li class="flex items-start gap-1.5 md:gap-2"><span class="bg-slate-700 px-1.5 py-0.5 rounded text-emerald-300 font-mono text-[9px] md:text-[10px] mt-0.5 whitespace-nowrap">生態標準</span> <span>底質必須為 <b>泥灘</b>。</span></li>
+                            <li class="flex items-start gap-1.5 md:gap-2"><span class="bg-slate-700 px-1.5 py-0.5 rounded text-amber-300 font-mono text-[9px] md:text-[10px] mt-0.5 whitespace-nowrap">社會標準</span> <span>AIS 船舶密度 <b>小於 80</b>。</span></li>
                         </ul>
-                        <div class="mt-4 p-3 bg-slate-800 rounded-lg text-xs text-slate-400 border border-slate-700 leading-relaxed">
+                        <div class="mt-3 md:mt-4 p-2 md:p-3 bg-slate-800 rounded-lg text-[10px] md:text-xs text-slate-400 border border-slate-700 leading-relaxed">
                             💡 <span class="text-white font-bold">指揮任務：</span>您無法看見數據，請用語音請隊員檢視並手動否決不符地點。
                         </div>
                     </div>
@@ -529,11 +555,11 @@
                     'cfo': '監控「建置成本估算」，聽從隊長指示判讀並按下否決。'
                 };
                 headerContainer.innerHTML = `
-                    <div class="bg-slate-700/50 border border-slate-600 rounded-xl p-4 flex items-center gap-3 md:gap-4">
+                    <div class="bg-slate-700/50 border border-slate-600 rounded-xl p-3 md:p-4 flex items-center gap-2 md:gap-4">
                         <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 rounded-full flex items-center justify-center shrink-0"><i data-lucide="radio" class="w-4 h-4 md:w-5 md:h-5 text-cyan-400"></i></div>
                         <div>
-                            <h3 class="text-slate-200 font-bold text-xs md:text-sm mb-1">等待戰情指揮（語音溝通）</h3>
-                            <p class="text-[10px] md:text-xs text-slate-400 leading-relaxed">${roleTexts[window.userState.role]}</p>
+                            <h3 class="text-slate-200 font-bold text-xs md:text-sm mb-0.5 md:mb-1">等待戰情指揮（語音溝通）</h3>
+                            <p class="text-[9px] md:text-[10px] text-slate-400 leading-relaxed">${roleTexts[window.userState.role]}</p>
                         </div>
                     </div>
                 `;
@@ -549,7 +575,6 @@
             const container = document.getElementById('site-cards-container');
             container.innerHTML = '';
             const r = window.userState.role;
-            
             const showWave = r === 'engineer';
             const showEco = r === 'eco';
             const showPR = r === 'pr';
@@ -559,43 +584,43 @@
                 const s = NODASS_DB[key];
                 const card = document.createElement('div');
                 card.id = `card-site-${key}`;
-                card.className = "bg-slate-700 p-4 md:p-5 rounded-2xl border-2 border-slate-600 relative transition-all duration-500 flex flex-col group";
+                card.className = "bg-slate-700 p-3 md:p-4 rounded-xl md:rounded-2xl border-2 border-slate-600 relative transition-all duration-500 flex flex-col group";
                 
                 if (r === 'policy') {
                     card.classList.add('cursor-pointer', 'hover:border-cyan-500');
                     card.onclick = () => { if (!card.classList.contains('eliminated')) selectSiteLocal(key); };
                 }
 
-                const waveText = showWave ? `<span class="text-blue-400 font-mono">${s.wave} m</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest">???</span>`;
-                const depthText = showWave ? `<span class="text-blue-400 font-mono">${s.depth} m</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest">???</span>`;
-                const subText = showEco ? `<span class="text-emerald-400 font-bold truncate max-w-[80px] text-right">${s.substrate}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest">???</span>`;
-                const costText = showCFO ? `<span class="text-purple-400 font-bold">${s.costLvl}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest">???</span>`;
-                const aisText = showPR ? `<span class="text-amber-400 font-mono">${s.ais}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest">???</span>`;
+                const waveText = showWave ? `<span class="text-blue-400 font-mono">${s.wave} m</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest">???</span>`;
+                const depthText = showWave ? `<span class="text-blue-400 font-mono">${s.depth} m</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest">???</span>`;
+                const subText = showEco ? `<span class="text-emerald-400 font-bold truncate max-w-[70px] text-right">${s.substrate}</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest">???</span>`;
+                const costText = showCFO ? `<span class="text-purple-400 font-bold">${s.costLvl}</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest">???</span>`;
+                const aisText = showPR ? `<span class="text-amber-400 font-mono">${s.ais}</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest">???</span>`;
 
                 card.innerHTML = `
                     <div class="relative flex-1">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center text-xl border border-slate-600 shrink-0">${s.icon}</div>
-                            <h3 class="font-bold text-slate-100 text-sm md:text-md group-hover:text-cyan-400 transition-colors ml-3 truncate">${s.name}</h3>
+                        <div class="flex items-center justify-between mb-3 md:mb-4">
+                            <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 rounded-lg md:rounded-xl flex items-center justify-center text-base md:text-xl border border-slate-600 shrink-0">${s.icon}</div>
+                            <h3 class="font-bold text-slate-100 text-xs md:text-sm group-hover:text-cyan-400 transition-colors ml-2 md:ml-3 truncate">${s.name}</h3>
                         </div>
-                        <div class="space-y-2 text-xs md:text-sm relative z-0">
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5"><span class="text-slate-400 truncate pr-2">浪高模式</span>${waveText}</div>
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5"><span class="text-slate-400 truncate pr-2">水深資料</span>${depthText}</div>
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5"><span class="text-slate-400 truncate pr-2">底質分佈</span>${subText}</div>
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5"><span class="text-slate-400 truncate pr-2">建置成本</span>${costText}</div>
-                            <div class="flex justify-between"><span class="text-slate-400 truncate pr-2">AIS船舶密度</span>${aisText}</div>
+                        <div class="space-y-1.5 md:space-y-2 text-[10px] md:text-xs relative z-0">
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1 md:pb-1.5"><span class="text-slate-400 truncate pr-1">浪高</span>${waveText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1 md:pb-1.5"><span class="text-slate-400 truncate pr-1">水深</span>${depthText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1 md:pb-1.5"><span class="text-slate-400 truncate pr-1">底質</span>${subText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1 md:pb-1.5"><span class="text-slate-400 truncate pr-1">成本</span>${costText}</div>
+                            <div class="flex justify-between"><span class="text-slate-400 truncate pr-1">AIS密度</span>${aisText}</div>
                         </div>
-                        <div id="overlay-${key}" class="absolute -inset-2 bg-slate-900/80 backdrop-blur-[1px] flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none rounded-xl z-10">
-                            <div class="bg-black/90 text-red-400 font-bold px-3 py-3 rounded-xl text-xs border border-red-500/50 text-center shadow-2xl w-[85%]">
-                                <div class="text-red-500 font-black mb-1.5 tracking-widest border-b border-red-500/30 pb-1">已淘汰</div>
-                                <div id="reason-${key}" class="mt-1 leading-relaxed text-slate-300"></div>
+                        <div id="overlay-${key}" class="absolute -inset-1 md:-inset-2 bg-slate-900/80 backdrop-blur-[1px] flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none rounded-xl z-10">
+                            <div class="bg-black/90 text-red-400 font-bold px-2 py-2 md:px-3 md:py-3 rounded-lg md:rounded-xl text-[9px] md:text-[10px] border border-red-500/50 text-center shadow-2xl w-[90%]">
+                                <div class="text-red-500 font-black mb-1 md:mb-1.5 tracking-widest border-b border-red-500/30 pb-0.5 md:pb-1">已淘汰</div>
+                                <div id="reason-${key}" class="mt-0.5 md:mt-1 leading-relaxed text-slate-300"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-slate-600 z-20 relative min-h-[40px] flex items-center justify-center">
+                    <div class="mt-3 md:mt-4 pt-2 md:pt-3 border-t border-slate-600 z-20 relative min-h-[36px] md:min-h-[40px] flex items-center justify-center">
                         <div id="action-btn-container-${key}" class="w-full"></div>
                     </div>
-                    <div id="selected-${key}" class="absolute inset-0 border-4 border-cyan-500 rounded-2xl z-30 hidden pointer-events-none shadow-[inset_0_0_20px_rgba(6,182,212,0.5)]"></div>
+                    <div id="selected-${key}" class="absolute inset-0 border-2 md:border-4 border-cyan-500 rounded-xl md:rounded-2xl z-30 hidden pointer-events-none shadow-[inset_0_0_15px_rgba(6,182,212,0.5)]"></div>
                 `;
                 container.appendChild(card);
             });
@@ -616,13 +641,14 @@
             if (r === 'policy') {
                 const btnLock = document.getElementById('btn-lock-site');
                 btnLock.disabled = true;
-                btnLock.innerText = "等待隊長決策...";
+                btnLock.innerHTML = `等待決策...`;
                 document.getElementById('phase2-policy-msg').classList.remove('hidden');
             } else {
                 const submitBtn = document.getElementById('submit-btn');
                 if(submitBtn) {
                     submitBtn.disabled = true;
-                    submitBtn.innerText = "等待隊長提交...";
+                    document.getElementById('submit-btn-text').innerText = "等待隊長提交";
+                    document.getElementById('submit-btn-icon').setAttribute('data-lucide', 'lock');
                 }
             }
         }
@@ -639,15 +665,11 @@
             if (!currentUser) return;
             const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'sessions', window.userState.team);
             
-            unsubscribe = onSnapshot(docRef, (snap) => {
+            unsubscribeSync = onSnapshot(docRef, (snap) => {
                 if(snap.exists()) {
                     const data = snap.data();
                     
-                    if (data.site && !NODASS_DB[data.site]) {
-                        data.site = null;
-                        data.phase = 1;
-                    }
-
+                    if (data.site && !NODASS_DB[data.site]) { data.site = null; data.phase = 1; }
                     if (data.rejections) {
                         Object.keys(data.rejections).forEach(key => {
                             if (!NODASS_DB[key]) delete data.rejections[key];
@@ -655,10 +677,7 @@
                     }
 
                     window.teamState = { ...window.teamState, ...data };
-                    
-                    if(!window.teamState.rejections) {
-                        window.teamState.rejections = getDefaultRejections();
-                    }
+                    if(!window.teamState.rejections) window.teamState.rejections = getDefaultRejections();
                     
                     updateUI(); 
                     calcScore(); 
@@ -669,9 +688,7 @@
                 } else {
                     setDoc(docRef, window.teamState);
                 }
-            }, (error) => {
-                startDemoMode(error.message);
-            });
+            }, (error) => { startDemoMode(error.message); });
         }
 
         window.toggleReject = async (siteId) => {
@@ -716,7 +733,7 @@
             const labels = {
                 'safety': ['無防護','基礎防護','標準','強化護岸','重型防波堤'],
                 'pr': ['零互動','單向宣導','標準','說明會','高額回饋金'],
-                'eco': ['單一試驗','小規模','標準','多物種','大面積復育'],
+                'eco': ['單一試驗','小規模','標準','多物種','大規模復育'],
                 'cfo': ['極度緊縮','偏低預算','標準預算','寬鬆預算','無上限']
             };
             if(txt) txt.innerText = labels[id][val-1] || '標準';
@@ -740,7 +757,7 @@
             if(key === 'eco') actionName = `將 生態規模 調整至 ${val}`;
             if(key === 'cfo') actionName = `將 預算總量 調整至 ${val}`;
             if(key === 'phase') actionName = val === 2 ? '鎖定了最終目標，進入戰情室' : '重啟了大數據排雷';
-            if(key === 'isSubmitted') actionName = '正式提交了最終決策';
+            if(key === 'isSubmitted') actionName = val ? '正式提交了最終決策' : '撤回了最終決策';
             
             const logMsg = `${roleMap[window.userState.role] || '系統'} ${actionName}`;
 
@@ -797,11 +814,11 @@
 
                         if(btnContainer) {
                             if(['engineer', 'eco', 'pr', 'cfo'].includes(role)) {
-                                btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-lg font-bold text-xs bg-red-900/40 text-red-400 border border-red-800 hover:bg-red-800 hover:text-white transition-colors cursor-pointer">❌ 宣告${roleMap[role]}否決</button>`;
+                                btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-red-900/40 text-red-400 border border-red-800 hover:bg-red-800 hover:text-white transition-colors cursor-pointer">❌ 宣告${roleMap[role]}否決</button>`;
                             } else if(role === 'policy') {
-                                btnContainer.innerHTML = `<div class="w-full py-2 rounded-lg font-bold text-xs bg-cyan-900/30 text-cyan-500 text-center border border-cyan-800/50">點擊卡片選定此區</div>`;
+                                btnContainer.innerHTML = `<div class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-cyan-900/30 text-cyan-500 text-center border border-cyan-800/50">點擊卡片選定</div>`;
                             } else {
-                                btnContainer.innerHTML = `<div class="w-full py-2 rounded-lg font-bold text-xs bg-slate-800 text-slate-500 text-center border border-slate-700">無否決權限</div>`;
+                                btnContainer.innerHTML = `<div class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-slate-800 text-slate-500 text-center border border-slate-700">無權限</div>`;
                             }
                         }
                     } else {
@@ -820,12 +837,12 @@
                         if(btnContainer) {
                             if(['engineer', 'eco', 'pr', 'cfo'].includes(role)) {
                                 if(rejections.includes(role)) {
-                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-lg font-bold text-xs bg-slate-600 text-slate-300 border border-slate-500 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer">↺ 撤銷我的否決</button>`;
+                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-slate-600 text-slate-300 border border-slate-500 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer">↺ 撤銷否決</button>`;
                                 } else {
-                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-lg font-bold text-xs bg-red-900/20 text-red-500 border border-red-900/50 hover:bg-red-900 hover:text-white transition-colors cursor-pointer">❌ 加簽${roleMap[role]}否決</button>`;
+                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-red-900/20 text-red-500 border border-red-900/50 hover:bg-red-900 hover:text-white transition-colors cursor-pointer">❌ 加簽否決</button>`;
                                 }
                             } else {
-                                btnContainer.innerHTML = `<div class="w-full py-2 rounded-lg font-bold text-xs bg-slate-800 text-slate-500 text-center border border-slate-700">已遭否決</div>`;
+                                btnContainer.innerHTML = `<div class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-slate-800 text-slate-500 text-center border border-slate-700">已遭否決</div>`;
                             }
                         }
                     }
@@ -847,12 +864,12 @@
                 if (window.userState.role === 'policy') {
                     if (validCount === 0) {
                         lockMsg.innerText = "警告：場址已全滅，請撤銷否決";
-                        lockMsg.className = "text-[10px] md:text-xs text-red-500 font-bold block animate-pulse text-center w-full";
+                        lockMsg.className = "text-[9px] md:text-[10px] text-red-500 font-bold block animate-pulse text-center w-full";
                         lockBtn.disabled = true;
                         lockBtn.classList.remove('animate-pulse');
                     } else if (validCount <= 2) {
-                        lockMsg.innerText = s.site ? "目標已鎖定" : "請點擊上方卡片選定場址";
-                        lockMsg.className = "text-[10px] md:text-xs font-bold block text-center w-full " + (s.site ? "text-cyan-400" : "text-amber-500");
+                        lockMsg.innerText = s.site ? "目標已鎖定" : "請點選場址";
+                        lockMsg.className = "text-[9px] md:text-[10px] font-bold block text-center w-full " + (s.site ? "text-cyan-400" : "text-amber-500");
                         
                         if (s.site && !(s.rejections?.[s.site]?.length > 0)) {
                             lockBtn.disabled = false;
@@ -863,7 +880,7 @@
                         }
                     } else {
                         lockMsg.innerText = "需淘汰至剩下 2 個以內";
-                        lockMsg.className = "text-[10px] md:text-xs text-red-400 font-bold block text-center w-full";
+                        lockMsg.className = "text-[9px] md:text-[10px] text-red-400 font-bold block text-center w-full";
                         lockBtn.disabled = true;
                         lockBtn.classList.remove('animate-pulse');
                     }
@@ -886,18 +903,40 @@
                 if(!isDragging['cfo']) updateSliderIfNotDragging('cfo', s.cfo);
                 
                 const submitBtn = document.getElementById('submit-btn');
+                const btnText = document.getElementById('submit-btn-text');
+                const btnIcon = document.getElementById('submit-btn-icon');
+                const btnRet = document.getElementById('btn-return');
+
                 if (s.isSubmitted) {
-                    if (submitBtn) {
-                        submitBtn.disabled = true;
-                        submitBtn.innerHTML = `<span class="hidden sm:inline">已提交決策</span><span class="sm:hidden">已提交</span> <i data-lucide="check-circle" class="w-4 h-4 ml-1"></i>`;
-                    }
                     lockUI('safety'); lockUI('eco'); lockUI('pr'); lockUI('cfo');
-                    const btnRet = document.getElementById('btn-return');
                     if(btnRet) btnRet.style.display = 'none';
+                    
+                    if (submitBtn) {
+                        if (window.userState.role === 'policy') {
+                            submitBtn.disabled = false;
+                            submitBtn.classList.replace('bg-cyan-600', 'bg-amber-600');
+                            submitBtn.classList.replace('hover:bg-cyan-500', 'hover:bg-amber-500');
+                            submitBtn.classList.replace('shadow-[0_0_15px_rgba(6,182,212,0.4)]', 'shadow-[0_0_15px_rgba(245,158,11,0.4)]');
+                            btnText.innerText = "撤回並修改";
+                            btnIcon.setAttribute('data-lucide', 'rotate-ccw');
+                        } else {
+                            submitBtn.disabled = true;
+                            btnText.innerText = "已提交決策";
+                            btnIcon.setAttribute('data-lucide', 'check-circle');
+                        }
+                    }
                 } else {
                     applyPermissions();
-                    const btnRet = document.getElementById('btn-return');
                     if(btnRet) btnRet.style.display = window.userState.role === 'policy' ? 'block' : 'none';
+                    
+                    if (submitBtn && window.userState.role === 'policy') {
+                        submitBtn.disabled = false;
+                        submitBtn.classList.replace('bg-amber-600', 'bg-cyan-600');
+                        submitBtn.classList.replace('hover:bg-amber-500', 'hover:bg-cyan-500');
+                        submitBtn.classList.replace('shadow-[0_0_15px_rgba(245,158,11,0.4)]', 'shadow-[0_0_15px_rgba(6,182,212,0.4)]');
+                        btnText.innerText = "提交最終決策";
+                        btnIcon.setAttribute('data-lucide', 'send');
+                    }
                 }
             }
             lucide.createIcons();
@@ -911,7 +950,7 @@
                 const labels = {
                     'safety': ['無防護','基礎防護','標準','強化護岸','重型防波堤'],
                     'pr': ['零互動','單向宣導','標準','說明會','高額回饋金'],
-                    'eco': ['單一試驗','小規模','標準','多物種','大面積復育'],
+                    'eco': ['單一試驗','小規模','標準','多物種','大規模復育'],
                     'cfo': ['極度緊縮','偏低預算','標準預算','寬鬆預算','無上限']
                 };
                 if(txt) txt.innerText = labels[id][val-1] || '標準';
@@ -927,41 +966,49 @@
             log.prepend(div);
         }
 
-        window.submitFinalDecision = async () => {
-            const btn = document.getElementById('submit-btn');
-            if(window.userState.role !== 'policy') { alert("僅政策分析師有權限提交最終決策！"); return; }
-            btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin mr-2"></i> <span class="hidden sm:inline">傳送中...</span><span class="sm:hidden">處理中</span>`;
+        window.toggleSubmitDecision = async () => {
+            const isSubmitting = !window.teamState.isSubmitted;
+            const btnText = document.getElementById('submit-btn-text');
+            const btnIcon = document.getElementById('submit-btn-icon');
+            
+            if(window.userState.role !== 'policy') { alert("權限不足！"); return; }
+            
+            btnText.innerText = "處理中...";
+            btnIcon.setAttribute('data-lucide', 'loader-2');
+            btnIcon.classList.add('animate-spin');
             lucide.createIcons();
             
-            await window.updateTeamState('isSubmitted', true);
+            await window.updateTeamState('isSubmitted', isSubmitting);
 
             if (isDemoMode) {
                 setTimeout(() => {
-                    alert("藍碳決策已成功送出至戰情室！");
-                    btn.innerHTML = `<span class="hidden sm:inline">已提交決策</span><span class="sm:hidden">已提交</span> <i data-lucide="check-circle" class="w-4 h-4 ml-1"></i>`;
-                    btn.disabled = true;
-                    lucide.createIcons();
+                    alert(isSubmitting ? "藍碳決策已成功送出至戰情室！" : "已撤回決策，您可以重新修改。");
+                    btnIcon.classList.remove('animate-spin');
+                    updateUI();
                 }, 800);
                 return;
             }
 
             if (!currentUser) return;
             try {
-                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'decisions'), {
-                    site: window.teamState.site,
-                    scores: calcScore(true),
-                    user: window.userState.team,
-                    timestamp: serverTimestamp()
-                });
-                alert("已成功送出至 NODASS 戰情室！");
-                btn.innerHTML = `<span class="hidden sm:inline">已提交決策</span><span class="sm:hidden">已提交</span> <i data-lucide="check-circle" class="w-4 h-4 ml-1"></i>`;
-                btn.disabled = true;
-                lucide.createIcons();
+                if(isSubmitting) {
+                    await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'decisions', window.userState.team), {
+                        site: window.teamState.site,
+                        scores: calcScore(true),
+                        user: window.userState.team,
+                        timestamp: serverTimestamp()
+                    });
+                    alert("已成功送出至 NODASS 戰情室！");
+                } else {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'decisions', window.userState.team));
+                    alert("已撤回決策，您可以重新修改。");
+                }
             } catch(e) { 
-                alert("上傳失敗：" + e.message); 
-                btn.innerHTML = `<span class="hidden sm:inline">提交失敗 - 請重試</span><span class="sm:hidden">請重試</span>`; 
-                await window.updateTeamState('isSubmitted', false);
+                alert("操作失敗：" + e.message); 
+                await window.updateTeamState('isSubmitted', !isSubmitting);
             }
+            btnIcon.classList.remove('animate-spin');
+            updateUI();
         }
 
         function calcScoreStatic(st) {
@@ -987,9 +1034,7 @@
             if (base.ais > 80 && pr < 4) o -= 40;
 
             let e = base.e + (cfo * 5); 
-            if (isOverBudget) {
-                e -= budgetPenalty; 
-            }
+            if (isOverBudget) { e -= budgetPenalty; }
 
             s = Math.min(100, Math.max(0, s));
             e = Math.min(100, Math.max(0, e));
@@ -1013,10 +1058,7 @@
                 const sBar = document.getElementById('bar-safety');
                 if(sBar) sBar.style.width = `${res.s}%`;
                 const eBar = document.getElementById('bar-economy');
-                if(eBar) {
-                    eBar.style.width = `${res.e}%`;
-                    eBar.className = res.isOverBudget ? "bg-red-500 h-full transition-all" : "bg-amber-500 h-full transition-all";
-                }
+                if(eBar) { eBar.style.width = `${res.e}%`; eBar.className = res.isOverBudget ? "bg-red-500 h-full transition-all" : "bg-amber-500 h-full transition-all"; }
                 const oBar = document.getElementById('bar-social');
                 if(oBar) oBar.style.width = `${res.o}%`;
 
@@ -1042,10 +1084,10 @@
                 if(budgetStatus) {
                     if(res.isOverBudget) {
                         budgetStatus.innerText = `超支警告 (-${parseInt((res.cost - res.budgetLimit)*1.5)} 經濟分)`;
-                        budgetStatus.className = "text-[9px] md:text-[10px] font-bold px-1.5 md:px-2 py-0.5 rounded bg-red-900 text-red-400 border border-red-500 animate-pulse whitespace-nowrap";
+                        budgetStatus.className = "text-[8px] md:text-[9px] font-bold px-1 md:px-1.5 py-0.5 rounded bg-red-900 text-red-400 border border-red-500 animate-pulse whitespace-nowrap";
                     } else {
                         budgetStatus.innerText = "預算安全";
-                        budgetStatus.className = "text-[9px] md:text-[10px] font-bold px-1.5 md:px-2 py-0.5 rounded bg-purple-900/50 text-purple-300 border border-purple-700 whitespace-nowrap";
+                        budgetStatus.className = "text-[8px] md:text-[9px] font-bold px-1 md:px-1.5 py-0.5 rounded bg-purple-900/50 text-purple-300 border border-purple-700 whitespace-nowrap";
                     }
                 }
                 
@@ -1071,9 +1113,10 @@
                         data: [0,0,0], 
                         backgroundColor: 'rgba(6,182,212,0.2)', 
                         borderColor: '#06b6d4', 
-                        borderWidth: 2,
+                        borderWidth: 1.5,
                         pointBackgroundColor: '#06b6d4',
-                        pointBorderColor: '#fff'
+                        pointBorderColor: '#fff',
+                        pointRadius: 2
                     }] 
                 }, 
                 options: { 
@@ -1082,10 +1125,10 @@
                     scales: { 
                         r: { 
                             min: 0, max: 100, 
-                            ticks: { display: false },
+                            ticks: { display: false, stepSize: 20 },
                             grid: { color: 'rgba(255,255,255,0.1)' },
                             angleLines: { color: 'rgba(255,255,255,0.1)' },
-                            pointLabels: { font: { size: 10, weight: 'bold' }, color: '#94a3b8' }
+                            pointLabels: { font: { size: 9, weight: 'bold' }, color: '#94a3b8' }
                         } 
                     }, 
                     plugins: { legend: { display: false } } 
@@ -1103,13 +1146,9 @@
                     demoTeams.push({ id: '第一組', site: siteKeys[0], total: 45.0, lastLog: '已連線', isSubmitted: true });
                     demoTeams.push({ id: '第二組', site: siteKeys[1], total: 68.2, lastLog: '調整參數中', isSubmitted: false });
                 }
-                
                 let stats = { s:250, e:200, o:210 };
                 siteKeys.forEach(key => stats[key] = 0);
-                if(siteKeys.length >= 2) {
-                    stats[siteKeys[0]] = 1;
-                    stats[siteKeys[1]] = 1;
-                }
+                if(siteKeys.length >= 2) { stats[siteKeys[0]] = 1; stats[siteKeys[1]] = 1; }
                 
                 document.getElementById('admin-team-count').innerText = demoTeams.length.toString();
                 updateAdminCharts(demoTeams, stats, demoTeams.length);
@@ -1119,11 +1158,10 @@
             }
 
             const q = collection(db, 'artifacts', appId, 'public', 'data', 'sessions');
-            onSnapshot(q, (snapshot) => {
+            unsubscribeAdmin = onSnapshot(q, (snapshot) => {
                 const teams = [];
                 let stats = { s:0, e:0, o:0 };
                 siteKeys.forEach(key => stats[key] = 0);
-                
                 let validCountForStats = 0;
                 
                 snapshot.forEach(doc => {
@@ -1131,7 +1169,7 @@
                     const scores = calcScoreStatic(data);
                     teams.push({ id: doc.id, ...data, ...scores });
                     
-                    if(data.phase === 2 && data.site && stats[data.site] !== undefined) {
+                    if(data.phase === 2 && data.site && stats[data.site] !== undefined && data.isSubmitted) {
                         stats[data.site]++;
                         stats.s += scores.s; stats.e += scores.e; stats.o += scores.o;
                         validCountForStats++;
@@ -1140,16 +1178,13 @@
                 document.getElementById('admin-team-count').innerText = teams.length;
                 updateAdminCharts(teams, stats, validCountForStats);
                 renderTeamCards(teams);
-                
                 const submittedTeams = teams.filter(t => t.isSubmitted);
                 renderLeaderboard(submittedTeams);
             }, (error) => { alert("無法同步數據"); });
         }
 
-        let adminPie, adminBar;
         function updateAdminCharts(teams, stats, validCount) {
             const count = validCount || 1;
-            
             const siteKeys = Object.keys(NODASS_DB);
             const chartLabels = siteKeys.map(key => NODASS_DB[key].name);
             const colorPalette = ['#3b82f6','#06b6d4','#10b981','#f43f5e','#a855f7','#f59e0b', '#64748b', '#ef4444'];
@@ -1160,16 +1195,8 @@
                 const ctx = document.getElementById('adminPieChart').getContext('2d');
                 adminPie = new Chart(ctx, { 
                     type: 'doughnut', 
-                    data: { 
-                        labels: chartLabels, 
-                        datasets:[{ 
-                            data: chartData, 
-                            backgroundColor: chartColors, 
-                            borderColor:'#1e293b', 
-                            borderWidth: 2 
-                        }] 
-                    }, 
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1', boxWidth: 12, font: {size: 10} } } } } 
+                    data: { labels: chartLabels, datasets:[{ data: chartData, backgroundColor: chartColors, borderColor:'#1e293b', borderWidth: 1.5 }] }, 
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', boxWidth: 10, font: {size: 9} } } } } 
                 });
             } else {
                 adminPie.data.labels = chartLabels;
@@ -1181,8 +1208,8 @@
                 const ctx = document.getElementById('adminBarChart').getContext('2d');
                 adminBar = new Chart(ctx, { 
                     type: 'bar', 
-                    data: { labels: ['環境','經濟','社會'], datasets:[{ label:'平均', data:[0,0,0], backgroundColor:['#3b82f6','#06b6d4','#10b981'], borderRadius: 4 }] }, 
-                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { max:100, grid:{color:'#334155'}, ticks:{color:'#94a3b8', font:{size:10}} }, x: { grid:{display:false}, ticks:{color:'#94a3b8', font:{size:10}} } }, plugins: { legend: { display:false } } } 
+                    data: { labels: ['環境','經濟','社會'], datasets:[{ label:'平均', data:[0,0,0], backgroundColor:['#3b82f6','#06b6d4','#10b981'], borderRadius: 3 }] }, 
+                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { max:100, grid:{color:'#334155'}, ticks:{color:'#94a3b8', font:{size:9}} }, x: { grid:{display:false}, ticks:{color:'#94a3b8', font:{size:9}} } }, plugins: { legend: { display:false } } } 
                 });
             }
             adminBar.data.datasets[0].data = [stats.s/count, stats.e/count, stats.o/count]; 
@@ -1196,24 +1223,24 @@
                 const siteData = NODASS_DB[t.site] || {icon:'❓'};
                 const card = document.createElement('div');
                 card.className = "bg-slate-800 p-3 md:p-4 rounded-xl border border-slate-700 cursor-default flex flex-col justify-between h-full";
-                const submittedBadge = t.isSubmitted ? `<span class="text-[9px] md:text-[10px] bg-green-900/50 text-green-400 px-1.5 py-0.5 rounded border border-green-800 shrink-0 whitespace-nowrap">已提交</span>` : '';
+                const submittedBadge = t.isSubmitted ? `<span class="text-[8px] md:text-[9px] bg-green-900/50 text-green-400 px-1.5 py-0.5 rounded border border-green-800 shrink-0 whitespace-nowrap">已提交</span>` : '';
                 card.innerHTML = `
                     <div>
-                        <div class="flex justify-between items-center mb-2 gap-2">
+                        <div class="flex justify-between items-center mb-1.5 md:mb-2 gap-2">
                             <div class="flex items-center gap-1.5 min-w-0">
                                 <span class="font-bold text-slate-100 truncate text-xs md:text-sm">${t.id}</span>
                                 ${submittedBadge}
                             </div>
-                            <span class="text-xs bg-slate-700 px-1.5 py-0.5 md:px-2 md:py-1 rounded shrink-0">${siteData.icon}</span>
+                            <span class="text-[10px] md:text-xs bg-slate-700 px-1.5 md:px-2 py-0.5 md:py-1 rounded shrink-0">${siteData.icon}</span>
                         </div>
-                        <div class="flex justify-between text-[10px] md:text-xs text-slate-400 mb-2">
-                            <span>SROI: <span class="text-cyan-400 font-bold text-base md:text-lg">${t.total}</span></span>
+                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-400 mb-1.5 md:mb-2">
+                            <span>SROI: <span class="text-cyan-400 font-bold text-sm md:text-base">${t.total}</span></span>
                         </div>
-                        <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                        <div class="w-full bg-slate-700 h-1 md:h-1.5 rounded-full overflow-hidden">
                             <div class="bg-cyan-500 h-full" style="width: ${Math.min(100, t.total)}%"></div>
                         </div>
                     </div>
-                    <div class="text-[9px] md:text-[10px] text-cyan-500 mt-3 truncate break-all">
+                    <div class="text-[8px] md:text-[9px] text-cyan-500 mt-2 md:mt-3 truncate break-all">
                         ${t.lastLog || '等待中'}
                     </div>
                 `;
@@ -1225,13 +1252,13 @@
             const list = document.getElementById('leaderboard');
             list.innerHTML = '';
             if (teams.length === 0) {
-                list.innerHTML = '<div class="text-xs text-slate-500 text-center mt-4">尚未有隊伍提交決策</div>';
+                list.innerHTML = '<div class="text-[10px] md:text-xs text-slate-500 text-center mt-4">尚未有隊伍提交決策</div>';
                 return;
             }
             teams.sort((a,b) => parseFloat(b.total) - parseFloat(a.total)).slice(0, 10).forEach((t, i) => {
                 const row = document.createElement('div');
-                row.className = "flex justify-between items-center bg-slate-700/30 p-2 rounded text-xs mb-1 gap-2";
-                row.innerHTML = `<div class="flex items-center gap-2 min-w-0"><span class="font-bold ${i<3 ? 'text-amber-400':'text-slate-500'} w-4 shrink-0 text-center">#${i+1}</span><span class="text-slate-300 truncate">${t.id}</span></div><span class="font-mono text-cyan-400 font-bold shrink-0">${t.total}</span>`;
+                row.className = "flex justify-between items-center bg-slate-700/30 p-1.5 md:p-2 rounded text-[10px] md:text-xs mb-1 gap-2";
+                row.innerHTML = `<div class="flex items-center gap-1.5 md:gap-2 min-w-0"><span class="font-bold ${i<3 ? 'text-amber-400':'text-slate-500'} w-3 md:w-4 shrink-0 text-center">#${i+1}</span><span class="text-slate-300 truncate">${t.id}</span></div><span class="font-mono text-cyan-400 font-bold shrink-0">${t.total}</span>`;
                 list.appendChild(row);
             });
         }
@@ -1241,16 +1268,28 @@
             if (!currentUser) return;
             if (confirm("警告：這將會刪除所有小組進度！確定嗎？")) {
                 try {
-                    const q = collection(db, 'artifacts', appId, 'public', 'data', 'sessions');
-                    const snapshot = await getDocs(q);
-                    snapshot.docs.forEach(doc => deleteDoc(doc.ref));
+                    const qSessions = collection(db, 'artifacts', appId, 'public', 'data', 'sessions');
+                    const snapSessions = await getDocs(qSessions);
+                    snapSessions.docs.forEach(doc => deleteDoc(doc.ref));
+                    
+                    const qDecisions = collection(db, 'artifacts', appId, 'public', 'data', 'decisions');
+                    const snapDecisions = await getDocs(qDecisions);
+                    snapDecisions.docs.forEach(doc => deleteDoc(doc.ref));
+
                     alert("任務已重置！");
                 } catch(e) { alert("重置失敗：" + e.message); }
             }
         };
 
         window.onload = () => { lucide.createIcons(); };
-        window.dismissIntro = () => { document.getElementById('intro-splash').classList.add('fade-out-up'); };
+        window.dismissIntro = () => { 
+            const intro = document.getElementById('intro-splash');
+            intro.classList.add('fade-out-up'); 
+            setTimeout(() => {
+                intro.classList.add('hidden');
+                document.getElementById('login-screen').classList.remove('hidden');
+            }, 800);
+        };
     </script>
 </body>
 </html>
