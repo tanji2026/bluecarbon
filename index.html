@@ -636,8 +636,30 @@
             window.updateTeamState('site', siteId);
         }
 
+        // 💡 修正 1/2：加入解鎖的功能
+        function unlockUI(id) {
+            const slider = document.getElementById(`slider-${id}`);
+            if (slider) slider.disabled = false;
+            const lockOverlay = document.getElementById(`lock-${id}`);
+            if (lockOverlay) { lockOverlay.classList.add('hidden'); lockOverlay.classList.remove('flex'); }
+        }
+
+        function lockUI(id) {
+            const slider = document.getElementById(`slider-${id}`);
+            if (slider) slider.disabled = true;
+            const lockOverlay = document.getElementById(`lock-${id}`);
+            if (lockOverlay) { lockOverlay.classList.remove('hidden'); lockOverlay.classList.add('flex'); }
+        }
+
         function applyPermissions() {
             const r = window.userState.role;
+            
+            // 💡 修正 2/2：進入/撤回時，先全面解鎖，再針對非負責項目上鎖
+            unlockUI('safety');
+            unlockUI('eco');
+            unlockUI('pr');
+            unlockUI('cfo');
+
             if (r !== 'engineer') lockUI('safety');
             if (r !== 'eco') lockUI('eco');
             if (r !== 'pr') lockUI('pr');
@@ -645,9 +667,12 @@
             
             if (r === 'policy') {
                 const btnLock = document.getElementById('btn-lock-site');
-                btnLock.disabled = true;
-                btnLock.innerHTML = `<span class="truncate">等待決策...</span>`;
-                document.getElementById('phase2-policy-msg').classList.remove('hidden');
+                if (btnLock) {
+                    btnLock.disabled = true;
+                    btnLock.innerHTML = `<span class="truncate">等待決策...</span>`;
+                }
+                const msg = document.getElementById('phase2-policy-msg');
+                if (msg) msg.classList.remove('hidden');
             } else {
                 const submitBtn = document.getElementById('submit-btn');
                 if(submitBtn) {
@@ -656,13 +681,6 @@
                     document.getElementById('submit-btn-icon').setAttribute('data-lucide', 'lock');
                 }
             }
-        }
-
-        function lockUI(id) {
-            const slider = document.getElementById(`slider-${id}`);
-            if (slider) slider.disabled = true;
-            const lockOverlay = document.getElementById(`lock-${id}`);
-            if (lockOverlay) { lockOverlay.classList.remove('hidden'); lockOverlay.classList.add('flex'); }
         }
 
         function startSync() {
@@ -913,6 +931,7 @@
                 const btnRet = document.getElementById('btn-return');
 
                 if (s.isSubmitted) {
+                    // 已提交：全面鎖定 UI
                     lockUI('safety'); lockUI('eco'); lockUI('pr'); lockUI('cfo');
                     if(btnRet) btnRet.style.display = 'none';
                     
@@ -931,6 +950,7 @@
                         }
                     }
                 } else {
+                    // 未提交/已撤回：重新依照權限解鎖與上鎖
                     applyPermissions();
                     if(btnRet) btnRet.style.display = window.userState.role === 'policy' ? 'block' : 'none';
                     
