@@ -12,8 +12,8 @@
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; overscroll-behavior-y: none; background-color: #0f172a; color: #f8fafc; -webkit-tap-highlight-color: transparent; }
         input[type=range] { -webkit-appearance: none; width: 100%; max-width: 100%; background: transparent; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #ffffff; border: 2px solid currentColor; cursor: pointer; margin-top: -10px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.1s; }
-        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #334155; border-radius: 9999px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%; background: #ffffff; border: 3px solid currentColor; cursor: pointer; margin-top: -10px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.1s; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; cursor: pointer; background: #334155; border-radius: 9999px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .dashboard-enter { animation: slideUp 0.5s ease-out forwards; }
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -34,284 +34,285 @@
     <div id="intro-splash" class="fixed inset-0 bg-gradient-to-br from-blue-900 to-cyan-900 z-[100] flex flex-col items-center justify-center p-4 md:p-6 text-white transition-all duration-700 overflow-y-auto">
         <div class="m-auto flex flex-col items-center justify-center w-full shrink-0">
             <div class="relative mb-6 flex flex-col items-center w-full px-4">
-                <div class="mb-2 bg-slate-900 text-cyan-400 px-6 py-3 rounded-2xl shadow-xl transform -rotate-2 relative max-w-[280px] text-center border-2 border-cyan-500 animate-bounce mx-auto" style="animation-duration: 2s;">
-                    <p class="font-bold text-lg whitespace-nowrap">嗨！我是碳吉 🌊</p>
-                    <p class="text-sm text-cyan-100 font-bold whitespace-nowrap">準備好找尋藍碳密碼了嗎？</p>
+                <div class="mb-4 bg-slate-900 text-cyan-400 px-6 py-4 rounded-2xl shadow-xl transform -rotate-2 relative max-w-[300px] text-center border-2 border-cyan-500 animate-bounce mx-auto" style="animation-duration: 2s;">
+                    <p class="font-bold text-xl whitespace-nowrap mb-1">嗨！我是碳吉 🌊</p>
+                    <p class="text-base text-cyan-100 font-bold whitespace-nowrap">準備好找尋藍碳密碼了嗎？</p>
                     <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[12px] border-t-cyan-500"></div>
                 </div>
-                <div class="w-48 h-48 md:w-64 md:h-64 animate-float drop-shadow-2xl filter hover:brightness-110 transition-all cursor-pointer mx-auto" onclick="dismissIntro()">
+                <div class="w-56 h-56 md:w-72 md:h-72 animate-float drop-shadow-2xl filter hover:brightness-110 transition-all cursor-pointer mx-auto" onclick="dismissIntro()">
                     <img src="./assets/images/tanjibaby.png" alt="碳吉" class="w-full h-full object-contain" id="mascot-img" onerror="this.src='https://raw.githubusercontent.com/tanji2026/ccus/main/tanjibaby.png'">
                 </div>
             </div>
-            <div class="space-y-4 text-center w-full max-w-[280px] mx-auto relative z-10 flex flex-col justify-center">
-                <h1 class="text-3xl md:text-4xl font-black tracking-tight text-white drop-shadow-md">碳吉 TanJi</h1>
-                <p class="text-cyan-300 font-bold tracking-widest text-xs md:text-sm mb-6 truncate">藍碳特搜隊 — NODASS大數據平台</p>
-                <button onclick="dismissIntro()" class="w-full bg-cyan-500 text-slate-900 px-6 py-4 rounded-2xl font-black text-lg md:text-xl shadow-[0_10px_20px_rgba(6,182,212,0.3)] hover:shadow-[0_15px_30px_rgba(6,182,212,0.5)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 group">
+            <div class="space-y-4 text-center w-full max-w-[320px] mx-auto relative z-10 flex flex-col justify-center">
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white drop-shadow-md">碳吉 TanJi</h1>
+                <p class="text-cyan-300 font-bold tracking-widest text-sm md:text-base mb-6 truncate">藍碳特搜隊 — NODASS大數據平台</p>
+                <button onclick="dismissIntro()" class="w-full bg-cyan-500 text-slate-900 px-6 py-4 rounded-2xl font-black text-xl md:text-2xl shadow-[0_10px_20px_rgba(6,182,212,0.3)] hover:shadow-[0_15px_30px_rgba(6,182,212,0.5)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group">
                     <span class="whitespace-nowrap">啟動任務</span>
-                    <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform shrink-0"></i>
+                    <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform shrink-0 w-6 h-6"></i>
                 </button>
             </div>
         </div>
-        <div class="w-full text-[10px] md:text-xs text-cyan-600/50 font-bold text-center mt-auto pt-8 pb-4 pb-safe leading-relaxed shrink-0 px-2">
+        <div class="w-full text-xs md:text-sm text-cyan-600/70 font-bold text-center mt-auto pt-8 pb-4 pb-safe leading-relaxed shrink-0 px-2">
             115年度NODASS大數據競賽教案｜著作權保護，未經授權勿轉載｜tanji2026@gmail.com
         </div>
     </div>
 
     <div id="login-screen" class="fixed inset-0 bg-slate-900 z-50 flex flex-col p-4 md:p-6 text-white transition-opacity duration-500 overflow-y-auto hidden">
-        <div class="m-auto flex flex-col items-center justify-center w-full max-w-[320px] shrink-0 py-6 mx-auto">
-            <div class="w-12 h-12 md:w-16 md:h-16 bg-cyan-600 rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-2xl shadow-cyan-600/50 shrink-0">
-                <i data-lucide="droplets" class="w-6 h-6 md:w-8 md:h-8 text-white"></i>
+        <div class="m-auto flex flex-col items-center justify-center w-full max-w-[360px] shrink-0 py-6 mx-auto">
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-cyan-600/50 shrink-0">
+                <i data-lucide="droplets" class="w-8 h-8 md:w-10 md:h-10 text-white"></i>
             </div>
-            <h1 class="text-2xl md:text-3xl font-black mb-1 md:mb-2 tracking-tight text-center">碳吉 TanJi</h1>
-            <p class="text-cyan-400 mb-6 md:mb-8 text-xs md:text-sm font-bold text-center">藍碳特搜隊</p>
-            <div class="w-full space-y-3 md:space-y-4">
+            <h1 class="text-3xl md:text-4xl font-black mb-2 tracking-tight text-center">碳吉 TanJi</h1>
+            <p class="text-cyan-400 mb-8 text-sm md:text-base font-bold text-center">藍碳特搜隊</p>
+            <div class="w-full space-y-4 md:space-y-5">
                 <div class="w-full">
-                    <label class="text-[10px] md:text-xs font-bold text-slate-400 uppercase ml-1 block">特搜小組名稱 / 教師代碼</label>
-                    <input type="text" id="login-team" placeholder="輸入小組名稱" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 mt-1 text-white font-bold focus:ring-2 focus:ring-cyan-500 outline-none transition-all text-sm md:text-base box-border">
+                    <label class="text-xs md:text-sm font-bold text-slate-400 uppercase ml-1 block mb-1.5">特搜小組名稱 / 教師代碼</label>
+                    <input type="text" id="login-team" placeholder="輸入小組名稱" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-5 py-4 text-white font-bold focus:ring-2 focus:ring-cyan-500 outline-none transition-all text-base md:text-lg box-border">
                 </div>
                 <div id="role-selector" class="transition-all duration-300 w-full">
-                    <label class="text-[10px] md:text-xs font-bold text-slate-400 uppercase ml-1 block">選擇您的專屬職位</label>
-                    <div class="grid grid-cols-2 gap-2 mt-1 w-full">
-                        <button onclick="selectRole('engineer')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="engineer">
-                            <div class="text-lg md:text-xl mb-0.5 md:mb-1 shrink-0">🌊</div>
-                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white truncate w-full">海洋物理員</div>
+                    <label class="text-xs md:text-sm font-bold text-slate-400 uppercase ml-1 block mb-1.5">選擇您的專屬職位</label>
+                    <div class="grid grid-cols-2 gap-3 mt-1 w-full">
+                        <button onclick="selectRole('engineer')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="engineer">
+                            <div class="text-2xl mb-1.5 shrink-0">🌊</div>
+                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">海洋物理員</div>
                         </button>
-                        <button onclick="selectRole('eco')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="eco">
-                            <div class="text-lg md:text-xl mb-0.5 md:mb-1 shrink-0">🌱</div>
-                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white truncate w-full">海洋生態員</div>
+                        <button onclick="selectRole('eco')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="eco">
+                            <div class="text-2xl mb-1.5 shrink-0">🌱</div>
+                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">海洋生態員</div>
                         </button>
-                        <button onclick="selectRole('pr')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="pr">
-                            <div class="text-lg md:text-xl mb-0.5 md:mb-1 shrink-0">🚢</div>
-                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white truncate w-full">社會溝通員</div>
+                        <button onclick="selectRole('pr')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="pr">
+                            <div class="text-2xl mb-1.5 shrink-0">🚢</div>
+                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">社會溝通員</div>
                         </button>
-                        <button onclick="selectRole('cfo')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="cfo">
-                            <div class="text-lg md:text-xl mb-0.5 md:mb-1 shrink-0">💰</div>
-                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white truncate w-full">財務長</div>
+                        <button onclick="selectRole('cfo')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="cfo">
+                            <div class="text-2xl mb-1.5 shrink-0">💰</div>
+                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">財務長</div>
                         </button>
-                        <button onclick="selectRole('policy')" class="role-btn bg-slate-800 border border-slate-700 p-2 md:p-3 rounded-xl text-left hover:border-cyan-500 transition-all group col-span-2 flex flex-col items-start w-full overflow-hidden" data-role="policy">
-                            <div class="text-lg md:text-xl mb-0.5 md:mb-1 flex items-center gap-2 shrink-0">📜 <span class="text-[9px] md:text-[10px] bg-cyan-900 text-cyan-400 px-1.5 py-0.5 rounded whitespace-nowrap">隊長</span></div>
-                            <div class="text-[10px] md:text-xs font-bold text-slate-300 group-hover:text-white truncate w-full">政策分析師</div>
+                        <button onclick="selectRole('policy')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group col-span-2 flex flex-col items-start w-full overflow-hidden" data-role="policy">
+                            <div class="text-2xl mb-1.5 flex items-center gap-2 shrink-0">📜 <span class="text-[10px] md:text-xs bg-cyan-900 text-cyan-400 px-2 py-1 rounded whitespace-nowrap">隊長</span></div>
+                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">政策分析師</div>
                         </button>
                     </div>
                 </div>
-                <button id="start-btn" onclick="enterSimulation()" disabled class="w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all shadow-lg border border-slate-700 text-sm md:text-base truncate box-border px-4">
+                <button id="start-btn" onclick="enterSimulation()" disabled class="w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all shadow-lg border border-slate-700 text-base md:text-lg truncate box-border px-4">
                     請選擇職位
                 </button>
             </div>
         </div>
-        <div class="w-full text-[9px] md:text-[10px] text-slate-600 font-bold text-center mt-auto pt-6 pb-4 pb-safe leading-relaxed shrink-0 px-2">
+        <div class="w-full text-xs md:text-sm text-slate-500 font-bold text-center mt-auto pt-6 pb-4 pb-safe leading-relaxed shrink-0 px-2">
             115年度NODASS大數據競賽教案｜tanji2026@gmail.com
         </div>
     </div>
 
-    <nav class="w-full bg-slate-900 border-b border-slate-800 flex-none z-30 hidden px-3 md:px-4 h-12 md:h-14" id="main-nav">
+    <nav class="w-full bg-slate-900 border-b border-slate-800 flex-none z-30 hidden px-4 md:px-6 h-14 md:h-16" id="main-nav">
         <div class="container mx-auto h-full flex justify-between items-center w-full max-w-5xl">
-            <div class="flex items-center gap-2 overflow-hidden flex-1 mr-2">
-                <div class="w-7 h-7 md:w-8 md:h-8 bg-cyan-900 rounded-lg flex items-center justify-center text-cyan-400 shrink-0">
-                    <i data-lucide="droplets" class="w-4 h-4 md:w-5 md:h-5"></i>
+            <div class="flex items-center gap-3 overflow-hidden flex-1 mr-4">
+                <div class="w-8 h-8 md:w-10 md:h-10 bg-cyan-900 rounded-xl flex items-center justify-center text-cyan-400 shrink-0">
+                    <i data-lucide="droplets" class="w-5 h-5 md:w-6 md:h-6"></i>
                 </div>
                 <div class="flex flex-col min-w-0 flex-1 justify-center">
-                    <h1 class="text-[13px] sm:text-sm md:text-base font-bold text-slate-100 truncate leading-tight">碳吉 TanJi</h1>
-                    <p class="text-[9px] md:text-[10px] text-cyan-500 font-bold truncate leading-tight" id="header-team-info">未登入</p>
+                    <h1 class="text-base sm:text-lg md:text-xl font-black text-slate-100 truncate leading-tight">碳吉 TanJi</h1>
+                    <p class="text-xs md:text-sm text-cyan-500 font-bold truncate leading-tight mt-0.5" id="header-team-info">未登入</p>
                 </div>
             </div>
-            <div class="flex items-center gap-1.5 sm:gap-2 md:gap-3 shrink-0">
-                <div id="connection-indicator" class="flex items-center gap-1 md:gap-1.5 px-1.5 sm:px-2 py-1 bg-slate-800 rounded-full border border-slate-700 shrink-0">
-                    <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-slate-500 rounded-full shrink-0"></div>
-                    <span class="text-[9px] md:text-[10px] font-bold text-slate-400 whitespace-nowrap hidden sm:inline">連線中</span>
+            <div class="flex items-center gap-2 sm:gap-3 md:gap-4 shrink-0">
+                <div id="connection-indicator" class="flex items-center gap-1.5 md:gap-2 px-2.5 sm:px-3 py-1.5 bg-slate-800 rounded-full border border-slate-700 shrink-0">
+                    <div class="w-2 h-2 md:w-2.5 md:h-2.5 bg-slate-500 rounded-full shrink-0"></div>
+                    <span class="text-[10px] md:text-xs font-bold text-slate-400 whitespace-nowrap hidden sm:inline">連線中</span>
                 </div>
-                <button onclick="logout()" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 p-1.5 sm:px-3 sm:py-1.5 rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-1.5 text-[10px] md:text-xs font-bold shrink-0">
-                    <i data-lucide="log-out" class="w-4 h-4 shrink-0"></i>
+                <button onclick="logout()" class="text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 p-2 sm:px-4 sm:py-2 rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-2 text-xs md:text-sm font-bold shrink-0">
+                    <i data-lucide="log-out" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i>
                     <span class="hidden sm:inline whitespace-nowrap">登出</span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <main id="main-student" class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-3 md:p-4 w-full hidden flex-col relative bg-slate-900">
+    <main id="main-student" class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 md:p-6 w-full hidden flex-col relative bg-slate-900">
         <div id="view-phase-1" class="container mx-auto max-w-5xl flex flex-col space-y-4 md:space-y-6 w-full">
             <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-xl w-full flex-none">
-                <div class="px-4 md:px-6 py-3 md:py-4 bg-slate-900 border-b border-slate-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 w-full">
+                <div class="px-5 md:px-8 py-4 md:py-5 bg-slate-900 border-b border-slate-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 w-full">
                     <div class="w-full min-w-0">
-                        <h2 class="text-base md:text-lg font-black text-cyan-400 truncate">階段一：全台大排雷</h2>
-                        <p class="text-[10px] md:text-xs text-slate-400 mt-0.5 truncate">口頭回報數據，共同淘汰不適合的復育場址</p>
+                        <h2 class="text-lg md:text-xl font-black text-cyan-400 truncate">階段一：全台大排雷</h2>
+                        <p class="text-xs md:text-sm text-slate-400 mt-1 truncate">口頭回報數據，共同淘汰不適合的復育場址</p>
                     </div>
                 </div>
                 
-                <div id="phase1-header-container" class="border-b border-slate-700 p-3 md:p-6 bg-slate-800 w-full box-border"></div>
-                <div class="p-3 md:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 w-full box-border" id="site-cards-container"></div>
+                <div id="phase1-header-container" class="border-b border-slate-700 p-4 md:p-8 bg-slate-800 w-full box-border"></div>
+                <div class="p-4 md:p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full box-border" id="site-cards-container"></div>
 
-                <div class="p-4 md:p-6 bg-slate-900 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4 w-full box-border">
-                    <div class="text-xs md:text-sm text-slate-400 w-full text-center md:text-left flex-1 min-w-0">
-                        <span class="truncate block w-full">目前剩餘 <span id="surviving-count" class="font-bold text-cyan-400 text-lg md:text-xl mx-1 tabular-nums">0</span> 個候選場址</span>
+                <div class="p-5 md:p-8 bg-slate-900 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 w-full box-border">
+                    <div class="text-sm md:text-base text-slate-400 w-full text-center md:text-left flex-1 min-w-0">
+                        <span class="truncate block w-full">目前剩餘 <span id="surviving-count" class="font-bold text-cyan-400 text-xl md:text-2xl mx-1.5 tabular-nums">0</span> 個候選場址</span>
                     </div>
-                    <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-4 w-full md:w-auto shrink-0 max-w-[280px] md:max-w-none">
-                        <div id="lock-msg" class="text-[10px] md:text-xs text-amber-500 font-bold text-center w-full hidden md:block truncate"></div>
-                        <button id="btn-lock-site" onclick="proceedToPhase2()" disabled class="w-full sm:w-auto whitespace-nowrap bg-cyan-600 text-slate-900 font-bold px-4 md:px-6 py-2.5 md:py-3 rounded-xl hover:bg-cyan-500 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] disabled:shadow-none disabled:bg-slate-700 disabled:text-slate-500 flex items-center justify-center gap-1.5 md:gap-2 text-sm md:text-base box-border min-w-0">
-                            <span class="truncate">鎖定目標</span> <span class="hidden sm:inline whitespace-nowrap">，進入配置</span> <i data-lucide="target" class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"></i>
+                    <div class="flex flex-col sm:flex-row items-center gap-3 md:gap-5 w-full md:w-auto shrink-0 max-w-[300px] md:max-w-none">
+                        <div id="lock-msg" class="text-xs md:text-sm text-amber-500 font-bold text-center w-full hidden md:block truncate"></div>
+                        <button id="btn-lock-site" onclick="proceedToPhase2()" disabled class="w-full sm:w-auto whitespace-nowrap bg-cyan-600 text-slate-900 font-black px-6 md:px-8 py-3 md:py-4 rounded-xl hover:bg-cyan-500 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] disabled:shadow-none disabled:bg-slate-700 disabled:text-slate-500 flex items-center justify-center gap-2 md:gap-3 text-base md:text-lg box-border min-w-0">
+                            <span class="truncate">鎖定目標</span> <span class="hidden sm:inline whitespace-nowrap">，進入配置</span> <i data-lucide="target" class="w-5 h-5 shrink-0"></i>
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="w-full text-[9px] md:text-[10px] text-slate-600 font-bold text-center mt-4 mb-4 md:mb-8 px-2 leading-relaxed break-words shrink-0 box-border">
-                115年度NODASS大數據競賽教案｜tanji2026@gmail.com
-            </div>
         </div>
 
-        <div id="view-phase-2" class="container mx-auto max-w-5xl flex flex-col lg:grid lg:grid-cols-12 gap-4 md:gap-6 w-full hidden">
+        <div id="view-phase-2" class="container mx-auto max-w-5xl flex flex-col lg:grid lg:grid-cols-12 gap-5 md:gap-8 w-full hidden">
             <div class="col-span-12 w-full flex-none">
-                <div class="bg-slate-800 rounded-xl border border-slate-700 p-3 md:p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 w-full box-border">
+                <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 w-full box-border">
                     <div class="w-full sm:w-auto min-w-0 flex-1">
-                        <h2 class="text-base md:text-lg font-black text-blue-400 truncate">階段二：SROI 資源配置戰情室</h2>
-                        <p class="text-[10px] md:text-xs text-slate-400 mt-0.5 truncate flex items-baseline gap-1">鎖定場址：<span id="locked-site-name" class="font-black text-cyan-400 text-xs md:text-sm truncate"></span></p>
+                        <h2 class="text-lg md:text-xl font-black text-blue-400 truncate">階段二：SROI 資源配置戰情室</h2>
+                        <p class="text-xs md:text-sm text-slate-400 mt-1 truncate flex items-center gap-1.5">鎖定場址：<span id="locked-site-name" class="font-black text-cyan-400 text-sm md:text-base truncate"></span></p>
                     </div>
-                    <button onclick="returnToPhase1()" id="btn-return" class="w-full sm:w-auto text-[10px] md:text-xs bg-slate-700 text-slate-300 px-3 md:px-4 py-2 rounded-lg hover:bg-slate-600 border border-slate-600 whitespace-nowrap font-bold shrink-0 max-w-[200px] sm:max-w-none">返回重新選址</button>
+                    <button onclick="returnToPhase1()" id="btn-return" class="w-full sm:w-auto text-xs md:text-sm bg-slate-700 text-slate-300 px-4 md:px-5 py-2.5 rounded-xl hover:bg-slate-600 border border-slate-600 whitespace-nowrap font-bold shrink-0 max-w-[220px] sm:max-w-none transition-colors">返回重新選址</button>
                 </div>
-                <div id="phase2-policy-msg" class="mt-3 md:mt-4 p-3 md:p-4 bg-cyan-900/30 border border-cyan-500/50 rounded-xl hidden text-xs md:text-sm text-cyan-100 w-full box-border">
+                <div id="phase2-policy-msg" class="mt-4 md:mt-5 p-4 md:p-5 bg-cyan-900/30 border border-cyan-500/50 rounded-xl hidden text-sm md:text-base text-cyan-100 w-full box-border leading-relaxed">
                     💡 <span class="font-bold text-white">隊長專屬任務：</span>您的滑桿已全數鎖定。請觀察下方雷達圖與預算表，透過語音指揮各專員拉動滑桿，找出最佳解並按下提交。
                 </div>
             </div>
 
-            <div class="lg:col-span-7 flex flex-col space-y-3 md:space-y-4 w-full overflow-hidden">
-                <div class="flex flex-col sm:grid sm:grid-cols-2 gap-3 md:gap-4 w-full flex-none">
-                    <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 relative flex flex-col min-h-[110px] md:min-h-[130px] w-full overflow-hidden box-border">
-                        <div class="flex justify-between mb-2 md:mb-3 items-center w-full">
-                            <label class="text-[11px] md:text-sm font-bold text-slate-200 flex gap-1.5 md:gap-2 items-center min-w-0 pr-1"><div class="w-5 h-5 md:w-6 md:h-6 bg-blue-900 text-blue-400 rounded flex items-center justify-center shrink-0"><i data-lucide="shield" class="w-2.5 h-2.5 md:w-3 md:h-3"></i></div> <span class="truncate">工程防護</span></label>
-                            <span class="text-[9px] md:text-[10px] bg-blue-900/50 text-blue-400 border border-blue-800 px-1.5 py-0.5 rounded font-bold whitespace-nowrap shrink-0">海洋物理員</span>
+            <div class="lg:col-span-7 flex flex-col space-y-4 md:space-y-5 w-full overflow-hidden">
+                <div class="flex flex-col sm:grid sm:grid-cols-2 gap-4 md:gap-5 w-full flex-none">
+                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-5 relative flex flex-col min-h-[130px] md:min-h-[150px] w-full overflow-hidden box-border">
+                        <div class="flex justify-between mb-3 md:mb-4 items-center w-full">
+                            <label class="text-sm md:text-base font-bold text-slate-200 flex gap-2 items-center min-w-0 pr-2"><div class="w-6 h-6 md:w-8 md:h-8 bg-blue-900 text-blue-400 rounded-lg flex items-center justify-center shrink-0"><i data-lucide="shield" class="w-3.5 h-3.5 md:w-4 md:h-4"></i></div> <span class="truncate">工程防護</span></label>
+                            <span class="text-[10px] md:text-xs bg-blue-900/50 text-blue-400 border border-blue-800 px-2 py-1 rounded font-bold whitespace-nowrap shrink-0">海洋物理員</span>
                         </div>
-                        <div class="flex-grow flex items-center w-full min-w-0 box-border px-1">
+                        <div class="flex-grow flex items-center w-full min-w-0 box-border px-1.5 mt-1">
                            <input type="range" min="1" max="5" value="3" id="slider-safety" class="text-blue-500 w-full block box-border" oninput="handleSliderInput('safety', this.value)" onchange="handleSliderChange('safety', this.value)">
                         </div>
-                        <div class="flex justify-between items-center text-[10px] md:text-xs text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-10 truncate text-left">無防護</span><span id="val-safety" class="font-black text-[13px] md:text-[15px] text-blue-400 truncate flex-1 text-center px-1 tracking-wider">標準</span><span class="w-10 truncate text-right">重型</span></div>
-                        <div id="lock-safety" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-2 w-full h-full"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-blue-400 bg-slate-800/80 px-2 rounded">等待操作</span></div>
+                        <div class="flex justify-between items-center text-xs md:text-sm text-slate-500 mt-3 md:mt-4 w-full shrink-0 px-1.5"><span class="w-14 truncate text-left">無防護</span><span id="val-safety" class="font-black text-base md:text-lg text-blue-400 truncate flex-1 text-center px-2 tracking-wider">標準</span><span class="w-14 truncate text-right">重型</span></div>
+                        <div id="lock-safety" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-3 w-full h-full"><i data-lucide="lock" class="w-5 h-5 md:w-6 md:h-6 text-slate-500 mb-1.5"></i><span class="text-xs md:text-sm font-bold text-blue-400 bg-slate-800/80 px-3 py-1 rounded-lg">等待操作</span></div>
                     </div>
-                    <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 relative flex flex-col min-h-[110px] md:min-h-[130px] w-full overflow-hidden box-border">
-                        <div class="flex justify-between mb-2 md:mb-3 items-center w-full">
-                            <label class="text-[11px] md:text-sm font-bold text-slate-200 flex gap-1.5 md:gap-2 items-center min-w-0 pr-1"><div class="w-5 h-5 md:w-6 md:h-6 bg-emerald-900 text-emerald-400 rounded flex items-center justify-center shrink-0"><i data-lucide="leaf" class="w-2.5 h-2.5 md:w-3 md:h-3"></i></div> <span class="truncate">生態規模</span></label>
-                            <span class="text-[9px] md:text-[10px] bg-emerald-900/50 text-emerald-400 border border-emerald-800 px-1.5 py-0.5 rounded font-bold whitespace-nowrap shrink-0">海洋生態員</span>
+                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-5 relative flex flex-col min-h-[130px] md:min-h-[150px] w-full overflow-hidden box-border">
+                        <div class="flex justify-between mb-3 md:mb-4 items-center w-full">
+                            <label class="text-sm md:text-base font-bold text-slate-200 flex gap-2 items-center min-w-0 pr-2"><div class="w-6 h-6 md:w-8 md:h-8 bg-emerald-900 text-emerald-400 rounded-lg flex items-center justify-center shrink-0"><i data-lucide="leaf" class="w-3.5 h-3.5 md:w-4 md:h-4"></i></div> <span class="truncate">生態規模</span></label>
+                            <span class="text-[10px] md:text-xs bg-emerald-900/50 text-emerald-400 border border-emerald-800 px-2 py-1 rounded font-bold whitespace-nowrap shrink-0">海洋生態員</span>
                         </div>
-                        <div class="flex-grow flex items-center w-full min-w-0 box-border px-1">
+                        <div class="flex-grow flex items-center w-full min-w-0 box-border px-1.5 mt-1">
                            <input type="range" min="1" max="5" value="2" id="slider-eco" class="text-emerald-500 w-full block box-border" oninput="handleSliderInput('eco', this.value)" onchange="handleSliderChange('eco', this.value)">
                         </div>
-                        <div class="flex justify-between items-center text-[10px] md:text-xs text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-10 truncate text-left">單一</span><span id="val-eco" class="font-black text-[13px] md:text-[15px] text-emerald-400 truncate flex-1 text-center px-1 tracking-wider">標準</span><span class="w-10 truncate text-right">大規模</span></div>
-                        <div id="lock-eco" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-2 w-full h-full"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-emerald-400 bg-slate-800/80 px-2 rounded">等待操作</span></div>
+                        <div class="flex justify-between items-center text-xs md:text-sm text-slate-500 mt-3 md:mt-4 w-full shrink-0 px-1.5"><span class="w-14 truncate text-left">單一</span><span id="val-eco" class="font-black text-base md:text-lg text-emerald-400 truncate flex-1 text-center px-2 tracking-wider">標準</span><span class="w-14 truncate text-right">大規模</span></div>
+                        <div id="lock-eco" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-3 w-full h-full"><i data-lucide="lock" class="w-5 h-5 md:w-6 md:h-6 text-slate-500 mb-1.5"></i><span class="text-xs md:text-sm font-bold text-emerald-400 bg-slate-800/80 px-3 py-1 rounded-lg">等待操作</span></div>
                     </div>
-                    <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 relative flex flex-col min-h-[110px] md:min-h-[130px] w-full overflow-hidden box-border">
-                        <div class="flex justify-between mb-2 md:mb-3 items-center w-full">
-                            <label class="text-[11px] md:text-sm font-bold text-slate-200 flex gap-1.5 md:gap-2 items-center min-w-0 pr-1"><div class="w-5 h-5 md:w-6 md:h-6 bg-amber-900 text-amber-400 rounded flex items-center justify-center shrink-0"><i data-lucide="users" class="w-2.5 h-2.5 md:w-3 md:h-3"></i></div> <span class="truncate">社區溝通</span></label>
-                            <span class="text-[9px] md:text-[10px] bg-amber-900/50 text-amber-400 border border-amber-800 px-1.5 py-0.5 rounded font-bold whitespace-nowrap shrink-0">社會溝通員</span>
+                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-5 relative flex flex-col min-h-[130px] md:min-h-[150px] w-full overflow-hidden box-border">
+                        <div class="flex justify-between mb-3 md:mb-4 items-center w-full">
+                            <label class="text-sm md:text-base font-bold text-slate-200 flex gap-2 items-center min-w-0 pr-2"><div class="w-6 h-6 md:w-8 md:h-8 bg-amber-900 text-amber-400 rounded-lg flex items-center justify-center shrink-0"><i data-lucide="users" class="w-3.5 h-3.5 md:w-4 md:h-4"></i></div> <span class="truncate">社區溝通</span></label>
+                            <span class="text-[10px] md:text-xs bg-amber-900/50 text-amber-400 border border-amber-800 px-2 py-1 rounded font-bold whitespace-nowrap shrink-0">社會溝通員</span>
                         </div>
-                        <div class="flex-grow flex items-center w-full min-w-0 box-border px-1">
+                        <div class="flex-grow flex items-center w-full min-w-0 box-border px-1.5 mt-1">
                             <input type="range" min="1" max="5" value="2" id="slider-pr" class="text-amber-500 w-full block box-border" oninput="handleSliderInput('pr', this.value)" onchange="handleSliderChange('pr', this.value)">
                         </div>
-                        <div class="flex justify-between items-center text-[10px] md:text-xs text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-10 truncate text-left">零互動</span><span id="val-pr" class="font-black text-[13px] md:text-[15px] text-amber-400 truncate flex-1 text-center px-1 tracking-wider">標準</span><span class="w-10 truncate text-right">高額</span></div>
-                        <div id="lock-pr" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-2 w-full h-full"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-amber-400 bg-slate-800/80 px-2 rounded">等待操作</span></div>
+                        <div class="flex justify-between items-center text-xs md:text-sm text-slate-500 mt-3 md:mt-4 w-full shrink-0 px-1.5"><span class="w-14 truncate text-left">零互動</span><span id="val-pr" class="font-black text-base md:text-lg text-amber-400 truncate flex-1 text-center px-2 tracking-wider">標準</span><span class="w-14 truncate text-right">高額</span></div>
+                        <div id="lock-pr" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-3 w-full h-full"><i data-lucide="lock" class="w-5 h-5 md:w-6 md:h-6 text-slate-500 mb-1.5"></i><span class="text-xs md:text-sm font-bold text-amber-400 bg-slate-800/80 px-3 py-1 rounded-lg">等待操作</span></div>
                     </div>
-                    <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 relative flex flex-col min-h-[110px] md:min-h-[130px] w-full overflow-hidden box-border">
-                        <div class="flex justify-between mb-2 md:mb-3 items-center w-full">
-                            <label class="text-[11px] md:text-sm font-bold text-slate-200 flex gap-1.5 md:gap-2 items-center min-w-0 pr-1"><div class="w-5 h-5 md:w-6 md:h-6 bg-purple-900 text-purple-400 rounded flex items-center justify-center shrink-0"><i data-lucide="circle-dollar-sign" class="w-2.5 h-2.5 md:w-3 md:h-3"></i></div> <span class="truncate">預算總量</span></label>
-                            <span class="text-[9px] md:text-[10px] bg-purple-900/50 text-purple-400 border border-purple-800 px-1.5 py-0.5 rounded font-bold whitespace-nowrap shrink-0">財務長</span>
+                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-5 relative flex flex-col min-h-[130px] md:min-h-[150px] w-full overflow-hidden box-border">
+                        <div class="flex justify-between mb-3 md:mb-4 items-center w-full">
+                            <label class="text-sm md:text-base font-bold text-slate-200 flex gap-2 items-center min-w-0 pr-2"><div class="w-6 h-6 md:w-8 md:h-8 bg-purple-900 text-purple-400 rounded-lg flex items-center justify-center shrink-0"><i data-lucide="circle-dollar-sign" class="w-3.5 h-3.5 md:w-4 md:h-4"></i></div> <span class="truncate">預算總量</span></label>
+                            <span class="text-[10px] md:text-xs bg-purple-900/50 text-purple-400 border border-purple-800 px-2 py-1 rounded font-bold whitespace-nowrap shrink-0">財務長</span>
                         </div>
-                        <div class="flex-grow flex items-center w-full min-w-0 box-border px-1">
+                        <div class="flex-grow flex items-center w-full min-w-0 box-border px-1.5 mt-1">
                             <input type="range" min="1" max="5" value="3" id="slider-cfo" class="text-purple-500 w-full block box-border" oninput="handleSliderInput('cfo', this.value)" onchange="handleSliderChange('cfo', this.value)">
                         </div>
-                        <div class="flex justify-between items-center text-[10px] md:text-xs text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-10 truncate text-left">緊縮</span><span id="val-cfo" class="font-black text-[13px] md:text-[15px] text-purple-400 truncate flex-1 text-center px-1 tracking-wider">標準</span><span class="w-10 truncate text-right">無上限</span></div>
-                        <div id="lock-cfo" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-2 w-full h-full"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-purple-400 bg-slate-800/80 px-2 rounded">等待操作</span></div>
+                        <div class="flex justify-between items-center text-xs md:text-sm text-slate-500 mt-3 md:mt-4 w-full shrink-0 px-1.5"><span class="w-14 truncate text-left">緊縮</span><span id="val-cfo" class="font-black text-base md:text-lg text-purple-400 truncate flex-1 text-center px-2 tracking-wider">標準</span><span class="w-14 truncate text-right">無上限</span></div>
+                        <div id="lock-cfo" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-3 w-full h-full"><i data-lucide="lock" class="w-5 h-5 md:w-6 md:h-6 text-slate-500 mb-1.5"></i><span class="text-xs md:text-sm font-bold text-purple-400 bg-slate-800/80 px-3 py-1 rounded-lg">等待操作</span></div>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-5 flex flex-col space-y-3 md:space-y-4 w-full overflow-hidden flex-none">
-                <div class="bg-slate-800 rounded-xl md:rounded-2xl shadow-lg border border-slate-700 p-3 md:p-5 w-full box-border shrink-0">
-                    <div class="flex justify-between items-center mb-3 md:mb-4 w-full"><h3 class="font-bold text-slate-100 text-[13px] md:text-base truncate">SROI 即時運算模型</h3><div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full animate-pulse shrink-0"></div></div>
-                    <div class="h-[160px] sm:h-[180px] md:h-[220px] relative w-full overflow-hidden flex justify-center items-center"><canvas id="radarChart" class="max-w-full max-h-full"></canvas></div>
+            <div class="lg:col-span-5 flex flex-col space-y-4 md:space-y-5 w-full overflow-hidden flex-none">
+                <div class="bg-slate-800 rounded-2xl shadow-lg border border-slate-700 p-4 md:p-6 w-full box-border shrink-0">
+                    <div class="flex justify-between items-center mb-4 md:mb-5 w-full"><h3 class="font-bold text-slate-100 text-base md:text-lg truncate">SROI 即時運算模型</h3><div class="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse shrink-0"></div></div>
+                    <div class="h-[180px] sm:h-[220px] md:h-[260px] relative w-full overflow-hidden flex justify-center items-center"><canvas id="radarChart" class="max-w-full max-h-full"></canvas></div>
                     
-                    <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-slate-700 w-full">
-                        <div class="flex justify-between items-end mb-1 w-full">
-                            <span class="text-xs md:text-sm font-bold text-slate-300 truncate pr-2">總體預算使用率</span>
-                            <span id="budget-status" class="text-[10px] md:text-xs font-bold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 whitespace-nowrap shrink-0">計算中</span>
+                    <div class="mt-5 md:mt-8 pt-4 md:pt-5 border-t border-slate-700 w-full">
+                        <div class="flex justify-between items-end mb-2 w-full">
+                            <span class="text-sm md:text-base font-bold text-slate-300 truncate pr-2">總體預算使用率</span>
+                            <span id="budget-status" class="text-xs md:text-sm font-bold px-2 py-1 rounded bg-slate-700 text-slate-300 whitespace-nowrap shrink-0">計算中</span>
                         </div>
-                        <div class="w-full bg-slate-900 h-2 md:h-2.5 rounded-full overflow-hidden border border-slate-800 relative">
+                        <div class="w-full bg-slate-900 h-3 md:h-4 rounded-full overflow-hidden border border-slate-800 relative">
                             <div id="bar-budget" class="bg-purple-500 h-full w-0 transition-all duration-300 relative"></div>
                             <div id="budget-limit-marker" class="absolute top-0 bottom-0 w-0.5 md:w-1 bg-red-500 z-10 transition-all duration-300 shadow-[0_0_5px_rgba(239,68,68,1)]"></div>
                         </div>
-                        <div class="flex justify-between text-[10px] md:text-xs text-slate-500 mt-1 w-full"><span>0</span><span id="budget-limit-text">上限</span></div>
+                        <div class="flex justify-between text-xs text-slate-500 mt-1.5 w-full"><span>0</span><span id="budget-limit-text">上限</span></div>
                     </div>
 
-                    <div class="mt-3 md:mt-4 flex flex-col space-y-2 w-full">
-                        <div class="flex justify-between text-xs md:text-sm items-center w-full"><span class="text-slate-400 truncate pr-2">環境效益 (Env)</span><span id="score-safety" class="font-black text-blue-400 text-sm md:text-base shrink-0 tabular-nums">0</span></div>
-                        <div class="flex justify-between text-xs md:text-sm items-center w-full"><span class="text-slate-400 truncate pr-2">經濟效益 (Eco)</span><span id="score-economy" class="font-black text-amber-400 text-sm md:text-base shrink-0 tabular-nums">0</span></div>
-                        <div class="flex justify-between text-xs md:text-sm items-center w-full"><span class="text-slate-400 truncate pr-2">社會效益 (Soc)</span><span id="score-social" class="font-black text-cyan-400 text-sm md:text-base shrink-0 tabular-nums">0</span></div>
+                    <div class="mt-4 md:mt-6 flex flex-col space-y-3 w-full">
+                        <div class="flex justify-between text-sm md:text-base items-center w-full"><span class="text-slate-400 truncate pr-2">環境效益 (Env)</span><span id="score-safety" class="font-black text-blue-400 text-lg md:text-xl shrink-0 tabular-nums">0</span></div>
+                        <div class="flex justify-between text-sm md:text-base items-center w-full"><span class="text-slate-400 truncate pr-2">經濟效益 (Eco)</span><span id="score-economy" class="font-black text-amber-400 text-lg md:text-xl shrink-0 tabular-nums">0</span></div>
+                        <div class="flex justify-between text-sm md:text-base items-center w-full"><span class="text-slate-400 truncate pr-2">社會效益 (Soc)</span><span id="score-social" class="font-black text-cyan-400 text-lg md:text-xl shrink-0 tabular-nums">0</span></div>
                     </div>
                 </div>
-                <div class="bg-slate-900 p-3 md:p-4 rounded-xl border border-slate-800 w-full box-border shrink-0">
-                    <h4 class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 md:mb-2 flex items-center gap-1.5"><i data-lucide="terminal" class="w-3 h-3 md:w-3.5 md:h-3.5 shrink-0"></i> <span class="truncate">系統通訊紀錄</span></h4>
-                    <div id="system-log" class="text-[11px] md:text-xs text-slate-400 h-[68px] md:h-20 overflow-y-auto overflow-x-hidden flex flex-col space-y-1 md:space-y-1.5 font-mono break-all w-full pr-1">
+                <div class="bg-slate-900 p-4 md:p-5 rounded-2xl border border-slate-800 w-full box-border shrink-0">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 md:mb-3 flex items-center gap-2"><i data-lucide="terminal" class="w-4 h-4 shrink-0"></i> <span class="truncate">系統通訊紀錄</span></h4>
+                    <div id="system-log" class="text-xs md:text-sm text-slate-400 h-[80px] md:h-24 overflow-y-auto overflow-x-hidden flex flex-col space-y-1.5 md:space-y-2 font-mono break-all w-full pr-2">
                         <div>> 系統初始化完成...</div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-span-12 text-[9px] md:text-[10px] text-slate-600 font-bold text-center mt-2 mb-4 md:mb-8 px-2 leading-relaxed break-words shrink-0 box-border w-full">
+            <div class="col-span-12 w-full text-xs md:text-sm text-slate-500 font-bold text-center mt-auto pt-8 pb-4 shrink-0 box-border">
                 115年度NODASS大數據競賽教案｜tanji2026@gmail.com
             </div>
+        </div>
+        
+        <div class="w-full text-xs md:text-sm text-slate-500 font-bold text-center mt-auto pt-8 pb-4 shrink-0 box-border" id="phase1-footer-copyright">
+            115年度NODASS大數據競賽教案｜tanji2026@gmail.com
         </div>
     </main>
 
     <main id="main-admin" class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-4 md:p-8 relative hidden bg-slate-900 text-white w-full">
-        <div class="container mx-auto max-w-7xl w-full">
+        <div class="container mx-auto max-w-7xl w-full flex flex-col min-h-full">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4 w-full">
                 <div class="w-full md:w-auto min-w-0">
-                    <h2 class="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 truncate">戰情室總覽</h2>
-                    <p class="text-slate-400 text-xs md:text-sm mt-1 truncate">NODASS 大數據決策監控中心</p>
+                    <h2 class="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 truncate">戰情室總覽</h2>
+                    <p class="text-slate-400 text-sm md:text-base mt-1.5 truncate">NODASS 大數據決策監控中心</p>
                 </div>
-                <div class="flex items-center gap-2 md:gap-4 w-full md:w-auto shrink-0 flex-wrap sm:flex-nowrap">
-                    <div class="bg-slate-800 px-3 py-2 rounded-lg border border-slate-700 flex-1 sm:flex-none text-center sm:text-left min-w-[70px]">
-                        <span class="text-[9px] md:text-xs text-slate-400 block whitespace-nowrap">在線小組</span>
-                        <span class="text-base md:text-xl font-bold text-cyan-400 leading-tight" id="admin-team-count">0</span>
+                <div class="flex items-center gap-3 md:gap-5 w-full md:w-auto shrink-0 flex-wrap sm:flex-nowrap">
+                    <div class="bg-slate-800 px-4 py-3 rounded-xl border border-slate-700 flex-1 sm:flex-none text-center sm:text-left min-w-[90px]">
+                        <span class="text-xs md:text-sm text-slate-400 block whitespace-nowrap mb-0.5">在線小組</span>
+                        <span class="text-2xl md:text-3xl font-black text-cyan-400 leading-none block mt-1" id="admin-team-count">0</span>
                     </div>
-                    <button onclick="clearAllData()" class="bg-red-900/40 hover:bg-red-600 text-red-400 hover:text-white px-3 py-2 rounded-lg border border-red-800 transition-colors flex items-center justify-center gap-1.5 flex-1 sm:flex-none whitespace-nowrap text-[11px] md:text-sm font-bold min-w-0">
-                        <i data-lucide="trash-2" class="w-3.5 h-3.5 shrink-0"></i> <span class="truncate">重置</span>
+                    <button onclick="clearAllData()" class="bg-red-900/40 hover:bg-red-600 text-red-400 hover:text-white px-4 py-3 rounded-xl border border-red-800 transition-colors flex items-center justify-center gap-2 flex-1 sm:flex-none whitespace-nowrap text-sm md:text-base font-bold min-w-0">
+                        <i data-lucide="trash-2" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i> <span class="truncate">重置</span>
                     </button>
-                    <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-3 py-2 rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-1.5 flex-none whitespace-nowrap text-[11px] md:text-sm font-bold shrink-0">
-                        <i data-lucide="log-out" class="w-3.5 h-3.5 shrink-0"></i> <span class="hidden sm:inline">登出</span>
+                    <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-4 py-3 rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-2 flex-none whitespace-nowrap text-sm md:text-base font-bold shrink-0">
+                        <i data-lucide="log-out" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i> <span class="hidden sm:inline">登出</span>
                     </button>
                 </div>
             </div>
 
-            <div class="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8 w-full">
-                <div class="bg-slate-800 p-4 md:p-6 rounded-2xl border border-slate-700 w-full overflow-hidden box-border">
-                    <h3 class="font-bold text-slate-300 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base truncate"><i data-lucide="pie-chart" class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"></i> 最終選址分佈</h3>
-                    <div class="h-[160px] md:h-[200px] relative w-full overflow-hidden flex justify-center"><canvas id="adminPieChart" class="max-w-full max-h-full"></canvas></div>
+            <div class="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-8 md:mb-10 w-full">
+                <div class="bg-slate-800 p-5 md:p-6 rounded-2xl border border-slate-700 w-full overflow-hidden box-border">
+                    <h3 class="font-bold text-slate-300 mb-4 md:mb-5 flex items-center gap-2 text-base md:text-lg truncate"><i data-lucide="pie-chart" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i> 最終選址分佈</h3>
+                    <div class="h-[180px] md:h-[220px] relative w-full overflow-hidden flex justify-center"><canvas id="adminPieChart" class="max-w-full max-h-full"></canvas></div>
                 </div>
-                <div class="bg-slate-800 p-4 md:p-6 rounded-2xl border border-slate-700 w-full overflow-hidden box-border">
-                    <h3 class="font-bold text-slate-300 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base truncate"><i data-lucide="bar-chart-2" class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"></i> 平均SROI指標</h3>
-                    <div class="h-[160px] md:h-[200px] relative w-full overflow-hidden flex justify-center"><canvas id="adminBarChart" class="max-w-full max-h-full"></canvas></div>
+                <div class="bg-slate-800 p-5 md:p-6 rounded-2xl border border-slate-700 w-full overflow-hidden box-border">
+                    <h3 class="font-bold text-slate-300 mb-4 md:mb-5 flex items-center gap-2 text-base md:text-lg truncate"><i data-lucide="bar-chart-2" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i> 平均SROI指標</h3>
+                    <div class="h-[180px] md:h-[220px] relative w-full overflow-hidden flex justify-center"><canvas id="adminBarChart" class="max-w-full max-h-full"></canvas></div>
                 </div>
-                <div class="bg-slate-800 p-4 md:p-6 rounded-2xl border border-slate-700 w-full md:col-span-2 lg:col-span-1 overflow-hidden box-border flex flex-col">
-                    <h3 class="font-bold text-slate-300 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base truncate shrink-0"><i data-lucide="trophy" class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"></i> 決策排行榜</h3>
-                    <div class="overflow-y-auto flex-1 h-[160px] md:h-[200px] space-y-1.5 md:space-y-2 pr-1 md:pr-2 w-full" id="leaderboard"></div>
+                <div class="bg-slate-800 p-5 md:p-6 rounded-2xl border border-slate-700 w-full md:col-span-2 lg:col-span-1 overflow-hidden box-border flex flex-col">
+                    <h3 class="font-bold text-slate-300 mb-4 md:mb-5 flex items-center gap-2 text-base md:text-lg truncate shrink-0"><i data-lucide="trophy" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i> 決策排行榜</h3>
+                    <div class="overflow-y-auto flex-1 h-[180px] md:h-[220px] space-y-2 md:space-y-3 pr-2 w-full" id="leaderboard"></div>
                 </div>
             </div>
 
-            <h3 class="font-bold text-slate-300 mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base truncate w-full"><i data-lucide="grid" class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"></i> 各組即時決策狀態</h3>
-            <div id="team-cards" class="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 w-full"></div>
+            <h3 class="font-bold text-slate-300 mb-4 md:mb-5 flex items-center gap-2 text-base md:text-lg truncate w-full"><i data-lucide="grid" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i> 各組即時決策狀態</h3>
+            <div id="team-cards" class="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5 w-full"></div>
             
-            <div class="mt-8 md:mt-12 text-[9px] md:text-[10px] text-slate-600 font-bold text-center pb-6 md:pb-8 pb-safe px-2 leading-relaxed break-words box-border shrink-0 w-full">
+            <div class="mt-auto pt-12 pb-4 text-xs md:text-sm text-slate-500 font-bold text-center w-full shrink-0">
                 115年度NODASS大數據競賽教案｜tanji2026@gmail.com
             </div>
         </div>
     </main>
 
-    <div id="student-footer" class="w-full flex-none bg-slate-900 border-t border-slate-800 p-2.5 sm:p-3 md:p-4 z-40 shadow-[0_-10px_20px_rgba(0,0,0,0.5)] hidden pb-safe box-border">
-        <div class="container mx-auto max-w-5xl flex justify-between items-center gap-2 w-full h-full">
+    <div id="student-footer" class="w-full flex-none bg-slate-900 border-t border-slate-800 p-3 sm:p-4 md:p-5 z-40 shadow-[0_-10px_20px_rgba(0,0,0,0.5)] hidden pb-safe box-border">
+        <div class="container mx-auto max-w-5xl flex justify-between items-center gap-3 w-full h-full">
             <div class="flex flex-col min-w-0 shrink-1 w-[40%] sm:w-auto">
-                <div class="text-[8px] sm:text-[9px] md:text-[10px] text-slate-500 font-bold tracking-widest truncate w-full">SROI 綜合評分</div>
-                <div class="text-[22px] sm:text-2xl md:text-4xl font-black text-cyan-400 leading-none truncate w-full tabular-nums" id="footer-score">0.0</div>
+                <div class="text-xs md:text-sm text-slate-500 font-bold tracking-widest truncate w-full mb-0.5">SROI 綜合評分</div>
+                <div class="text-3xl sm:text-4xl md:text-5xl font-black text-cyan-400 leading-none truncate w-full tabular-nums" id="footer-score">0.0</div>
             </div>
-            <div id="submit-wrapper" class="shrink-0 flex justify-end w-[55%] sm:w-auto max-w-[180px] md:max-w-[220px]">
-                <button onclick="toggleSubmitDecision()" id="submit-btn" class="w-full bg-cyan-600 text-slate-900 px-3 sm:px-4 md:px-8 py-2 md:py-3 rounded-xl font-black shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center gap-1 sm:gap-1.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-[11px] sm:text-xs md:text-base box-border min-w-0">
-                    <span id="submit-btn-text" class="truncate">提交最終決策</span> <i data-lucide="send" id="submit-btn-icon" class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"></i>
+            <div id="submit-wrapper" class="shrink-0 flex justify-end w-[55%] sm:w-auto max-w-[200px] md:max-w-[260px]">
+                <button onclick="toggleSubmitDecision()" id="submit-btn" class="w-full bg-cyan-600 text-slate-900 px-4 sm:px-6 md:px-10 py-3 md:py-4 rounded-xl font-black shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center gap-2 sm:gap-2.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base md:text-lg box-border min-w-0">
+                    <span id="submit-btn-text" class="truncate">提交最終決策</span> <i data-lucide="send" id="submit-btn-icon" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i>
                 </button>
             </div>
         </div>
@@ -397,11 +398,11 @@
         
         function enableOnlineMode() {
             isDemoMode = false;
-            document.getElementById('connection-indicator').innerHTML = `<div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)] shrink-0"></div><span class="text-[9px] md:text-[10px] font-bold text-cyan-400 whitespace-nowrap hidden sm:inline">已連線</span>`;
+            document.getElementById('connection-indicator').innerHTML = `<div class="w-2 h-2 md:w-2.5 md:h-2.5 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)] shrink-0"></div><span class="text-[10px] md:text-xs font-bold text-cyan-400 whitespace-nowrap hidden sm:inline">已連線</span>`;
             const startBtn = document.getElementById('start-btn');
             if (startBtn.innerText === "系統載入中..." || startBtn.innerText === "數據載入中..." || startBtn.innerText.includes("離線")) {
                 startBtn.disabled = true;
-                startBtn.className = "w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all border border-slate-700 text-sm md:text-base truncate box-border px-4";
+                startBtn.className = "w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all border border-slate-700 text-base md:text-lg truncate box-border px-4";
                 startBtn.innerText = "請輸入小組名稱";
                 checkLoginInput();
             }
@@ -410,11 +411,11 @@
         function startDemoMode(reason) {
             isDemoMode = true;
             currentUser = { uid: 'demo-user', isAnonymous: true };
-            document.getElementById('connection-indicator').innerHTML = `<div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-amber-500 rounded-full animate-pulse shrink-0"></div><span class="text-[9px] md:text-[10px] font-bold text-amber-500 whitespace-nowrap hidden sm:inline">本機模式</span>`;
+            document.getElementById('connection-indicator').innerHTML = `<div class="w-2 h-2 md:w-2.5 md:h-2.5 bg-amber-500 rounded-full animate-pulse shrink-0"></div><span class="text-[10px] md:text-xs font-bold text-amber-500 whitespace-nowrap hidden sm:inline">本機模式</span>`;
             const startBtn = document.getElementById('start-btn');
             if (startBtn.innerText === "系統載入中..." || startBtn.innerText === "數據載入中..." || startBtn.innerText.includes("連線失敗")) {
                 startBtn.disabled = true;
-                startBtn.className = "w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all border border-slate-700 text-sm md:text-base truncate box-border px-4";
+                startBtn.className = "w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all border border-slate-700 text-base md:text-lg truncate box-border px-4";
                 startBtn.innerText = "請輸入小組名稱";
                 checkLoginInput();
             }
@@ -441,7 +442,7 @@
             const btn = document.getElementById('start-btn');
             if (!t) {
                 btn.disabled = true;
-                btn.className = "w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all border border-slate-700 text-sm md:text-base truncate box-border px-4";
+                btn.className = "w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all border border-slate-700 text-base md:text-lg truncate box-border px-4";
                 btn.innerText = "請輸入小組名稱";
                 return;
             }
@@ -450,19 +451,19 @@
                 window.userState.isAdmin = true;
                 document.getElementById('role-selector').style.display = 'none';
                 btn.disabled = false;
-                btn.className = "w-full bg-cyan-600 text-slate-900 py-3 md:py-4 rounded-xl font-black mt-2 md:mt-4 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-sm md:text-base flex items-center justify-center gap-1.5 box-border px-4";
-                btn.innerHTML = `<span class="truncate">進入戰情室</span> <i data-lucide="layout-dashboard" class="w-4 h-4 shrink-0"></i>`;
+                btn.className = "w-full bg-cyan-600 text-slate-900 py-4 md:py-5 rounded-xl font-black mt-4 md:mt-6 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-base md:text-lg flex items-center justify-center gap-2 box-border px-4";
+                btn.innerHTML = `<span class="truncate">進入戰情室</span> <i data-lucide="layout-dashboard" class="w-5 h-5 shrink-0"></i>`;
                 lucide.createIcons();
             } else {
                 window.userState.isAdmin = false;
                 document.getElementById('role-selector').style.display = 'block';
                 if (window.userState.role) {
                     btn.disabled = false;
-                    btn.className = "w-full bg-cyan-600 text-slate-900 py-3 md:py-4 rounded-xl font-black mt-2 md:mt-4 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-sm md:text-base truncate box-border px-4";
+                    btn.className = "w-full bg-cyan-600 text-slate-900 py-4 md:py-5 rounded-xl font-black mt-4 md:mt-6 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-base md:text-lg truncate box-border px-4";
                     btn.innerText = "開始模擬任務";
                 } else {
                     btn.disabled = true;
-                    btn.className = "w-full bg-slate-800 text-slate-500 py-3 md:py-4 rounded-xl font-bold mt-2 md:mt-4 transition-all border border-slate-700 text-sm md:text-base truncate box-border px-4";
+                    btn.className = "w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all border border-slate-700 text-base md:text-lg truncate box-border px-4";
                     btn.innerText = "請選擇職位";
                 }
             }
@@ -540,14 +541,14 @@
             const headerContainer = document.getElementById('phase1-header-container');
             if (window.userState.role === 'policy') {
                 headerContainer.innerHTML = `
-                    <div class="bg-blue-900/30 border border-blue-500/50 rounded-xl p-3 md:p-4 w-full box-border">
-                        <h3 class="text-blue-400 font-bold mb-2 md:mb-3 flex items-center gap-1.5 md:gap-2 text-xs md:text-sm truncate w-full"><i data-lucide="book-open" class="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0"></i> <span class="truncate">藍碳復育環境標準面板（隊長專屬）</span></h3>
-                        <ul class="text-[10px] md:text-xs text-slate-300 space-y-1.5 md:space-y-2 w-full">
-                            <li class="flex items-start gap-1.5 md:gap-2 min-w-0"><span class="bg-slate-700 px-1.5 py-0.5 rounded text-blue-300 font-mono text-[9px] md:text-[10px] mt-0.5 whitespace-nowrap shrink-0">物理標準</span> <span class="truncate">波浪不大於 <b>1.5m</b>。</span></li>
-                            <li class="flex items-start gap-1.5 md:gap-2 min-w-0"><span class="bg-slate-700 px-1.5 py-0.5 rounded text-emerald-300 font-mono text-[9px] md:text-[10px] mt-0.5 whitespace-nowrap shrink-0">生態標準</span> <span class="truncate">底質必須為 <b>泥灘</b>。</span></li>
-                            <li class="flex items-start gap-1.5 md:gap-2 min-w-0"><span class="bg-slate-700 px-1.5 py-0.5 rounded text-amber-300 font-mono text-[9px] md:text-[10px] mt-0.5 whitespace-nowrap shrink-0">社會標準</span> <span class="truncate">AIS 船舶密度 <b>小於 80</b>。</span></li>
+                    <div class="bg-blue-900/30 border border-blue-500/50 rounded-xl p-4 md:p-6 w-full box-border">
+                        <h3 class="text-blue-400 font-bold mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base truncate w-full"><i data-lucide="book-open" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i> <span class="truncate">藍碳復育環境標準面板（隊長專屬）</span></h3>
+                        <ul class="text-xs md:text-sm text-slate-300 space-y-2 md:space-y-3 w-full">
+                            <li class="flex items-start gap-2 md:gap-3 min-w-0"><span class="bg-slate-700 px-2 py-1 rounded text-blue-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap shrink-0">物理標準</span> <span class="truncate">波浪不大於 <b>1.5m</b>。</span></li>
+                            <li class="flex items-start gap-2 md:gap-3 min-w-0"><span class="bg-slate-700 px-2 py-1 rounded text-emerald-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap shrink-0">生態標準</span> <span class="truncate">底質必須為 <b>泥灘</b>。</span></li>
+                            <li class="flex items-start gap-2 md:gap-3 min-w-0"><span class="bg-slate-700 px-2 py-1 rounded text-amber-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap shrink-0">社會標準</span> <span class="truncate">AIS 船舶密度 <b>小於 80</b>。</span></li>
                         </ul>
-                        <div class="mt-3 md:mt-4 p-2 md:p-3 bg-slate-800 rounded-lg text-[10px] md:text-xs text-slate-400 border border-slate-700 leading-relaxed w-full box-border">
+                        <div class="mt-4 md:mt-5 p-3 md:p-4 bg-slate-800 rounded-lg text-xs md:text-sm text-slate-400 border border-slate-700 leading-relaxed w-full box-border">
                             💡 <span class="text-white font-bold">指揮任務：</span>您無法看見數據，請用語音請隊員檢視並手動否決不符地點。
                         </div>
                     </div>
@@ -560,11 +561,11 @@
                     'cfo': '監控「建置成本估算」，聽從隊長指示判讀並按下否決。'
                 };
                 headerContainer.innerHTML = `
-                    <div class="bg-slate-700/50 border border-slate-600 rounded-xl p-3 md:p-4 flex items-center gap-2 md:gap-4 w-full box-border">
-                        <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 rounded-full flex items-center justify-center shrink-0"><i data-lucide="radio" class="w-4 h-4 md:w-5 md:h-5 text-cyan-400 shrink-0"></i></div>
+                    <div class="bg-slate-700/50 border border-slate-600 rounded-xl p-4 md:p-5 flex items-center gap-3 md:gap-5 w-full box-border">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-full flex items-center justify-center shrink-0"><i data-lucide="radio" class="w-5 h-5 md:w-6 md:h-6 text-cyan-400 shrink-0"></i></div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-slate-200 font-bold text-xs md:text-sm mb-0.5 md:mb-1 truncate">等待戰情指揮（語音溝通）</h3>
-                            <p class="text-[9px] md:text-[10px] text-slate-400 leading-relaxed break-words">${roleTexts[window.userState.role]}</p>
+                            <h3 class="text-slate-200 font-bold text-sm md:text-base mb-1 md:mb-1.5 truncate">等待戰情指揮（語音溝通）</h3>
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed break-words">${roleTexts[window.userState.role]}</p>
                         </div>
                     </div>
                 `;
@@ -589,43 +590,43 @@
                 const s = NODASS_DB[key];
                 const card = document.createElement('div');
                 card.id = `card-site-${key}`;
-                card.className = "bg-slate-700 p-3 md:p-4 rounded-xl md:rounded-2xl border-2 border-slate-600 relative transition-all duration-500 flex flex-col group w-full overflow-hidden box-border";
+                card.className = "bg-slate-700 p-4 md:p-5 rounded-2xl border-2 border-slate-600 relative transition-all duration-500 flex flex-col group w-full overflow-hidden box-border";
                 
                 if (r === 'policy') {
                     card.classList.add('cursor-pointer', 'hover:border-cyan-500');
                     card.onclick = () => { if (!card.classList.contains('eliminated')) selectSiteLocal(key); };
                 }
 
-                const waveText = showWave ? `<span class="text-blue-400 font-mono shrink-0">${s.wave} m</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest shrink-0">???</span>`;
-                const depthText = showWave ? `<span class="text-blue-400 font-mono shrink-0">${s.depth} m</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest shrink-0">???</span>`;
-                const subText = showEco ? `<span class="text-emerald-400 font-bold truncate max-w-[70px] text-right">${s.substrate}</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest shrink-0">???</span>`;
-                const costText = showCFO ? `<span class="text-purple-400 font-bold shrink-0">${s.costLvl}</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest shrink-0">???</span>`;
-                const aisText = showPR ? `<span class="text-amber-400 font-mono shrink-0">${s.ais}</span>` : `<span class="text-slate-500 font-bold text-[10px] tracking-widest shrink-0">???</span>`;
+                const waveText = showWave ? `<span class="text-blue-400 font-mono shrink-0 text-sm">${s.wave} m</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
+                const depthText = showWave ? `<span class="text-blue-400 font-mono shrink-0 text-sm">${s.depth} m</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
+                const subText = showEco ? `<span class="text-emerald-400 font-bold truncate max-w-[80px] text-right text-sm">${s.substrate}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
+                const costText = showCFO ? `<span class="text-purple-400 font-bold shrink-0 text-sm">${s.costLvl}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
+                const aisText = showPR ? `<span class="text-amber-400 font-mono shrink-0 text-sm">${s.ais}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
 
                 card.innerHTML = `
                     <div class="relative flex-1 w-full flex flex-col">
-                        <div class="flex items-center justify-between mb-3 md:mb-4 w-full">
-                            <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-800 rounded-lg md:rounded-xl flex items-center justify-center text-base md:text-xl border border-slate-600 shrink-0">${s.icon}</div>
-                            <h3 class="font-bold text-slate-100 text-xs md:text-sm group-hover:text-cyan-400 transition-colors ml-2 md:ml-3 truncate flex-1 text-right">${s.name}</h3>
+                        <div class="flex items-center justify-between mb-4 md:mb-5 w-full">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-xl flex items-center justify-center text-xl md:text-2xl border border-slate-600 shrink-0">${s.icon}</div>
+                            <h3 class="font-bold text-slate-100 text-sm md:text-base group-hover:text-cyan-400 transition-colors ml-3 md:ml-4 truncate flex-1 text-right">${s.name}</h3>
                         </div>
-                        <div class="space-y-1.5 md:space-y-2 text-[10px] md:text-xs relative z-0 w-full flex-1 flex flex-col justify-end">
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1 md:pb-1.5 w-full"><span class="text-slate-400 truncate pr-1">浪高</span>${waveText}</div>
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1 md:pb-1.5 w-full"><span class="text-slate-400 truncate pr-1">水深</span>${depthText}</div>
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1 md:pb-1.5 w-full"><span class="text-slate-400 truncate pr-1">底質</span>${subText}</div>
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1 md:pb-1.5 w-full"><span class="text-slate-400 truncate pr-1">成本</span>${costText}</div>
-                            <div class="flex justify-between w-full"><span class="text-slate-400 truncate pr-1">AIS密度</span>${aisText}</div>
+                        <div class="space-y-2 md:space-y-3 text-xs md:text-sm relative z-0 w-full flex-1 flex flex-col justify-end">
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">浪高</span>${waveText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">水深</span>${depthText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">底質</span>${subText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">成本</span>${costText}</div>
+                            <div class="flex justify-between w-full"><span class="text-slate-400 truncate pr-2">AIS密度</span>${aisText}</div>
                         </div>
-                        <div id="overlay-${key}" class="absolute -inset-1 md:-inset-2 bg-slate-900/80 backdrop-blur-[1px] flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none rounded-xl z-10 w-auto h-auto">
-                            <div class="bg-black/90 text-red-400 font-bold px-2 py-2 md:px-3 md:py-3 rounded-lg md:rounded-xl text-[9px] md:text-[10px] border border-red-500/50 text-center shadow-2xl w-[90%] max-w-full box-border">
-                                <div class="text-red-500 font-black mb-1 md:mb-1.5 tracking-widest border-b border-red-500/30 pb-0.5 md:pb-1 truncate w-full">已淘汰</div>
-                                <div id="reason-${key}" class="mt-0.5 md:mt-1 leading-relaxed text-slate-300 break-words w-full"></div>
+                        <div id="overlay-${key}" class="absolute -inset-2 md:-inset-3 bg-slate-900/80 backdrop-blur-[1px] flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none rounded-2xl z-10 w-auto h-auto">
+                            <div class="bg-black/90 text-red-400 font-bold px-3 py-3 md:px-4 md:py-4 rounded-xl text-xs md:text-sm border border-red-500/50 text-center shadow-2xl w-[90%] max-w-full box-border">
+                                <div class="text-red-500 font-black mb-1.5 md:mb-2 tracking-widest border-b border-red-500/30 pb-1 truncate w-full">已淘汰</div>
+                                <div id="reason-${key}" class="mt-1 md:mt-1.5 leading-relaxed text-slate-300 break-words w-full"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-3 md:mt-4 pt-2 md:pt-3 border-t border-slate-600 z-20 relative min-h-[36px] md:min-h-[40px] flex items-center justify-center w-full shrink-0">
+                    <div class="mt-4 md:mt-5 pt-3 md:pt-4 border-t border-slate-600 z-20 relative min-h-[44px] md:min-h-[48px] flex items-center justify-center w-full shrink-0">
                         <div id="action-btn-container-${key}" class="w-full"></div>
                     </div>
-                    <div id="selected-${key}" class="absolute inset-0 border-2 md:border-4 border-cyan-500 rounded-xl md:rounded-2xl z-30 hidden pointer-events-none shadow-[inset_0_0_15px_rgba(6,182,212,0.5)] w-full h-full"></div>
+                    <div id="selected-${key}" class="absolute inset-0 border-2 md:border-4 border-cyan-500 rounded-2xl z-30 hidden pointer-events-none shadow-[inset_0_0_15px_rgba(6,182,212,0.5)] w-full h-full"></div>
                 `;
                 container.appendChild(card);
             });
@@ -812,6 +813,7 @@
                 document.getElementById('view-phase-1').classList.remove('hidden');
                 document.getElementById('view-phase-2').classList.add('hidden');
                 document.getElementById('student-footer').classList.add('hidden');
+                document.getElementById('phase1-footer-copyright').classList.remove('hidden');
 
                 let validCount = 0;
                 Object.keys(NODASS_DB).forEach(key => {
@@ -835,11 +837,11 @@
 
                         if(btnContainer) {
                             if(['engineer', 'eco', 'pr', 'cfo'].includes(role)) {
-                                btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-red-900/40 text-red-400 border border-red-800 hover:bg-red-800 hover:text-white transition-colors cursor-pointer truncate px-1 min-w-0">❌ 宣告${roleMap[role]}否決</button>`;
+                                btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-xl font-bold text-sm bg-red-900/40 text-red-400 border border-red-800 hover:bg-red-800 hover:text-white transition-colors cursor-pointer truncate px-2 min-w-0">❌ 宣告${roleMap[role]}否決</button>`;
                             } else if(role === 'policy') {
-                                btnContainer.innerHTML = `<div class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-cyan-900/30 text-cyan-500 text-center border border-cyan-800/50 truncate px-1 min-w-0">點擊卡片選定</div>`;
+                                btnContainer.innerHTML = `<div class="w-full py-2 rounded-xl font-bold text-sm bg-cyan-900/30 text-cyan-500 text-center border border-cyan-800/50 truncate px-2 min-w-0">點擊卡片選定</div>`;
                             } else {
-                                btnContainer.innerHTML = `<div class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-slate-800 text-slate-500 text-center border border-slate-700 truncate px-1 min-w-0">無權限</div>`;
+                                btnContainer.innerHTML = `<div class="w-full py-2 rounded-xl font-bold text-sm bg-slate-800 text-slate-500 text-center border border-slate-700 truncate px-2 min-w-0">無權限</div>`;
                             }
                         }
                     } else {
@@ -858,12 +860,12 @@
                         if(btnContainer) {
                             if(['engineer', 'eco', 'pr', 'cfo'].includes(role)) {
                                 if(rejections.includes(role)) {
-                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-slate-600 text-slate-300 border border-slate-500 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer truncate px-1 min-w-0">↺ 撤銷否決</button>`;
+                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-xl font-bold text-sm bg-slate-600 text-slate-300 border border-slate-500 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer truncate px-2 min-w-0">↺ 撤銷否決</button>`;
                                 } else {
-                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-red-900/20 text-red-500 border border-red-900/50 hover:bg-red-900 hover:text-white transition-colors cursor-pointer truncate px-1 min-w-0">❌ 加簽否決</button>`;
+                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-xl font-bold text-sm bg-red-900/20 text-red-500 border border-red-900/50 hover:bg-red-900 hover:text-white transition-colors cursor-pointer truncate px-2 min-w-0">❌ 加簽否決</button>`;
                                 }
                             } else {
-                                btnContainer.innerHTML = `<div class="w-full py-1.5 md:py-2 rounded-lg font-bold text-[10px] md:text-xs bg-slate-800 text-slate-500 text-center border border-slate-700 truncate px-1 min-w-0">已遭否決</div>`;
+                                btnContainer.innerHTML = `<div class="w-full py-2 rounded-xl font-bold text-sm bg-slate-800 text-slate-500 text-center border border-slate-700 truncate px-2 min-w-0">已遭否決</div>`;
                             }
                         }
                     }
@@ -885,12 +887,12 @@
                 if (window.userState.role === 'policy') {
                     if (validCount === 0) {
                         lockMsg.innerText = "警告：場址已全滅，請撤銷否決";
-                        lockMsg.className = "text-[9px] md:text-[10px] text-red-500 font-bold block animate-pulse text-center w-full truncate";
+                        lockMsg.className = "text-sm text-red-500 font-bold block animate-pulse text-center w-full truncate";
                         lockBtn.disabled = true;
                         lockBtn.classList.remove('animate-pulse');
                     } else if (validCount <= 2) {
                         lockMsg.innerText = s.site ? "目標已鎖定" : "請點選場址";
-                        lockMsg.className = "text-[9px] md:text-[10px] font-bold block text-center w-full truncate " + (s.site ? "text-cyan-400" : "text-amber-500");
+                        lockMsg.className = "text-sm font-bold block text-center w-full truncate " + (s.site ? "text-cyan-400" : "text-amber-500");
                         
                         if (s.site && !(s.rejections?.[s.site]?.length > 0)) {
                             lockBtn.disabled = false;
@@ -901,13 +903,14 @@
                         }
                     } else {
                         lockMsg.innerText = "需淘汰至剩下 2 個以內";
-                        lockMsg.className = "text-[9px] md:text-[10px] text-red-400 font-bold block text-center w-full truncate";
+                        lockMsg.className = "text-sm text-red-400 font-bold block text-center w-full truncate";
                         lockBtn.disabled = true;
                         lockBtn.classList.remove('animate-pulse');
                     }
                 }
             } else {
                 document.getElementById('view-phase-1').classList.add('hidden');
+                document.getElementById('phase1-footer-copyright').classList.add('hidden');
                 document.getElementById('view-phase-2').classList.remove('hidden');
                 document.getElementById('student-footer').classList.remove('hidden');
                 
@@ -984,7 +987,7 @@
             const div = document.createElement('div');
             const time = new Date().toLocaleTimeString('zh-TW', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
             div.innerHTML = `<span class="text-slate-600 shrink-0">[${time}]</span> <span class="text-cyan-300 break-words">${msg}</span>`;
-            div.className = "flex gap-1 items-start w-full";
+            div.className = "flex gap-1.5 items-start w-full";
             log.prepend(div);
         }
 
@@ -1077,13 +1080,6 @@
                 const oLabel = document.getElementById('score-social');
                 if(oLabel) oLabel.innerText = parseInt(res.o);
                 
-                const sBar = document.getElementById('bar-safety');
-                if(sBar) sBar.style.width = `${res.s}%`;
-                const eBar = document.getElementById('bar-economy');
-                if(eBar) { eBar.style.width = `${res.e}%`; eBar.className = res.isOverBudget ? "bg-red-500 h-full transition-all" : "bg-amber-500 h-full transition-all"; }
-                const oBar = document.getElementById('bar-social');
-                if(oBar) oBar.style.width = `${res.o}%`;
-
                 const fScore = document.getElementById('footer-score');
                 if(fScore) fScore.innerText = res.total;
                 
@@ -1106,10 +1102,10 @@
                 if(budgetStatus) {
                     if(res.isOverBudget) {
                         budgetStatus.innerText = `超支警告 (-${parseInt((res.cost - res.budgetLimit)*1.5)} 經濟分)`;
-                        budgetStatus.className = "text-[10px] md:text-xs font-bold px-1.5 py-0.5 rounded bg-red-900 text-red-400 border border-red-500 animate-pulse whitespace-nowrap shrink-0 max-w-full truncate";
+                        budgetStatus.className = "text-xs md:text-sm font-bold px-2 py-1 rounded bg-red-900 text-red-400 border border-red-500 animate-pulse whitespace-nowrap shrink-0 max-w-full truncate";
                     } else {
                         budgetStatus.innerText = "預算安全";
-                        budgetStatus.className = "text-[10px] md:text-xs font-bold px-1.5 py-0.5 rounded bg-purple-900/50 text-purple-300 border border-purple-700 whitespace-nowrap shrink-0";
+                        budgetStatus.className = "text-xs md:text-sm font-bold px-2 py-1 rounded bg-purple-900/50 text-purple-300 border border-purple-700 whitespace-nowrap shrink-0";
                     }
                 }
                 
@@ -1135,23 +1131,23 @@
                         data: [0,0,0], 
                         backgroundColor: 'rgba(6,182,212,0.2)', 
                         borderColor: '#06b6d4', 
-                        borderWidth: 1.5,
+                        borderWidth: 2,
                         pointBackgroundColor: '#06b6d4',
                         pointBorderColor: '#fff',
-                        pointRadius: 2
+                        pointRadius: 3
                     }] 
                 }, 
                 options: { 
                     responsive: true, 
                     maintainAspectRatio: false,
-                    layout: { padding: 5 },
+                    layout: { padding: 10 },
                     scales: { 
                         r: { 
                             min: 0, max: 100, 
                             ticks: { display: false, stepSize: 20 },
                             grid: { color: 'rgba(255,255,255,0.1)' },
                             angleLines: { color: 'rgba(255,255,255,0.1)' },
-                            pointLabels: { font: { size: 9, weight: 'bold' }, color: '#94a3b8' }
+                            pointLabels: { font: { size: 12, weight: 'bold' }, color: '#cbd5e1' }
                         } 
                     }, 
                     plugins: { legend: { display: false } } 
@@ -1218,8 +1214,8 @@
                 const ctx = document.getElementById('adminPieChart').getContext('2d');
                 adminPie = new Chart(ctx, { 
                     type: 'doughnut', 
-                    data: { labels: chartLabels, datasets:[{ data: chartData, backgroundColor: chartColors, borderColor:'#1e293b', borderWidth: 1.5 }] }, 
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', boxWidth: 10, font: {size: 9} } } } } 
+                    data: { labels: chartLabels, datasets:[{ data: chartData, backgroundColor: chartColors, borderColor:'#1e293b', borderWidth: 2 }] }, 
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#cbd5e1', boxWidth: 12, font: {size: 11} } } } } 
                 });
             } else {
                 adminPie.data.labels = chartLabels;
@@ -1231,8 +1227,8 @@
                 const ctx = document.getElementById('adminBarChart').getContext('2d');
                 adminBar = new Chart(ctx, { 
                     type: 'bar', 
-                    data: { labels: ['環境','經濟','社會'], datasets:[{ label:'平均', data:[0,0,0], backgroundColor:['#3b82f6','#06b6d4','#10b981'], borderRadius: 3 }] }, 
-                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { max:100, grid:{color:'#334155'}, ticks:{color:'#94a3b8', font:{size:9}} }, x: { grid:{display:false}, ticks:{color:'#94a3b8', font:{size:9}} } }, plugins: { legend: { display:false } } } 
+                    data: { labels: ['環境','經濟','社會'], datasets:[{ label:'平均', data:[0,0,0], backgroundColor:['#3b82f6','#06b6d4','#10b981'], borderRadius: 4 }] }, 
+                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { max:100, grid:{color:'#334155'}, ticks:{color:'#94a3b8', font:{size:11}} }, x: { grid:{display:false}, ticks:{color:'#94a3b8', font:{size:11}} } }, plugins: { legend: { display:false } } } 
                 });
             }
             adminBar.data.datasets[0].data = [stats.s/count, stats.e/count, stats.o/count]; 
@@ -1245,25 +1241,25 @@
             teams.forEach(t => {
                 const siteData = NODASS_DB[t.site] || {icon:'❓'};
                 const card = document.createElement('div');
-                card.className = "bg-slate-800 p-3 md:p-4 rounded-xl border border-slate-700 cursor-default flex flex-col justify-between h-full w-full overflow-hidden box-border";
-                const submittedBadge = t.isSubmitted ? `<span class="text-[8px] md:text-[9px] bg-green-900/50 text-green-400 px-1.5 py-0.5 rounded border border-green-800 shrink-0 whitespace-nowrap">已提交</span>` : '';
+                card.className = "bg-slate-800 p-4 rounded-xl border border-slate-700 cursor-default flex flex-col justify-between h-full w-full overflow-hidden box-border";
+                const submittedBadge = t.isSubmitted ? `<span class="text-[10px] md:text-xs bg-green-900/50 text-green-400 px-2 py-0.5 rounded border border-green-800 shrink-0 whitespace-nowrap">已提交</span>` : '';
                 card.innerHTML = `
                     <div class="w-full">
-                        <div class="flex justify-between items-center mb-1.5 md:mb-2 gap-2 w-full">
-                            <div class="flex items-center gap-1.5 min-w-0 flex-1">
-                                <span class="font-bold text-slate-100 truncate text-xs md:text-sm flex-1">${t.id}</span>
+                        <div class="flex justify-between items-center mb-2 md:mb-3 gap-2 w-full">
+                            <div class="flex items-center gap-2 min-w-0 flex-1">
+                                <span class="font-bold text-slate-100 truncate text-sm md:text-base flex-1">${t.id}</span>
                                 ${submittedBadge}
                             </div>
-                            <span class="text-[10px] md:text-xs bg-slate-700 px-1.5 md:px-2 py-0.5 md:py-1 rounded shrink-0">${siteData.icon}</span>
+                            <span class="text-xs md:text-sm bg-slate-700 px-2 py-1 rounded shrink-0">${siteData.icon}</span>
                         </div>
-                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-400 mb-1.5 md:mb-2 w-full">
-                            <span class="truncate">SROI: <span class="text-cyan-400 font-bold text-sm md:text-base ml-1">${t.total}</span></span>
+                        <div class="flex justify-between text-xs md:text-sm text-slate-400 mb-2 md:mb-3 w-full">
+                            <span class="truncate">SROI: <span class="text-cyan-400 font-bold text-base md:text-lg ml-1.5">${t.total}</span></span>
                         </div>
-                        <div class="w-full bg-slate-700 h-1 md:h-1.5 rounded-full overflow-hidden shrink-0">
+                        <div class="w-full bg-slate-700 h-1.5 md:h-2 rounded-full overflow-hidden shrink-0">
                             <div class="bg-cyan-500 h-full" style="width: ${Math.min(100, t.total)}%"></div>
                         </div>
                     </div>
-                    <div class="text-[8px] md:text-[9px] text-cyan-500 mt-2 md:mt-3 truncate break-all w-full">
+                    <div class="text-xs text-cyan-500 mt-3 md:mt-4 truncate break-all w-full">
                         ${t.lastLog || '等待中'}
                     </div>
                 `;
@@ -1275,13 +1271,13 @@
             const list = document.getElementById('leaderboard');
             list.innerHTML = '';
             if (teams.length === 0) {
-                list.innerHTML = '<div class="text-[10px] md:text-xs text-slate-500 text-center mt-4 w-full">尚未有隊伍提交決策</div>';
+                list.innerHTML = '<div class="text-sm text-slate-500 text-center mt-6 w-full">尚未有隊伍提交決策</div>';
                 return;
             }
             teams.sort((a,b) => parseFloat(b.total) - parseFloat(a.total)).slice(0, 10).forEach((t, i) => {
                 const row = document.createElement('div');
-                row.className = "flex justify-between items-center bg-slate-700/30 p-1.5 md:p-2 rounded text-[10px] md:text-xs mb-1 gap-2 w-full overflow-hidden box-border";
-                row.innerHTML = `<div class="flex items-center gap-1.5 md:gap-2 min-w-0 flex-1"><span class="font-bold ${i<3 ? 'text-amber-400':'text-slate-500'} w-3 md:w-4 shrink-0 text-center">#${i+1}</span><span class="text-slate-300 truncate flex-1">${t.id}</span></div><span class="font-mono text-cyan-400 font-bold shrink-0">${t.total}</span>`;
+                row.className = "flex justify-between items-center bg-slate-700/30 p-2 md:p-3 rounded text-sm mb-1.5 gap-3 w-full overflow-hidden box-border";
+                row.innerHTML = `<div class="flex items-center gap-2 md:gap-3 min-w-0 flex-1"><span class="font-bold ${i<3 ? 'text-amber-400':'text-slate-500'} w-5 md:w-6 shrink-0 text-center text-sm md:text-base">#${i+1}</span><span class="text-slate-300 truncate flex-1 text-sm md:text-base">${t.id}</span></div><span class="font-mono text-cyan-400 font-bold shrink-0 text-sm md:text-base">${t.total}</span>`;
                 list.appendChild(row);
             });
         }
