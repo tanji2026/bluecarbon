@@ -163,7 +163,7 @@
                 <div class="bg-slate-800 rounded-xl border border-slate-700 p-3 md:p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 w-full box-border">
                     <div class="w-full sm:w-auto min-w-0 flex-1">
                         <h2 class="text-base md:text-lg font-black text-blue-400 truncate">階段二：SROI 資源配置戰情室</h2>
-                        <p class="text-[10px] md:text-xs text-slate-400 mt-0.5 truncate">鎖定場址：<span id="locked-site-name" class="font-bold text-cyan-400 ml-1 block sm:inline truncate"></span></p>
+                        <p class="text-[10px] md:text-xs text-slate-400 mt-0.5 truncate flex items-baseline gap-1">鎖定場址：<span id="locked-site-name" class="font-black text-cyan-400 text-xs md:text-sm truncate"></span></p>
                     </div>
                     <button onclick="returnToPhase1()" id="btn-return" class="w-full sm:w-auto text-[10px] md:text-xs bg-slate-700 text-slate-300 px-3 md:px-4 py-2 rounded-lg hover:bg-slate-600 border border-slate-600 whitespace-nowrap font-bold shrink-0 max-w-[200px] sm:max-w-none">返回重新選址</button>
                 </div>
@@ -182,7 +182,7 @@
                         <div class="flex-grow flex items-center w-full min-w-0 box-border px-1">
                            <input type="range" min="1" max="5" value="3" id="slider-safety" class="text-blue-500 w-full block box-border" oninput="handleSliderInput('safety', this.value)" onchange="handleSliderChange('safety', this.value)">
                         </div>
-                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-8 truncate text-left">無防護</span><span id="val-safety" class="font-bold text-blue-400 truncate flex-1 text-center px-1">標準</span><span class="w-8 truncate text-right">重型</span></div>
+                        <div class="flex justify-between items-center text-[10px] md:text-xs text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-10 truncate text-left">無防護</span><span id="val-safety" class="font-black text-[13px] md:text-[15px] text-blue-400 truncate flex-1 text-center px-1 tracking-wider">標準</span><span class="w-10 truncate text-right">重型</span></div>
                         <div id="lock-safety" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-2 w-full h-full"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-blue-400 bg-slate-800/80 px-2 rounded">等待操作</span></div>
                     </div>
                     <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 relative flex flex-col min-h-[110px] md:min-h-[130px] w-full overflow-hidden box-border">
@@ -193,7 +193,7 @@
                         <div class="flex-grow flex items-center w-full min-w-0 box-border px-1">
                            <input type="range" min="1" max="5" value="2" id="slider-eco" class="text-emerald-500 w-full block box-border" oninput="handleSliderInput('eco', this.value)" onchange="handleSliderChange('eco', this.value)">
                         </div>
-                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-8 truncate text-left">單一</span><span id="val-eco" class="font-bold text-emerald-400 truncate flex-1 text-center px-1">標準</span><span class="w-8 truncate text-right">大規模</span></div>
+                        <div class="flex justify-between items-center text-[10px] md:text-xs text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-10 truncate text-left">單一</span><span id="val-eco" class="font-black text-[13px] md:text-[15px] text-emerald-400 truncate flex-1 text-center px-1 tracking-wider">標準</span><span class="w-10 truncate text-right">大規模</span></div>
                         <div id="lock-eco" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-2 w-full h-full"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-emerald-400 bg-slate-800/80 px-2 rounded">等待操作</span></div>
                     </div>
                     <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 relative flex flex-col min-h-[110px] md:min-h-[130px] w-full overflow-hidden box-border">
@@ -204,7 +204,7 @@
                         <div class="flex-grow flex items-center w-full min-w-0 box-border px-1">
                             <input type="range" min="1" max="5" value="2" id="slider-pr" class="text-amber-500 w-full block box-border" oninput="handleSliderInput('pr', this.value)" onchange="handleSliderChange('pr', this.value)">
                         </div>
-                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-8 truncate text-left">零互動</span><span id="val-pr" class="font-bold text-amber-400 truncate flex-1 text-center px-1">標準</span><span class="w-8 truncate text-right">高額</span></div>
+                        <div class="flex justify-between items-center text-[10px] md:text-xs text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-10 truncate text-left">零互動</span><span id="val-pr" class="font-black text-[13px] md:text-[15px] text-amber-400 truncate flex-1 text-center px-1 tracking-wider">標準</span><span class="w-10 truncate text-right">高額</span></div>
                         <div id="lock-pr" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-2 w-full h-full"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-amber-400 bg-slate-800/80 px-2 rounded">等待操作</span></div>
                     </div>
                     <div class="bg-slate-800 rounded-xl md:rounded-2xl border border-slate-700 p-3 relative flex flex-col min-h-[110px] md:min-h-[130px] w-full overflow-hidden box-border">
@@ -215,7 +215,7 @@
                         <div class="flex-grow flex items-center w-full min-w-0 box-border px-1">
                             <input type="range" min="1" max="5" value="3" id="slider-cfo" class="text-purple-500 w-full block box-border" oninput="handleSliderInput('cfo', this.value)" onchange="handleSliderChange('cfo', this.value)">
                         </div>
-                        <div class="flex justify-between text-[9px] md:text-[10px] text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-8 truncate text-left">緊縮</span><span id="val-cfo" class="font-bold text-purple-400 truncate flex-1 text-center px-1">標準</span><span class="w-8 truncate text-right">無上限</span></div>
+                        <div class="flex justify-between items-center text-[10px] md:text-xs text-slate-500 mt-2 md:mt-3 w-full shrink-0 px-1"><span class="w-10 truncate text-left">緊縮</span><span id="val-cfo" class="font-black text-[13px] md:text-[15px] text-purple-400 truncate flex-1 text-center px-1 tracking-wider">標準</span><span class="w-10 truncate text-right">無上限</span></div>
                         <div id="lock-cfo" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-2 w-full h-full"><i data-lucide="lock" class="w-4 h-4 md:w-5 md:h-5 text-slate-500 mb-1"></i><span class="text-[10px] md:text-xs font-bold text-purple-400 bg-slate-800/80 px-2 rounded">等待操作</span></div>
                     </div>
                 </div>
@@ -228,25 +228,25 @@
                     
                     <div class="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-slate-700 w-full">
                         <div class="flex justify-between items-end mb-1 w-full">
-                            <span class="text-[10px] md:text-xs font-bold text-slate-300 truncate pr-2">總體預算使用率</span>
-                            <span id="budget-status" class="text-[9px] md:text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 whitespace-nowrap shrink-0">計算中</span>
+                            <span class="text-xs md:text-sm font-bold text-slate-300 truncate pr-2">總體預算使用率</span>
+                            <span id="budget-status" class="text-[10px] md:text-xs font-bold px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 whitespace-nowrap shrink-0">計算中</span>
                         </div>
                         <div class="w-full bg-slate-900 h-2 md:h-2.5 rounded-full overflow-hidden border border-slate-800 relative">
                             <div id="bar-budget" class="bg-purple-500 h-full w-0 transition-all duration-300 relative"></div>
                             <div id="budget-limit-marker" class="absolute top-0 bottom-0 w-0.5 md:w-1 bg-red-500 z-10 transition-all duration-300 shadow-[0_0_5px_rgba(239,68,68,1)]"></div>
                         </div>
-                        <div class="flex justify-between text-[8px] md:text-[9px] text-slate-500 mt-1 w-full"><span>0</span><span id="budget-limit-text">上限</span></div>
+                        <div class="flex justify-between text-[10px] md:text-xs text-slate-500 mt-1 w-full"><span>0</span><span id="budget-limit-text">上限</span></div>
                     </div>
 
-                    <div class="mt-3 md:mt-4 flex flex-col space-y-1.5 md:space-y-2 w-full">
-                        <div class="flex justify-between text-[10px] md:text-xs items-center w-full"><span class="text-slate-400 truncate pr-2">環境效益 (Env)</span><span id="score-safety" class="font-bold text-blue-400 text-xs md:text-sm shrink-0 tabular-nums">0</span></div>
-                        <div class="flex justify-between text-[10px] md:text-xs mt-1 md:mt-2 items-center w-full"><span class="text-slate-400 truncate pr-2">經濟效益 (Eco)</span><span id="score-economy" class="font-bold text-amber-400 text-xs md:text-sm shrink-0 tabular-nums">0</span></div>
-                        <div class="flex justify-between text-[10px] md:text-xs mt-1 md:mt-2 items-center w-full"><span class="text-slate-400 truncate pr-2">社會效益 (Soc)</span><span id="score-social" class="font-bold text-cyan-400 text-xs md:text-sm shrink-0 tabular-nums">0</span></div>
+                    <div class="mt-3 md:mt-4 flex flex-col space-y-2 w-full">
+                        <div class="flex justify-between text-xs md:text-sm items-center w-full"><span class="text-slate-400 truncate pr-2">環境效益 (Env)</span><span id="score-safety" class="font-black text-blue-400 text-sm md:text-base shrink-0 tabular-nums">0</span></div>
+                        <div class="flex justify-between text-xs md:text-sm items-center w-full"><span class="text-slate-400 truncate pr-2">經濟效益 (Eco)</span><span id="score-economy" class="font-black text-amber-400 text-sm md:text-base shrink-0 tabular-nums">0</span></div>
+                        <div class="flex justify-between text-xs md:text-sm items-center w-full"><span class="text-slate-400 truncate pr-2">社會效益 (Soc)</span><span id="score-social" class="font-black text-cyan-400 text-sm md:text-base shrink-0 tabular-nums">0</span></div>
                     </div>
                 </div>
                 <div class="bg-slate-900 p-3 md:p-4 rounded-xl border border-slate-800 w-full box-border shrink-0">
                     <h4 class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5 md:mb-2 flex items-center gap-1.5"><i data-lucide="terminal" class="w-3 h-3 md:w-3.5 md:h-3.5 shrink-0"></i> <span class="truncate">系統通訊紀錄</span></h4>
-                    <div id="system-log" class="text-[10px] md:text-xs text-slate-400 h-[68px] md:h-20 overflow-y-auto overflow-x-hidden flex flex-col space-y-1 md:space-y-1.5 font-mono break-all w-full pr-1">
+                    <div id="system-log" class="text-[11px] md:text-xs text-slate-400 h-[68px] md:h-20 overflow-y-auto overflow-x-hidden flex flex-col space-y-1 md:space-y-1.5 font-mono break-all w-full pr-1">
                         <div>> 系統初始化完成...</div>
                     </div>
                 </div>
@@ -636,7 +636,6 @@
             window.updateTeamState('site', siteId);
         }
 
-        // 💡 修正 1/2：加入解鎖的功能
         function unlockUI(id) {
             const slider = document.getElementById(`slider-${id}`);
             if (slider) slider.disabled = false;
@@ -654,7 +653,6 @@
         function applyPermissions() {
             const r = window.userState.role;
             
-            // 💡 修正 2/2：進入/撤回時，先全面解鎖，再針對非負責項目上鎖
             unlockUI('safety');
             unlockUI('eco');
             unlockUI('pr');
@@ -931,7 +929,6 @@
                 const btnRet = document.getElementById('btn-return');
 
                 if (s.isSubmitted) {
-                    // 已提交：全面鎖定 UI
                     lockUI('safety'); lockUI('eco'); lockUI('pr'); lockUI('cfo');
                     if(btnRet) btnRet.style.display = 'none';
                     
@@ -950,7 +947,6 @@
                         }
                     }
                 } else {
-                    // 未提交/已撤回：重新依照權限解鎖與上鎖
                     applyPermissions();
                     if(btnRet) btnRet.style.display = window.userState.role === 'policy' ? 'block' : 'none';
                     
@@ -1110,10 +1106,10 @@
                 if(budgetStatus) {
                     if(res.isOverBudget) {
                         budgetStatus.innerText = `超支警告 (-${parseInt((res.cost - res.budgetLimit)*1.5)} 經濟分)`;
-                        budgetStatus.className = "text-[8px] md:text-[9px] font-bold px-1 md:px-1.5 py-0.5 rounded bg-red-900 text-red-400 border border-red-500 animate-pulse whitespace-nowrap shrink-0 max-w-full truncate";
+                        budgetStatus.className = "text-[10px] md:text-xs font-bold px-1.5 py-0.5 rounded bg-red-900 text-red-400 border border-red-500 animate-pulse whitespace-nowrap shrink-0 max-w-full truncate";
                     } else {
                         budgetStatus.innerText = "預算安全";
-                        budgetStatus.className = "text-[8px] md:text-[9px] font-bold px-1 md:px-1.5 py-0.5 rounded bg-purple-900/50 text-purple-300 border border-purple-700 whitespace-nowrap shrink-0";
+                        budgetStatus.className = "text-[10px] md:text-xs font-bold px-1.5 py-0.5 rounded bg-purple-900/50 text-purple-300 border border-purple-700 whitespace-nowrap shrink-0";
                     }
                 }
                 
