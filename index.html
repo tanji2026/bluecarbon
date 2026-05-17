@@ -53,48 +53,50 @@
         </div>
     </div>
 
-    <div id="login-screen" class="fixed inset-0 bg-slate-900 z-50 flex flex-col items-center justify-center p-6 text-white transition-opacity duration-500 overflow-y-auto">
-        <div class="w-16 h-16 bg-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-cyan-600/50 mt-auto lg:mt-0">
-            <i data-lucide="droplets" class="w-8 h-8 text-white"></i>
-        </div>
-        <h1 class="text-3xl font-black mb-2 tracking-tight">碳吉 TanJi</h1>
-        <p class="text-cyan-400 mb-8 text-sm font-bold">藍碳特搜隊</p>
-        <div class="w-full max-w-sm space-y-4">
-            <div>
-                <label class="text-xs font-bold text-slate-400 uppercase ml-1">特搜小組名稱 / 教師代碼</label>
-                <input type="text" id="login-team" placeholder="輸入小組名稱" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 mt-1 text-white font-bold focus:ring-2 focus:ring-cyan-500 outline-none transition-all">
+    <div id="login-screen" class="fixed inset-0 bg-slate-900 z-50 flex flex-col p-6 text-white transition-opacity duration-500 overflow-y-auto">
+        <div class="flex-grow flex flex-col items-center justify-center w-full max-w-sm mx-auto min-h-max py-10">
+            <div class="w-16 h-16 bg-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-cyan-600/50">
+                <i data-lucide="droplets" class="w-8 h-8 text-white"></i>
             </div>
-            <div id="role-selector" class="transition-all duration-300">
-                <label class="text-xs font-bold text-slate-400 uppercase ml-1">選擇您的專屬職位</label>
-                <div class="grid grid-cols-2 gap-2 mt-1">
-                    <button onclick="selectRole('engineer')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="engineer">
-                        <div class="text-xl mb-1">🌊</div>
-                        <div class="text-xs font-bold text-slate-300 group-hover:text-white">海洋物理員</div>
-                    </button>
-                    <button onclick="selectRole('eco')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="eco">
-                        <div class="text-xl mb-1">🌱</div>
-                        <div class="text-xs font-bold text-slate-300 group-hover:text-white">海洋生態員</div>
-                    </button>
-                    <button onclick="selectRole('pr')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="pr">
-                        <div class="text-xl mb-1">🚢</div>
-                        <div class="text-xs font-bold text-slate-300 group-hover:text-white">社會溝通員</div>
-                    </button>
-                    <button onclick="selectRole('cfo')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="cfo">
-                        <div class="text-xl mb-1">💰</div>
-                        <div class="text-xs font-bold text-slate-300 group-hover:text-white">財務長</div>
-                    </button>
-                    <button onclick="selectRole('policy')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group col-span-2" data-role="policy">
-                        <div class="text-xl mb-1 flex items-center gap-2">📜 <span class="text-xs bg-cyan-900 text-cyan-400 px-1.5 rounded">隊長</span></div>
-                        <div class="text-xs font-bold text-slate-300 group-hover:text-white">政策分析師</div>
-                    </button>
+            <h1 class="text-3xl font-black mb-2 tracking-tight">碳吉 TanJi</h1>
+            <p class="text-cyan-400 mb-8 text-sm font-bold">藍碳特搜隊</p>
+            <div class="w-full space-y-4">
+                <div>
+                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">特搜小組名稱 / 教師代碼</label>
+                    <input type="text" id="login-team" placeholder="輸入小組名稱" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 mt-1 text-white font-bold focus:ring-2 focus:ring-cyan-500 outline-none transition-all">
                 </div>
+                <div id="role-selector" class="transition-all duration-300">
+                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">選擇您的專屬職位</label>
+                    <div class="grid grid-cols-2 gap-2 mt-1">
+                        <button onclick="selectRole('engineer')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="engineer">
+                            <div class="text-xl mb-1">🌊</div>
+                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">海洋物理員</div>
+                        </button>
+                        <button onclick="selectRole('eco')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="eco">
+                            <div class="text-xl mb-1">🌱</div>
+                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">海洋生態員</div>
+                        </button>
+                        <button onclick="selectRole('pr')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="pr">
+                            <div class="text-xl mb-1">🚢</div>
+                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">社會溝通員</div>
+                        </button>
+                        <button onclick="selectRole('cfo')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group" data-role="cfo">
+                            <div class="text-xl mb-1">💰</div>
+                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">財務長</div>
+                        </button>
+                        <button onclick="selectRole('policy')" class="role-btn bg-slate-800 border border-slate-700 p-3 rounded-xl text-left hover:border-cyan-500 transition-all group col-span-2" data-role="policy">
+                            <div class="text-xl mb-1 flex items-center gap-2">📜 <span class="text-xs bg-cyan-900 text-cyan-400 px-1.5 rounded">隊長</span></div>
+                            <div class="text-xs font-bold text-slate-300 group-hover:text-white">政策分析師</div>
+                        </button>
+                    </div>
+                </div>
+                <button id="start-btn" onclick="enterSimulation()" disabled class="w-full bg-slate-800 text-slate-500 py-4 rounded-xl font-bold mt-4 transition-all shadow-lg border border-slate-700">
+                    數據載入中...
+                </button>
             </div>
-            <button id="start-btn" onclick="enterSimulation()" disabled class="w-full bg-slate-800 text-slate-500 py-4 rounded-xl font-bold mt-4 transition-all shadow-lg border border-slate-700">
-                數據載入中...
-            </button>
         </div>
-        <div class="mt-8 mb-4 lg:absolute lg:bottom-6 text-[10px] text-slate-500 font-bold text-center w-full px-4">
-            115年度NODASS大數據競賽教案｜著作權所有｜tanji2026@gmail.com
+        <div class="w-full text-[10px] text-slate-500 font-bold text-center pb-4 leading-relaxed mt-4">
+            115年度NODASS大數據競賽教案<br class="md:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="md:hidden">tanji2026@gmail.com
         </div>
     </div>
 
@@ -116,11 +118,9 @@
         </div>
     </nav>
 
-    <main id="main-student" class="flex-1 overflow-y-auto p-4 pb-40 no-scrollbar relative hidden">
-        
+    <main id="main-student" class="flex-1 overflow-y-auto p-4 pb-40 lg:pb-32 no-scrollbar relative hidden">
         <div id="view-phase-1" class="container mx-auto max-w-5xl space-y-6">
             <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-xl">
-                
                 <div class="px-6 py-4 bg-slate-900 border-b border-slate-700 flex justify-between items-center">
                     <div>
                         <h2 class="text-lg font-black text-cyan-400">階段一：全台大排雷</h2>
@@ -142,6 +142,9 @@
                         </button>
                     </div>
                 </div>
+            </div>
+            <div class="w-full text-[10px] text-slate-600 font-bold text-center pb-8 leading-relaxed">
+                115年度NODASS大數據競賽教案<br class="md:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="md:hidden">tanji2026@gmail.com
             </div>
         </div>
 
@@ -165,25 +168,25 @@
                         <div class="flex justify-between mb-3 items-center"><label class="text-sm font-bold text-slate-200 flex gap-2 items-center"><div class="w-6 h-6 bg-blue-900 text-blue-400 rounded flex items-center justify-center"><i data-lucide="shield" class="w-3 h-3"></i></div> 工程防護</label><span class="text-[10px] bg-blue-900/50 text-blue-400 border border-blue-800 px-2 py-0.5 rounded font-bold">海洋物理員</span></div>
                         <input type="range" min="1" max="5" value="3" id="slider-safety" class="text-blue-500" oninput="handleSliderInput('safety', this.value)" onchange="handleSliderChange('safety', this.value)">
                         <div class="flex justify-between text-[10px] text-slate-500 mt-3"><span>無防護</span><span id="val-safety" class="font-bold text-blue-400">標準</span><span>重型防波堤</span></div>
-                        <div id="lock-safety" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-blue-400">等待【海洋物理員】操作</span></div>
+                        <div id="lock-safety" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-blue-400">等待操作</span></div>
                     </div>
                     <div class="bg-slate-800 rounded-2xl border border-slate-700 p-5 relative overflow-hidden">
                         <div class="flex justify-between mb-3 items-center"><label class="text-sm font-bold text-slate-200 flex gap-2 items-center"><div class="w-6 h-6 bg-emerald-900 text-emerald-400 rounded flex items-center justify-center"><i data-lucide="leaf" class="w-3 h-3"></i></div> 生態規模</label><span class="text-[10px] bg-emerald-900/50 text-emerald-400 border border-emerald-800 px-2 py-0.5 rounded font-bold">海洋生態員</span></div>
                         <input type="range" min="1" max="5" value="2" id="slider-eco" class="text-emerald-500" oninput="handleSliderInput('eco', this.value)" onchange="handleSliderChange('eco', this.value)">
                         <div class="flex justify-between text-[10px] text-slate-500 mt-3"><span>單一試驗</span><span id="val-eco" class="font-bold text-emerald-400">標準</span><span>大規模多物種</span></div>
-                        <div id="lock-eco" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-emerald-400">等待【海洋生態員】操作</span></div>
+                        <div id="lock-eco" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-emerald-400">等待操作</span></div>
                     </div>
                     <div class="bg-slate-800 rounded-2xl border border-slate-700 p-5 relative overflow-hidden">
                         <div class="flex justify-between mb-3 items-center"><label class="text-sm font-bold text-slate-200 flex gap-2 items-center"><div class="w-6 h-6 bg-amber-900 text-amber-400 rounded flex items-center justify-center"><i data-lucide="users" class="w-3 h-3"></i></div> 社區溝通</label><span class="text-[10px] bg-amber-900/50 text-amber-400 border border-amber-800 px-2 py-0.5 rounded font-bold">社會溝通員</span></div>
                         <input type="range" min="1" max="5" value="2" id="slider-pr" class="text-amber-500" oninput="handleSliderInput('pr', this.value)" onchange="handleSliderChange('pr', this.value)">
                         <div class="flex justify-between text-[10px] text-slate-500 mt-3"><span>零互動</span><span id="val-pr" class="font-bold text-amber-400">標準</span><span>高額回饋金</span></div>
-                        <div id="lock-pr" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-amber-400">等待【社會溝通員】操作</span></div>
+                        <div id="lock-pr" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-amber-400">等待操作</span></div>
                     </div>
                     <div class="bg-slate-800 rounded-2xl border border-slate-700 p-5 relative overflow-hidden">
                         <div class="flex justify-between mb-3 items-center"><label class="text-sm font-bold text-slate-200 flex gap-2 items-center"><div class="w-6 h-6 bg-purple-900 text-purple-400 rounded flex items-center justify-center"><i data-lucide="circle-dollar-sign" class="w-3 h-3"></i></div> 預算總量</label><span class="text-[10px] bg-purple-900/50 text-purple-400 border border-purple-800 px-2 py-0.5 rounded font-bold">財務長</span></div>
                         <input type="range" min="1" max="5" value="3" id="slider-cfo" class="text-purple-500" oninput="handleSliderInput('cfo', this.value)" onchange="handleSliderChange('cfo', this.value)">
                         <div class="flex justify-between text-[10px] text-slate-500 mt-3"><span>極度緊縮</span><span id="val-cfo" class="font-bold text-purple-400">標準預算</span><span>無上限</span></div>
-                        <div id="lock-cfo" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-purple-400">等待【財務長】操作</span></div>
+                        <div id="lock-cfo" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm z-10 hidden flex-col items-center justify-center text-center p-2"><i data-lucide="lock" class="w-5 h-5 text-slate-500 mb-1"></i><span class="text-xs font-bold text-purple-400">等待操作</span></div>
                     </div>
                 </div>
             </div>
@@ -217,6 +220,10 @@
                         <div>> 系統初始化完成...</div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="col-span-12 text-[10px] text-slate-600 font-bold text-center pb-8 leading-relaxed mt-4">
+                115年度NODASS大數據競賽教案<br class="md:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="md:hidden">tanji2026@gmail.com
             </div>
         </div>
     </main>
@@ -256,6 +263,10 @@
 
             <h3 class="font-bold text-slate-300 mb-4 flex items-center gap-2"><i data-lucide="grid" class="w-4 h-4"></i> 各組即時決策狀態</h3>
             <div id="team-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+            
+            <div class="mt-12 text-[10px] text-slate-600 font-bold text-center pb-8 leading-relaxed">
+                115年度NODASS大數據競賽教案<br class="md:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="md:hidden">tanji2026@gmail.com
+            </div>
         </div>
     </main>
 
@@ -311,15 +322,13 @@
                 const data = await response.json();
                 NODASS_DB = data;
                 
-                const defaultRejections = {};
+                window.teamState.rejections = {};
                 Object.keys(NODASS_DB).forEach(key => {
-                    defaultRejections[key] = [];
+                    window.teamState.rejections[key] = [];
                 });
-                window.teamState.rejections = defaultRejections;
-
+                
                 initApp();
             } catch (error) {
-                console.warn("無法從外部讀取數據，使用預設測試資料：", error);
                 NODASS_DB = {
                     'A': { name: '花蓮石梯坪', icon: '🌊', wave: 4.5, depth: -200, substrate: '岩礁', ais: 10, costLvl: '極高', s:20, e:30, o:40 },
                     'B': { name: '桃園觀塘', icon: '🏭', wave: 1.2, depth: -8, substrate: '泥灘', ais: 95, costLvl: '低', s:60, e:80, o:30 },
@@ -329,11 +338,10 @@
                     'F': { name: '彰化王功', icon: '🦀', wave: 0.6, depth: -3, substrate: '泥灘', ais: 85, costLvl: '中', s:55, e:75, o:45 }
                 };
                 
-                const defaultRejections = {};
+                window.teamState.rejections = {};
                 Object.keys(NODASS_DB).forEach(key => {
-                    defaultRejections[key] = [];
+                    window.teamState.rejections[key] = [];
                 });
-                window.teamState.rejections = defaultRejections;
                 
                 initApp();
             }
@@ -631,11 +639,10 @@
                     window.teamState = { ...window.teamState, ...data };
                     
                     if(!window.teamState.rejections) {
-                        const defaultRejections = {};
+                        window.teamState.rejections = {};
                         Object.keys(NODASS_DB).forEach(key => {
-                            defaultRejections[key] = [];
+                            window.teamState.rejections[key] = [];
                         });
-                        window.teamState.rejections = defaultRejections;
                     }
                     
                     updateUI(); 
