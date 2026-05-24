@@ -44,8 +44,8 @@
                 </div>
             </div>
             <div class="space-y-4 text-center w-full max-w-[320px] mx-auto relative z-10 flex flex-col justify-center">
-                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white drop-shadow-md">碳吉 TanJi</h1>
-                <p class="text-cyan-300 font-bold tracking-widest text-sm md:text-base mb-6 truncate">藍碳特搜隊</p>
+                <h1 class="text-3xl md:text-4xl font-black tracking-tight text-white drop-shadow-md">碳吉 TanJi</h1>
+                <p class="text-cyan-300 font-bold tracking-widest text-base md:text-lg mb-6 truncate">藍碳特搜隊</p>
                 <button onclick="dismissIntro()" class="w-full bg-cyan-500 text-slate-900 px-6 py-4 rounded-2xl font-black text-xl md:text-2xl shadow-[0_10px_20px_rgba(6,182,212,0.3)] hover:shadow-[0_15px_30px_rgba(6,182,212,0.5)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group">
                     <span class="whitespace-nowrap">啟動任務</span>
                     <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform shrink-0 w-6 h-6"></i>
@@ -53,6 +53,7 @@
             </div>
         </div>
         <div class="w-full text-xs md:text-sm text-cyan-600/70 font-bold text-center mt-auto pt-8 pb-4 pb-safe leading-relaxed shrink-0 px-2">
+            資料庫來源：<a href="https://nodass.namr.gov.tw/data" target="_blank" class="underline hover:text-cyan-400 transition-colors">國家海洋資料庫及共享平臺</a><br>
             2026諾大師海洋大數據競賽<br class="sm:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="sm:hidden">tanji2026@gmail.com
         </div>
     </div>
@@ -70,6 +71,9 @@
                     <input type="text" id="login-team" placeholder="輸入小組名稱" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-5 py-4 text-white font-bold focus:ring-2 focus:ring-cyan-500 outline-none transition-all text-base md:text-lg box-border">
                 </div>
                 <div id="role-selector" class="transition-all duration-300 w-full">
+                    <div class="bg-cyan-900/30 border border-cyan-800/50 rounded-xl p-3 mb-4 text-xs md:text-sm text-cyan-100 leading-relaxed">
+                        <span class="font-bold text-cyan-400">遊戲方法：</span>團隊需選擇各自專屬職位，隊長無數據視野，須聽取各專員口頭回報大數據指標。共同淘汰地雷場址後，由隊長鎖定最佳目標並調整資源配置。
+                    </div>
                     <label class="text-xs md:text-sm font-bold text-slate-400 uppercase ml-1 block mb-1.5">選擇您的專屬職位</label>
                     <div class="grid grid-cols-2 gap-3 mt-1 w-full">
                         <button onclick="selectRole('engineer')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="engineer">
@@ -100,6 +104,7 @@
             </div>
         </div>
         <div class="w-full text-xs md:text-sm text-slate-500 font-bold text-center mt-auto pt-6 pb-4 pb-safe leading-relaxed shrink-0 px-2">
+            資料庫來源：<a href="https://nodass.namr.gov.tw/data" target="_blank" class="text-cyan-600 hover:text-cyan-400 underline transition-colors">國家海洋資料庫及共享平臺</a><br>
             2026諾大師海洋大數據競賽<br class="sm:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="sm:hidden">tanji2026@gmail.com
         </div>
     </div>
@@ -249,9 +254,11 @@
                 </div>
             </div>
             
-            <div class="col-span-12 w-full text-xs md:text-sm text-slate-500 font-bold text-center mt-auto pt-8 pb-4 shrink-0 box-border">
-                2026諾大師海洋大數據競賽<br class="sm:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="sm:hidden">tanji2026@gmail.com
-            </div>
+        </div>
+        
+        <div class="w-full text-xs md:text-sm text-slate-500 font-bold text-center mt-auto pt-8 pb-4 shrink-0 box-border" id="phase1-footer-copyright">
+            資料庫來源：<a href="https://nodass.namr.gov.tw/data" target="_blank" class="text-cyan-600 hover:text-cyan-400 underline transition-colors">國家海洋資料庫及共享平臺</a><br>
+            2026諾大師海洋大數據競賽<br class="sm:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="sm:hidden">tanji2026@gmail.com
         </div>
     </main>
 
@@ -295,10 +302,11 @@
             <div id="team-cards" class="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5 w-full"></div>
             
             <div class="mt-auto pt-12 pb-4 text-xs md:text-sm text-slate-500 font-bold text-center w-full shrink-0">
+                資料庫來源：<a href="https://nodass.namr.gov.tw/data" target="_blank" class="text-cyan-600 hover:text-cyan-400 underline transition-colors">國家海洋資料庫及共享平臺</a><br>
                 2026諾大師海洋大數據競賽<br class="sm:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="sm:hidden">tanji2026@gmail.com
             </div>
         </div>
-    </nav>
+    </main>
 
     <div id="student-footer" class="w-full flex-none bg-slate-900 border-t border-slate-800 p-3 sm:p-4 md:p-5 z-40 shadow-[0_-10px_20px_rgba(0,0,0,0.5)] hidden pb-safe box-border">
         <div class="container mx-auto max-w-5xl flex justify-between items-center gap-3 w-full h-full">
@@ -551,10 +559,10 @@
                 `;
             } else {
                 const roleTexts = {
-                    'engineer': '監控「波浪模式」與「水深」，聽從隊長指示判讀並按下否決。',
-                    'eco': '監控「底質分佈」，聽從隊長指示判讀並按下否決。',
-                    'pr': '監控「AIS船舶密度」，聽從隊長指示判讀並按下否決。',
-                    'cfo': '監控「建置成本估算」，聽從隊長指示判讀並按下否決。'
+                    'engineer': '任務目標：監控「波浪模式」與「水深」，聽從隊長指示判讀並按下否決。',
+                    'eco': '任務目標：監控「底質分佈」，聽從隊長指示判讀並按下否決。',
+                    'pr': '任務目標：監控「AIS船舶密度」，聽從隊長指示判讀並按下否決。',
+                    'cfo': '任務目標：監控「建置成本估算」，聽從隊長指示判讀並按下否決。'
                 };
                 headerContainer.innerHTML = `
                     <div class="bg-slate-700/50 border border-slate-600 rounded-xl p-4 md:p-5 flex items-center gap-3 md:gap-5 w-full box-border">
@@ -809,7 +817,6 @@
                 document.getElementById('view-phase-1').classList.remove('hidden');
                 document.getElementById('view-phase-2').classList.add('hidden');
                 document.getElementById('student-footer').classList.add('hidden');
-                document.getElementById('phase1-footer-copyright').classList.remove('hidden');
 
                 let validCount = 0;
                 Object.keys(NODASS_DB).forEach(key => {
@@ -906,7 +913,6 @@
                 }
             } else {
                 document.getElementById('view-phase-1').classList.add('hidden');
-                document.getElementById('phase1-footer-copyright').classList.add('hidden');
                 document.getElementById('view-phase-2').classList.remove('hidden');
                 document.getElementById('student-footer').classList.remove('hidden');
                 
