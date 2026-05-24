@@ -58,49 +58,55 @@
     </div>
 
     <div id="login-screen" class="fixed inset-0 bg-slate-900 z-50 flex flex-col p-4 md:p-6 text-white transition-opacity duration-500 overflow-y-auto hidden">
-        <div class="m-auto flex flex-col items-center justify-center w-full max-w-[360px] shrink-0 py-6 mx-auto">
-            <div class="w-16 h-16 md:w-20 md:h-20 bg-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-cyan-600/50 shrink-0">
-                <i data-lucide="droplets" class="w-8 h-8 md:w-10 md:h-10 text-white"></i>
+        <div class="m-auto flex flex-col items-center justify-center w-full max-w-[360px] shrink-0 py-3 mx-auto">
+            <!-- 整合水滴標誌與標題於同一行，大幅縮減垂直空間 -->
+            <div class="flex items-center justify-center gap-3.5 mb-5 shrink-0 w-full">
+                <div class="w-11 h-11 bg-cyan-600 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-600/40 shrink-0">
+                    <i data-lucide="droplets" class="w-6 h-6 text-white"></i>
+                </div>
+                <div class="text-left">
+                    <h1 class="text-2xl md:text-3xl font-black tracking-tight leading-tight">碳吉 TanJi</h1>
+                    <p class="text-cyan-400 text-xs md:text-sm font-bold leading-none">藍碳特搜隊</p>
+                </div>
             </div>
-            <h1 class="text-3xl md:text-4xl font-black mb-2 tracking-tight text-center">碳吉 TanJi</h1>
-            <p class="text-cyan-400 mb-8 text-sm md:text-base font-bold text-center">藍碳特搜隊</p>
-            <div class="w-full space-y-4 md:space-y-5">
+            
+            <div class="w-full space-y-3.5">
                 <div class="w-full">
-                    <label class="text-xs md:text-sm font-bold text-slate-400 uppercase ml-1 block mb-1.5">特搜小組名稱 / 教師代碼</label>
-                    <input type="text" id="login-team" placeholder="輸入小組名稱" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-5 py-4 text-white font-bold focus:ring-2 focus:ring-cyan-500 outline-none transition-all text-base md:text-lg box-border">
+                    <label class="text-xs font-bold text-slate-400 uppercase ml-1 block mb-1">特搜小組名稱 / 教師代碼</label>
+                    <input type="text" id="login-team" placeholder="輸入小組名稱" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white font-bold focus:ring-2 focus:ring-cyan-500 outline-none transition-all text-sm md:text-base box-border">
                 </div>
                 <div id="role-selector" class="transition-all duration-300 w-full">
-                    <label class="text-xs md:text-sm font-bold text-slate-400 uppercase ml-1 block mb-1.5">選擇您的專屬職位</label>
-                    <div class="grid grid-cols-2 gap-3 mt-1 w-full">
-                        <button onclick="selectRole('engineer')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="engineer">
-                            <div class="text-2xl mb-1.5 shrink-0">🌊</div>
-                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">海洋物理員</div>
+                    <label class="text-xs font-bold text-slate-400 uppercase ml-1 block mb-1">選擇您的專屬職位</label>
+                    <div class="grid grid-cols-2 gap-2 mt-1 w-full">
+                        <button onclick="selectRole('engineer')" class="role-btn bg-slate-800 border border-slate-700 p-2.5 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="engineer">
+                            <div class="text-xl mb-1 shrink-0">🌊</div>
+                            <div class="text-xs md:text-sm font-bold text-slate-300 group-hover:text-white truncate w-full">海洋物理員</div>
                         </button>
-                        <button onclick="selectRole('eco')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="eco">
-                            <div class="text-2xl mb-1.5 shrink-0">🌱</div>
-                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">海洋生態員</div>
+                        <button onclick="selectRole('eco')" class="role-btn bg-slate-800 border border-slate-700 p-2.5 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="eco">
+                            <div class="text-xl mb-1 shrink-0">🌱</div>
+                            <div class="text-xs md:text-sm font-bold text-slate-300 group-hover:text-white truncate w-full">海洋生態員</div>
                         </button>
-                        <button onclick="selectRole('pr')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="pr">
-                            <div class="text-2xl mb-1.5 shrink-0">🚢</div>
-                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">社會溝通員</div>
+                        <button onclick="selectRole('pr')" class="role-btn bg-slate-800 border border-slate-700 p-2.5 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="pr">
+                            <div class="text-xl mb-1 shrink-0">🚢</div>
+                            <div class="text-xs md:text-sm font-bold text-slate-300 group-hover:text-white truncate w-full">社會溝通員</div>
                         </button>
-                        <button onclick="selectRole('cfo')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="cfo">
-                            <div class="text-2xl mb-1.5 shrink-0">💰</div>
-                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">財務長</div>
+                        <button onclick="selectRole('cfo')" class="role-btn bg-slate-800 border border-slate-700 p-2.5 rounded-xl text-left hover:border-cyan-500 transition-all group flex flex-col items-start w-full overflow-hidden" data-role="cfo">
+                            <div class="text-xl mb-1 shrink-0">💰</div>
+                            <div class="text-xs md:text-sm font-bold text-slate-300 group-hover:text-white truncate w-full">財務長</div>
                         </button>
-                        <button onclick="selectRole('policy')" class="role-btn bg-slate-800 border border-slate-700 p-3 md:p-4 rounded-xl text-left hover:border-cyan-500 transition-all group col-span-2 flex flex-col items-start w-full overflow-hidden" data-role="policy">
-                            <div class="text-2xl mb-1.5 flex items-center gap-2 shrink-0">📜 <span class="text-[10px] md:text-xs bg-cyan-900 text-cyan-400 px-2 py-1 rounded whitespace-nowrap">隊長</span></div>
-                            <div class="text-sm md:text-base font-bold text-slate-300 group-hover:text-white truncate w-full">政策分析師</div>
+                        <button onclick="selectRole('policy')" class="role-btn bg-slate-800 border border-slate-700 p-2.5 rounded-xl text-left hover:border-cyan-500 transition-all group col-span-2 flex flex-col items-start w-full overflow-hidden" data-role="policy">
+                            <div class="text-xl mb-1 flex items-center gap-2 shrink-0">📜 <span class="text-[10px] bg-cyan-900 text-cyan-400 px-2 py-0.5 rounded whitespace-nowrap">隊長</span></div>
+                            <div class="text-xs md:text-sm font-bold text-slate-300 group-hover:text-white truncate w-full">政策分析師</div>
                         </button>
                     </div>
                 </div>
-                <button id="start-btn" onclick="enterSimulation()" disabled class="w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all shadow-lg border border-slate-700 text-base md:text-lg truncate box-border px-4">
+                <button id="start-btn" onclick="enterSimulation()" disabled class="w-full bg-slate-800 text-slate-500 py-3.5 rounded-xl font-bold mt-2.5 transition-all shadow-lg border border-slate-700 text-sm md:text-base truncate box-border px-4">
                     請選擇職位
                 </button>
             </div>
         </div>
         <div class="w-full text-xs md:text-sm text-slate-500 font-bold text-center mt-auto pt-6 pb-4 pb-safe leading-relaxed shrink-0 px-2">
-            2026諾大師海洋大數據競賽<br class="sm:hidden">｜作品受著作權法保護，未經授權請勿複製轉載｜<br class="sm:hidden">tanji2026@gmail.com
+            2026諾大師海洋大數據競賽<br class="sm:hidden">｜作品受著作權法保護，未經授权請勿複製轉載｜<br class="sm:hidden">tanji2026@gmail.com
         </div>
     </div>
 
@@ -128,15 +134,14 @@
         </div>
     </nav>
 
-    <div id="helper-mascot" class="fixed top-1/2 right-0 z-[60] translate-x-1/3 hidden pb-safe">
-        <button onclick="toggleHelper()" class="w-16 h-16 md:w-20 md:h-20 animate-float hover:scale-110 transition-transform">
-            <img src="./assets/images/tanjibaby_diver.png" alt="小幫手" class="w-full h-full object-contain pointer-events-none" onerror="this.src='https://raw.githubusercontent.com/tanji2026/ccus/main/tanjibaby.png'">
+    <!-- 固定在右下角的圓形碳吉小幫手漂浮球 -->
+    <div id="helper-mascot" class="fixed bottom-6 right-6 z-[60] hidden pb-safe">
+        <button onclick="toggleHelper()" class="w-16 h-16 md:w-18 md:h-18 rounded-full bg-slate-800 border-2 border-cyan-500 flex items-center justify-center p-1.5 shadow-2xl hover:scale-110 active:scale-95 transition-all animate-float cursor-pointer overflow-hidden">
+            <img src="./assets/images/tanjibaby_diver.png" alt="小幫手" class="w-full h-full object-contain pointer-events-none rounded-full" onerror="this.src='https://raw.githubusercontent.com/tanji2026/ccus/main/tanjibaby.png'">
         </button>
-        <div id="helper-bubble" class="absolute right-full mr-2 bottom-0 bg-slate-800 border-2 border-cyan-500 rounded-2xl p-4 shadow-2xl text-xs md:text-sm text-slate-200 w-[260px] md:w-[280px] origin-bottom-right transition-all duration-300 scale-0 opacity-0">
-            <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">💡 任務指引</p>
-            <p class="mb-2"><span class="text-white font-bold">【全局目標】</span>找出最棒的藍碳復育點，配置資源讓SROI最大化！</p>
-            <p class="mb-2"><span class="text-white font-bold">【階段一】</span>隊長看標準，專員看數據。大膽按下「❌否決」淘汰不符地點！</p>
-            <p><span class="text-white font-bold">【階段二】</span>隊長鎖定目標後，聽取專員回報，拉動滑桿找出最高分並提交！</p>
+        <!-- 提示對話框：自右側彈出 -->
+        <div id="helper-bubble" class="absolute right-full mr-3 bottom-2 bg-slate-800 border-2 border-cyan-500 rounded-2xl p-4 shadow-2xl text-xs md:text-sm text-slate-200 w-[260px] md:w-[280px] origin-bottom-right transition-all duration-300 scale-0 opacity-0 z-50">
+            <!-- 動態職位引導文字將插入於此 -->
         </div>
     </div>
 
@@ -410,7 +415,7 @@
             const startBtn = document.getElementById('start-btn');
             if (startBtn.innerText === "系統載入中..." || startBtn.innerText === "數據載入中..." || startBtn.innerText.includes("離線")) {
                 startBtn.disabled = true;
-                startBtn.className = "w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all border border-slate-700 text-base md:text-lg truncate box-border px-4";
+                startBtn.className = "w-full bg-slate-800 text-slate-500 py-3.5 rounded-xl font-bold mt-2.5 transition-all border border-slate-700 text-sm md:text-base truncate box-border px-4";
                 startBtn.innerText = "請輸入小組名稱";
                 checkLoginInput();
             }
@@ -423,13 +428,61 @@
             const startBtn = document.getElementById('start-btn');
             if (startBtn.innerText === "系統載入中..." || startBtn.innerText === "數據載入中..." || startBtn.innerText.includes("連線失敗")) {
                 startBtn.disabled = true;
-                startBtn.className = "w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all border border-slate-700 text-base md:text-lg truncate box-border px-4";
+                startBtn.className = "w-full bg-slate-800 text-slate-500 py-3.5 rounded-xl font-bold mt-2.5 transition-all border border-slate-700 text-sm md:text-base truncate box-border px-4";
                 startBtn.innerText = "請輸入小組名稱";
                 checkLoginInput();
             }
         }
         
         loadGameData();
+
+        // 智慧職位專屬對話提示更新引擎
+        window.updateHelperBubble = () => {
+            const bubble = document.getElementById('helper-bubble');
+            if (!bubble) return;
+            
+            const role = window.userState.role;
+            let contentHtml = "";
+            
+            if (!role) {
+                contentHtml = `
+                    <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">🌊 歡迎加入碳吉特搜隊！</p>
+                    <p class="mb-2"><span class="text-white font-bold">【第一步】</span>請先輸入您的小組名稱，並挑選你的專業職位。</p>
+                    <p><span class="text-white font-bold">【合作關鍵】</span>隊長負責統籌標準與下達決策，專員負責過濾數據與微調參數。確認好職位後點擊按鈕開始任務！</p>
+                `;
+            } else if (role === 'policy') {
+                contentHtml = `
+                    <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">📜 政策分析師（隊長指引）</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>對照您上方的「環境標準」面板。用麥克風口頭指揮專員，只要場址的數值「不合標準」，請對應專員按下「否決」，合力將場址淘汰到剩 2 個以內！</p>
+                    <p><span class="text-white font-bold">【階段二】</span>你的滑桿全被鎖定了！請看著大盤（雷達圖與預算率），用語音指令指揮專員拉動滑桿，調出最高分後由你按下「提交最終決策」！</p>
+                `;
+            } else if (role === 'engineer') {
+                contentHtml = `
+                    <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">🌊 海洋物理員（物理指引）</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>負責看各場址的「浪高」與「水深」。聽隊長指令，若發現場址的波浪大於 1.5m，立刻在該卡片下方按下紅色「宣告物理員否決」！</p>
+                    <p><span class="text-white font-bold">【階段二】</span>聽從隊長指示拉動「工程防護」滑桿。若遇到大風浪場址，防護不夠會嚴重扣分；但防護做太滿預算會超支，請協助調配出最合適的防禦設施！</p>
+                `;
+            } else if (role === 'eco') {
+                contentHtml = `
+                    <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">🌱 海洋生態員（生態指引）</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>負責監控各場址的「底質類型」。聽隊長指令，若發現底質「不是泥灘」，立刻點擊紅色「宣告生態員否決」，過濾掉不符條件的場址！</p>
+                    <p><span class="text-white font-bold">【階段二】</span>聽指令拉動「生態規模」滑桿。規模擴大可以獲得超高環境效益分，但也會消耗可觀預算。請配合團隊找出最完美的黃金規模！</p>
+                `;
+            } else if (role === 'pr') {
+                contentHtml = `
+                    <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">🚢 社會溝通員（社會指引）</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>負責監控各場址的「AIS 船舶密度」。若發現場址船舶密度大於 80（干擾嚴重），請在聽從隊長指令後按下紅色「宣告公關否決」！</p>
+                    <p><span class="text-white font-bold">【階段二】</span>負責調控「社區溝通」滑桿。在高干擾場址若沒有做好足夠的社區溝通與回饋，社會效益會直接崩潰；請協助加強溝通，確保開發順暢！</p>
+                `;
+            } else if (role === 'cfo') {
+                contentHtml = `
+                    <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">💰 財務長（財務指引）</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>負責看各場址的「建置成本」。配合隊長討論，若場址建置成本高得不合理，聽指令加簽否決淘汰它！</p>
+                    <p><span class="text-white font-bold">【階段二】</span>拉動「預算總量」滑桿。記得盯緊「總體預算使用率」進度條，超支會導致經濟效益狂跌！千萬要看緊荷包，引導專員把資源花在刀口上！</p>
+                `;
+            }
+            bubble.innerHTML = contentHtml;
+        };
 
         window.selectRole = (role) => {
             window.userState.role = role;
@@ -442,6 +495,7 @@
                 selectedBtn.classList.remove('bg-slate-800', 'border-slate-700');
                 selectedBtn.classList.add('ring-2', 'ring-cyan-500', 'bg-cyan-900', 'border-cyan-500');
             }
+            window.updateHelperBubble();
             checkLoginInput();
         };
 
@@ -450,7 +504,7 @@
             const btn = document.getElementById('start-btn');
             if (!t) {
                 btn.disabled = true;
-                btn.className = "w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all border border-slate-700 text-base md:text-lg truncate box-border px-4";
+                btn.className = "w-full bg-slate-800 text-slate-500 py-3.5 rounded-xl font-bold mt-2.5 transition-all border border-slate-700 text-sm md:text-base truncate box-border px-4";
                 btn.innerText = "請輸入小組名稱";
                 return;
             }
@@ -459,7 +513,7 @@
                 window.userState.isAdmin = true;
                 document.getElementById('role-selector').style.display = 'none';
                 btn.disabled = false;
-                btn.className = "w-full bg-cyan-600 text-slate-900 py-4 md:py-5 rounded-xl font-black mt-4 md:mt-6 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-base md:text-lg flex items-center justify-center gap-2 box-border px-4";
+                btn.className = "w-full bg-cyan-600 text-slate-900 py-3.5 rounded-xl font-black mt-2.5 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-sm md:text-base flex items-center justify-center gap-2 box-border px-4";
                 btn.innerHTML = `<span class="truncate">進入戰情室</span> <i data-lucide="layout-dashboard" class="w-5 h-5 shrink-0"></i>`;
                 lucide.createIcons();
             } else {
@@ -467,11 +521,11 @@
                 document.getElementById('role-selector').style.display = 'block';
                 if (window.userState.role) {
                     btn.disabled = false;
-                    btn.className = "w-full bg-cyan-600 text-slate-900 py-4 md:py-5 rounded-xl font-black mt-4 md:mt-6 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-base md:text-lg truncate box-border px-4";
+                    btn.className = "w-full bg-cyan-600 text-slate-900 py-3.5 rounded-xl font-black mt-2.5 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:bg-cyan-500 text-sm md:text-base truncate box-border px-4";
                     btn.innerText = "開始模擬任務";
                 } else {
                     btn.disabled = true;
-                    btn.className = "w-full bg-slate-800 text-slate-500 py-4 md:py-5 rounded-xl font-bold mt-4 md:mt-6 transition-all border border-slate-700 text-base md:text-lg truncate box-border px-4";
+                    btn.className = "w-full bg-slate-800 text-slate-500 py-3.5 rounded-xl font-bold mt-2.5 transition-all border border-slate-700 text-sm md:text-base truncate box-border px-4";
                     btn.innerText = "請選擇職位";
                 }
             }
@@ -554,6 +608,8 @@
             document.getElementById('helper-mascot').classList.remove('hidden');
             document.getElementById('helper-bubble').classList.remove('scale-100', 'opacity-100');
             document.getElementById('helper-bubble').classList.add('scale-0', 'opacity-0');
+            
+            window.updateHelperBubble();
         };
 
         function initStudentView() {
@@ -591,6 +647,7 @@
                 `;
             }
 
+            window.updateHelperBubble();
             buildPhase1Cards();
             applyPermissions();
             startSync();
@@ -1317,7 +1374,11 @@
             }
         };
 
-        window.onload = () => { lucide.createIcons(); };
+        window.onload = () => { 
+            lucide.createIcons(); 
+            window.updateHelperBubble(); 
+        };
+        
         window.dismissIntro = () => { 
             const intro = document.getElementById('intro-splash');
             intro.classList.add('fade-out-up'); 
