@@ -59,7 +59,6 @@
 
     <div id="login-screen" class="fixed inset-0 bg-slate-900 z-50 flex flex-col p-4 md:p-6 text-white transition-opacity duration-500 overflow-y-auto hidden">
         <div class="m-auto flex flex-col items-center justify-center w-full max-w-[360px] shrink-0 py-3 mx-auto">
-            <!-- 整合水滴標誌與標題於同一行，大幅縮減垂直空間 -->
             <div class="flex items-center justify-center gap-3.5 mb-5 shrink-0 w-full">
                 <div class="w-11 h-11 bg-cyan-600 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-600/40 shrink-0">
                     <i data-lucide="droplets" class="w-6 h-6 text-white"></i>
@@ -134,14 +133,11 @@
         </div>
     </nav>
 
-    <!-- 固定在右下角的圓形碳吉小幫手漂浮球 -->
     <div id="helper-mascot" class="fixed bottom-6 right-6 z-[60] hidden pb-safe">
         <button onclick="toggleHelper()" class="w-16 h-16 md:w-18 md:h-18 rounded-full bg-slate-800 border-2 border-cyan-500 flex items-center justify-center p-1.5 shadow-2xl hover:scale-110 active:scale-95 transition-all animate-float cursor-pointer overflow-hidden">
             <img src="./assets/images/tanjibaby_diver.png" alt="小幫手" class="w-full h-full object-contain pointer-events-none rounded-full" onerror="this.src='https://raw.githubusercontent.com/tanji2026/ccus/main/tanjibaby_diver.png'">
         </button>
-        <!-- 提示對話框：自右側彈出 -->
         <div id="helper-bubble" class="absolute right-full mr-3 bottom-2 bg-slate-800 border-2 border-cyan-500 rounded-2xl p-4 shadow-2xl text-xs md:text-sm text-slate-200 w-[260px] md:w-[280px] origin-bottom-right transition-all duration-300 scale-0 opacity-0 z-50">
-            <!-- 動態職位引導文字將插入於此 -->
         </div>
     </div>
 
@@ -187,7 +183,7 @@
             </div>
 
             <div class="lg:col-span-7 flex flex-col space-y-4 md:space-y-5 w-full overflow-hidden">
-                <div class="flex flex-col sm:grid sm:grid-cols-2 gap-4 md:gap-5 w-full flex-none">
+                <div id="sliders-container" class="flex flex-col sm:grid sm:grid-cols-2 gap-4 md:gap-5 w-full flex-none">
                     <div class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-5 relative flex flex-col min-h-[130px] md:min-h-[150px] w-full overflow-hidden box-border">
                         <div class="flex justify-between mb-3 md:mb-4 items-center w-full">
                             <label class="text-sm md:text-base font-bold text-slate-200 flex gap-2 items-center min-w-0 pr-2"><div class="w-6 h-6 md:w-8 md:h-8 bg-blue-900 text-blue-400 rounded-lg flex items-center justify-center shrink-0"><i data-lucide="shield" class="w-3.5 h-3.5 md:w-4 md:h-4"></i></div> <span class="truncate">工程防護</span></label>
@@ -233,6 +229,7 @@
                         <div id="lock-cfo" class="absolute inset-0 bg-slate-900/80 backdrop-blur-[2px] z-10 hidden flex-col items-center justify-center text-center p-3 w-full h-full"><i data-lucide="lock" class="w-5 h-5 md:w-6 md:h-6 text-slate-500 mb-1.5"></i><span class="text-xs md:text-sm font-bold text-purple-400 bg-slate-800/80 px-3 py-1 rounded-lg">等待操作</span></div>
                     </div>
                 </div>
+                <div id="report-panel" class="bg-slate-800 rounded-2xl border border-slate-700 p-4 md:p-6 hidden flex-col space-y-4 md:space-y-6 w-full box-border"></div>
             </div>
 
             <div class="lg:col-span-5 flex flex-col space-y-4 md:space-y-5 w-full overflow-hidden flex-none">
@@ -369,19 +366,18 @@
         async function loadGameData() {
             try {
                 const response = await fetch('https://raw.githubusercontent.com/tanji2026/ccus/main/bluecarbon_sites.json'); 
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                if (!response.ok) throw new Error();
                 NODASS_DB = await response.json();
                 window.teamState.rejections = getDefaultRejections();
                 initApp();
             } catch (error) {
-                console.warn("無法取得遠端數據，使用預設資料", error);
                 NODASS_DB = {
-                    'A': { name: '花蓮石梯坪', icon: '🌊', wave: 4.5, depth: -200, substrate: '岩礁', ais: 10, costLvl: '極高', s:20, e:30, o:40 },
-                    'B': { name: '桃園觀塘', icon: '🏭', wave: 1.2, depth: -8, substrate: '泥灘', ais: 95, costLvl: '低', s:60, e:80, o:30 },
-                    'C': { name: '嘉義東石', icon: '🌱', wave: 0.4, depth: -2, substrate: '泥灘', ais: 40, costLvl: '中', s:80, e:60, o:80 },
-                    'D': { name: '屏東南灣', icon: '🐠', wave: 1.5, depth: -15, substrate: '珊瑚礁', ais: 30, costLvl: '高', s:40, e:70, o:60 },
-                    'E': { name: '澎湖青螺', icon: '🏝️', wave: 0.8, depth: -4, substrate: '泥灘', ais: 25, costLvl: '低', s:75, e:50, o:85 },
-                    'F': { name: '彰化王功', icon: '🦀', wave: 0.6, depth: -3, substrate: '泥灘', ais: 85, costLvl: '中', s:55, e:75, o:45 }
+                    "A": { "name": "彰化王功外海", "icon": "🦀", "wave": 2.46, "depth": -4.5, "substrate": "泥灘", "ais": 35, "costLvl": "中等", "s": 65, "e": 73, "o": 65 },
+                    "B": { "name": "嘉義東石沿岸", "icon": "🌱", "wave": 0.83, "depth": -2.5, "substrate": "沙泥網格(潟湖)", "ais": 10, "costLvl": "相對低", "s": 88, "e": 85, "o": 90 },
+                    "C": { "name": "澎湖青螺濕地", "icon": "🏝️", "wave": 1.73, "depth": -3.8, "substrate": "沙質", "ais": 95, "costLvl": "相對高", "s": 72, "e": 43, "o": 5 },
+                    "D": { "name": "苗栗竹南外海", "icon": "🏭", "wave": 2.35, "depth": -14.2, "substrate": "沙質", "ais": 65, "costLvl": "相對高", "s": 45, "e": 58, "o": 35 },
+                    "E": { "name": "花蓮石梯坪",   "icon": "🌊", "wave": 2.91, "depth": -152.0, "substrate": "岩礁", "ais": 85, "costLvl": "高度偏高", "s": 35, "e": 48, "o": 15 },
+                    "F": { "name": "桃園觀塘海岸", "icon": "🐠", "wave": 1.10, "depth": -8.5, "substrate": "沙質", "ais": 20, "costLvl": "相對低", "s": 52, "e": 80, "o": 80 }
                 };
                 window.teamState.rejections = getDefaultRejections();
                 initApp();
@@ -390,7 +386,7 @@
 
         async function initApp() {
             try {
-                if (!firebaseConfig || !firebaseConfig.apiKey) throw new Error("Missing Firebase Config");
+                if (!firebaseConfig || !firebaseConfig.apiKey) throw new Error();
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 db = getFirestore(app);
@@ -404,9 +400,9 @@
 
                 onAuthStateChanged(auth, (user) => {
                     if (user) { currentUser = user; enableOnlineMode(); } 
-                    else { startDemoMode("Auth State Null"); }
+                    else { startDemoMode(); }
                 });
-            } catch (e) { startDemoMode(e.message); }
+            } catch (e) { startDemoMode(); }
         }
         
         function enableOnlineMode() {
@@ -421,7 +417,7 @@
             }
         }
 
-        function startDemoMode(reason) {
+        function startDemoMode() {
             isDemoMode = true;
             currentUser = { uid: 'demo-user', isAnonymous: true };
             document.getElementById('connection-indicator').innerHTML = `<div class="w-2 h-2 md:w-2.5 md:h-2.5 bg-amber-500 rounded-full animate-pulse shrink-0"></div><span class="text-[10px] md:text-xs font-bold text-amber-500 whitespace-nowrap hidden sm:inline">本機模式</span>`;
@@ -436,7 +432,6 @@
         
         loadGameData();
 
-        // 智慧職位專屬對話提示更新引擎
         window.updateHelperBubble = () => {
             const bubble = document.getElementById('helper-bubble');
             if (!bubble) return;
@@ -453,32 +448,32 @@
             } else if (role === 'policy') {
                 contentHtml = `
                     <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">📜 政策分析師（隊長指引）</p>
-                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>對照您上方的「環境標準」面板。用麥克風口頭指揮專員，只要場址的數值「不合標準」，請對應專員按下「否決」，合力將場址淘汰到剩 2 個以內！</p>
-                    <p><span class="text-white font-bold">【階段二】</span>你的滑桿全被鎖定了！請看著大盤（雷達圖與預算率），用語音指令指揮專員拉動滑桿，調出最高分後由你按下「提交最終決策」！</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>對照上方標準面板。協調專員判讀數據，若場址數據不合標準，請專員按下否決，共同將場址篩選至相對適宜的數量。</p>
+                    <p><span class="text-white font-bold">【階段二】</span>政策滑桿已全數鎖定。請觀察雷達圖與預算率，引導專員調整參數以取得相對均衡之解，並由您按下提交決策！</p>
                 `;
             } else if (role === 'engineer') {
                 contentHtml = `
                     <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">🌊 海洋物理員（物理指引）</p>
-                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>負責看各場址的「浪高」與「水深」。聽隊長指令，若發現場址的波浪大於 1.5m，立刻在該卡片下方按下紅色「宣告物理員否決」！</p>
-                    <p><span class="text-white font-bold">【階段二】</span>聽從隊長指示拉動「工程防護」滑桿。若遇到大風浪場址，防護不夠會嚴重扣分；但防護做太滿預算會超支，請協助調配出最合適的防禦設施！</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>關注波浪與水深數據。彰化（A）與苗栗（D）極端浪高分別達 2.46 與 2.35 公尺，高於 1.5 公尺的安全臨界值；嘉義東石（B）因外圍外傘頂洲沙洲防禦消能，浪高為相對低的 0.83 公尺。</p>
+                    <p><span class="text-white font-bold">【階段二】</span>控制工程防護滑桿。深海場址（如花蓮 -152m）在防護工程建置上，其預算成本呈現相對顯著的幾何級數增加，請謹慎權衡預算配比。</p>
                 `;
             } else if (role === 'eco') {
                 contentHtml = `
                     <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">🌱 海洋生態員（生態指引）</p>
-                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>負責監控各場址的「底質類型」。聽隊長指令，若發現底質「不是泥灘」，立刻點擊紅色「宣告生態員否決」，過濾掉不符條件的場址！</p>
-                    <p><span class="text-white font-bold">【階段二】</span>聽指令拉動「生態規模」滑桿。規模擴大可以獲得超高環境效益分，但也會消耗可觀預算。請配合團隊找出最完美的黃金規模！</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>關注底質特徵。嘉義東石（B）屬於沙泥混合網格，其外圍雖為沙質沙洲，但內側潟湖與鰲鼓濕地則堆積平靜泥灘地，相對有利於藍碳植物扎根與碳封存。</p>
+                    <p><span class="text-white font-bold">【階段二】</span>控制生態規模滑桿。擴大復育規模可顯著提升環境效益分數，但也會消耗預算。請配合團隊調配出相對適配的配置規模。</p>
                 `;
             } else if (role === 'pr') {
                 contentHtml = `
                     <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">🚢 社會溝通員（社會指引）</p>
-                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>負責監控各場址的「AIS 船舶密度」。若發現場址船舶密度大於 80（干擾嚴重），請在聽從隊長指令後按下紅色「宣告公關否決」！</p>
-                    <p><span class="text-white font-bold">【階段二】</span>負責調控「社區溝通」滑桿。在高干擾場址若沒有做好足夠的社區溝通與回饋，社會效益會直接崩潰；請協助加強溝通，確保開發順暢！</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>關注 AIS 船舶密度。澎湖青螺（C）與花蓮石梯坪（E）船舶活動頻率相對顯著，密度高達 95 與 85，空間重疊程度高；嘉義東石（B）因沙洲隔離，船隻活動頻率低，空間衝突風險有限。</p>
+                    <p><span class="text-white font-bold">【階段二】</span>控制社區溝通滑桿。在繁忙海域若缺乏足夠溝通，社會效益分數將受到相對顯著的扣分衝擊，必須提高宣導與回饋力度。</p>
                 `;
             } else if (role === 'cfo') {
                 contentHtml = `
                     <p class="font-bold text-cyan-400 mb-2 text-sm md:text-base">💰 財務長（財務指引）</p>
-                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>負責看各場址的「建置成本」。配合隊長討論，若場址建置成本高得不合理，聽指令加簽否決淘汰它！</p>
-                    <p><span class="text-white font-bold">【階段二】</span>拉動「預算總量」滑桿。記得盯緊「總體預算使用率」進度條，超支會導致經濟效益狂跌！千萬要看緊荷包，引導專員把資源花在刀口上！</p>
+                    <p class="mb-2"><span class="text-white font-bold">【階段一】</span>關注建置成本。配合選址分析，避開深水或高衝突等高難度區域以降低初期財務風險。</p>
+                    <p><span class="text-white font-bold">【階段二】</span>控制預算總量滑桿。密切注意總體預算使用率，超支將導致經濟效益分數面臨相對顯著的扣分懲罰，請務必精準控制收支。</p>
                 `;
             }
             bubble.innerHTML = contentHtml;
@@ -552,7 +547,7 @@
 
             if (!currentUser && !isDemoMode) { 
                 await new Promise(r => setTimeout(r, 1500));
-                if (!currentUser) startDemoMode("Force Entry");
+                if (!currentUser) startDemoMode();
             }
 
             if (!window.userState.isAdmin && !isDemoMode && currentUser) {
@@ -621,26 +616,26 @@
             if (window.userState.role === 'policy') {
                 headerContainer.innerHTML = `
                     <div class="bg-blue-900/30 border border-blue-500/50 rounded-xl p-4 md:p-6 w-full box-border">
-                        <h3 class="text-blue-400 font-bold mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base truncate w-full"><i data-lucide="book-open" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i> <span class="truncate">藍碳復育環境標準面板（隊長專屬）</span></h3>
+                        <h3 class="text-blue-400 font-bold mb-3 md:mb-4 flex items-center gap-2 text-sm md:text-base truncate w-full"><i data-lucide="book-open" class="w-4 h-4 md:w-5 md:h-5 shrink-0"></i> <span class="truncate">藍碳復育環境篩選標準面板（政策主管）</span></h3>
                         <ul class="text-xs md:text-sm text-slate-300 space-y-2 md:space-y-3 w-full">
-                            <li class="flex items-start gap-2 md:gap-3 min-w-0"><span class="bg-slate-700 px-2 py-1 rounded text-blue-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap shrink-0">物理標準</span> <span class="truncate">波浪不大於 <b>1.5m</b>。</span></li>
-                            <li class="flex items-start gap-2 md:gap-3 min-w-0"><span class="bg-slate-700 px-2 py-1 rounded text-emerald-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap shrink-0">生態標準</span> <span class="truncate">底質必須為 <b>泥灘</b>。</span></li>
-                            <li class="flex items-start gap-2 md:gap-3 min-w-0"><span class="bg-slate-700 px-2 py-1 rounded text-amber-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap shrink-0">社會標準</span> <span class="truncate">AIS 船舶密度 <b>小於 80</b>。</span></li>
+                            <li class="flex items-start gap-2 md:gap-3 min-w-0"><span class="bg-slate-700 px-2 py-1 rounded text-blue-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap shrink-0">物理指標</span> <span class="truncate">歷史極端浪高建議不大於 1.5 公尺。</span></li>
+                            <li class="flex items-start gap-2 md:gap-3 min-w-0"><span class="bg-slate-700 px-2 py-1 rounded text-emerald-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap shrink-0">生態指標</span> <span class="truncate">底質特徵符合泥灘或沙泥網格特質。</span></li>
+                            <li class="flex items-start gap-2 md:gap-3 min-w-0"><span class="bg-slate-700 px-2 py-1 rounded text-amber-300 font-mono text-[10px] md:text-xs mt-0.5 whitespace-nowrap shrink-0">社會指標</span> <span class="truncate">AIS 船舶交通密度指標準量相對較低。</span></li>
                         </ul>
                     </div>
                 `;
             } else {
                 const roleTexts = {
-                    'engineer': '監控「波浪模式」與「水深」，聽從隊長指示判讀並按下否決。',
-                    'eco': '監控「底質分佈」，聽從隊長指示判讀並按下否決。',
-                    'pr': '監控「AIS船舶密度」，聽從隊長指示判讀並按下否決。',
-                    'cfo': '監控「建置成本估算」，聽從隊長指示判讀並按下否決。'
+                    'engineer': '監控浪高模式與水深限制，依據環境物理標準判讀海域特徵。',
+                    'eco': '監控底質空間分布，對比泥質灘地或混合網格以利藍碳復育。',
+                    'pr': '監控 AIS 船舶軌跡航跡，評估航道交會與社會溝通衝突。',
+                    'cfo': '評估水深與地形對基礎防護建置成本之財務變量影響。'
                 };
                 headerContainer.innerHTML = `
                     <div class="bg-slate-700/50 border border-slate-600 rounded-xl p-4 md:p-5 flex items-center gap-3 md:gap-5 w-full box-border">
                         <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-full flex items-center justify-center shrink-0"><i data-lucide="radio" class="w-5 h-5 md:w-6 md:h-6 text-cyan-400 shrink-0"></i></div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-slate-200 font-bold text-sm md:text-base mb-1 md:mb-1.5 truncate">等待戰情指揮（語音溝通）</h3>
+                            <h3 class="text-slate-200 font-bold text-sm md:text-base mb-1 md:mb-1.5 truncate">協同決策系統（大數據對齊中）</h3>
                             <p class="text-xs md:text-sm text-slate-400 leading-relaxed break-words">${roleTexts[window.userState.role]}</p>
                         </div>
                     </div>
@@ -676,7 +671,7 @@
 
                 const waveText = showWave ? `<span class="text-blue-400 font-mono shrink-0 text-sm">${s.wave} m</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
                 const depthText = showWave ? `<span class="text-blue-400 font-mono shrink-0 text-sm">${s.depth} m</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
-                const subText = showEco ? `<span class="text-emerald-400 font-bold truncate max-w-[80px] text-right text-sm">${s.substrate}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
+                const subText = showEco ? `<span class="text-emerald-400 font-bold truncate max-w-[120px] text-right text-sm">${s.substrate}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
                 const costText = showCFO ? `<span class="text-purple-400 font-bold shrink-0 text-sm">${s.costLvl}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
                 const aisText = showPR ? `<span class="text-amber-400 font-mono shrink-0 text-sm">${s.ais}</span>` : `<span class="text-slate-500 font-bold text-xs tracking-widest shrink-0">???</span>`;
 
@@ -687,15 +682,15 @@
                             <h3 class="font-bold text-slate-100 text-sm md:text-base group-hover:text-cyan-400 transition-colors ml-3 md:ml-4 truncate flex-1 text-right">${s.name}</h3>
                         </div>
                         <div class="space-y-2 md:space-y-3 text-xs md:text-sm relative z-0 w-full flex-1 flex flex-col justify-end">
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">浪高</span>${waveText}</div>
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">水深</span>${depthText}</div>
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">底質</span>${subText}</div>
-                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">成本</span>${costText}</div>
-                            <div class="flex justify-between w-full"><span class="text-slate-400 truncate pr-2">AIS密度</span>${aisText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">歷史浪高</span>${waveText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">水深地形</span>${depthText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">網格底質</span>${subText}</div>
+                            <div class="flex justify-between border-b border-slate-600/50 pb-1.5 md:pb-2 w-full"><span class="text-slate-400 truncate pr-2">預算難度</span>${costText}</div>
+                            <div class="flex justify-between w-full"><span class="text-slate-400 truncate pr-2">AIS船舶</span>${aisText}</div>
                         </div>
                         <div id="overlay-${key}" class="absolute -inset-2 md:-inset-3 bg-slate-900/80 backdrop-blur-[1px] flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-300 pointer-events-none rounded-2xl z-10 w-auto h-auto">
                             <div class="bg-black/90 text-red-400 font-bold px-3 py-3 md:px-4 md:py-4 rounded-xl text-xs md:text-sm border border-red-500/50 text-center shadow-2xl w-[90%] max-w-full box-border">
-                                <div class="text-red-500 font-black mb-1.5 md:mb-2 tracking-widest border-b border-red-500/30 pb-1 truncate w-full">已淘汰</div>
+                                <div class="text-red-500 font-black mb-1.5 md:mb-2 tracking-widest border-b border-red-500/30 pb-1 truncate w-full">排除考量</div>
                                 <div id="reason-${key}" class="mt-1 md:mt-1.5 leading-relaxed text-slate-300 break-words w-full"></div>
                             </div>
                         </div>
@@ -745,13 +740,13 @@
                 const btnLock = document.getElementById('btn-lock-site');
                 if (btnLock) {
                     btnLock.disabled = true;
-                    btnLock.innerHTML = `<span class="truncate">等待決策...</span>`;
+                    btnLock.innerHTML = `<span class="truncate">等待篩選...</span>`;
                 }
             } else {
                 const submitBtn = document.getElementById('submit-btn');
                 if(submitBtn) {
                     submitBtn.disabled = true;
-                    document.getElementById('submit-btn-text').innerText = "等待隊長提交";
+                    document.getElementById('submit-btn-text').innerText = "等待主管提交";
                     document.getElementById('submit-btn-icon').setAttribute('data-lucide', 'lock');
                 }
             }
@@ -785,7 +780,7 @@
                 } else {
                     setDoc(docRef, window.teamState);
                 }
-            }, (error) => { startDemoMode(error.message); });
+            }, (error) => { startDemoMode(); });
         }
 
         window.toggleReject = async (siteId) => {
@@ -806,9 +801,9 @@
             const newRejections = { ...rejections, [siteId]: siteRejections };
             window.teamState.rejections = newRejections; 
             
-            const roleMap = { 'engineer':'物理員', 'eco':'生態員', 'pr':'公關', 'cfo':'財務長' };
+            const roleMap = { 'engineer':'物理員', 'eco':'生態員', 'pr':'社會專員', 'cfo':'財務長' };
             const siteName = NODASS_DB[siteId] ? NODASS_DB[siteId].name : siteId;
-            const logMsg = `${roleMap[role]} ${isAdding ? `否決了 ${siteName}` : `撤銷了 ${siteName} 的否決`}`;
+            const logMsg = `${roleMap[role]} ${isAdding ? `移除了 ${siteName}` : `撤銷了 ${siteName} 的剔除`}`;
             
             updateUI();
             calcScore();
@@ -819,7 +814,7 @@
             const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'sessions', window.userState.team);
             try {
                 await setDoc(docRef, { rejections: newRejections, lastLog: logMsg, timestamp: serverTimestamp() }, { merge: true });
-            } catch (e) { addLog("同步延遲"); }
+            } catch (e) { addLog("同步暫時延遲"); }
         };
 
         window.handleSliderInput = (id, val) => {
@@ -828,10 +823,10 @@
             calcScore();
             const txt = document.getElementById(`val-${id}`);
             const labels = {
-                'safety': ['無防護','基礎防護','標準','強化護岸','重型防波堤'],
-                'pr': ['零互動','單向宣導','標準','說明會','高額回饋金'],
+                'safety': ['無防護','基礎防護','標準','強化護岸','重型防防波堤'],
+                'pr': ['零互動','單向宣導','標準','說明會','高額回饋'],
                 'eco': ['單一試驗','小規模','標準','多物種','大規模復育'],
-                'cfo': ['極度緊縮','偏低預算','標準預算','寬鬆預算','無上限']
+                'cfo': ['高度緊縮','偏低預算','標準預算','寬鬆預算','無預算上限']
             };
             if(txt) txt.innerText = labels[id][val-1] || '標準';
         };
@@ -846,15 +841,15 @@
             calcScore();
             updateUI();
 
-            const roleMap = { 'engineer':'物理員', 'cfo':'財務長', 'pr':'公關', 'policy':'隊長', 'eco':'生態員' };
+            const roleMap = { 'engineer':'物理員', 'cfo':'財務長', 'pr':'社會專員', 'policy':'決策主管', 'eco':'生態員' };
             let actionName = '調整了參數';
             
             if(key === 'safety') actionName = `將 工程防護 調整至 ${val}`;
             if(key === 'pr') actionName = `將 社區溝通 調整至 ${val}`;
             if(key === 'eco') actionName = `將 生態規模 調整至 ${val}`;
             if(key === 'cfo') actionName = `將 預算總量 調整至 ${val}`;
-            if(key === 'phase') actionName = val === 2 ? '鎖定了最終目標，進入戰情室' : '重啟了大數據排雷';
-            if(key === 'isSubmitted') actionName = val ? '正式提交了最終決策' : '撤回了最終決策';
+            if(key === 'phase') actionName = val === 2 ? '鎖定了海域，進入配置' : '重啟了大數據篩選';
+            if(key === 'isSubmitted') actionName = val ? '正式提交了方案' : '撤回了提交';
             
             const logMsg = `${roleMap[window.userState.role] || '系統'} ${actionName}`;
 
@@ -864,11 +859,11 @@
             const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'sessions', window.userState.team);
             try {
                 await setDoc(docRef, { [key]: val, lastLog: logMsg, timestamp: serverTimestamp() }, { merge: true });
-            } catch (e) { addLog("同步延遲"); }
+            } catch (e) { addLog("同步暫時延遲"); }
         };
 
         window.proceedToPhase2 = async () => {
-            if(!window.teamState.site) { alert("請先點擊選擇一個倖存的場址！"); return; }
+            if(!window.teamState.site) { alert("請先點擊選擇一個剩餘的場址！"); return; }
             await window.updateTeamState('phase', 2);
         };
 
@@ -878,6 +873,77 @@
             await window.updateTeamState('phase', 1);
             document.getElementById('btn-return').innerHTML = "返回重新選址";
         };
+
+        function updateReportUI(s) {
+            const reportPanel = document.getElementById('report-panel');
+            const slidersContainer = document.getElementById('sliders-container');
+            if (!reportPanel || !slidersContainer) return;
+
+            if (s.isSubmitted) {
+                slidersContainer.classList.add('hidden');
+                reportPanel.classList.remove('hidden');
+
+                const res = calcScoreStatic(s);
+                const base = NODASS_DB[s.site] || { name: '未知場址' };
+                
+                let feedbackText = '';
+                if (s.site === 'B') {
+                    if (s.safety == 3 && s.eco == 4 && s.pr == 2 && s.cfo == 3) {
+                        feedbackText = '評估報告：團隊在相對低衝突、低風浪的環境特徵下，編列了適中的工程與溝通預算，並將主要資源配置於生態規模的擴大。這在環境經濟學的資源分配上，表現出相對符合成本效益的資源利用策略。';
+                    } else {
+                        feedbackText = '評估報告：選定海域在先天物理條件上已有外部沙洲消能，且航道干擾頻率較低。團隊在此場址投入相對高比例的工程防護與社會溝通預算，導致真正產生固碳效益的生態規模資金受到壓縮，配置上存在優化空間。';
+                    }
+                } else {
+                    feedbackText = '評估報告：由於選定海域存在大浪或深海等先天空間限制，團隊在第二階段被迫將高比例預算消耗在重型工程防護上，進而對整體經濟效益造成相對顯著的負面衝擊，這反映了初期環境風險對後續資源配置的連帶影響。';
+                }
+
+                reportPanel.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="border-b border-slate-700 pb-4">
+                            <h3 class="text-xl font-black text-cyan-400">任務結案與大數據空間環境分析報告</h3>
+                            <p class="text-xs text-slate-400 mt-1">選定海域：${base.name} | SROI 綜合得分：${res.total}</p>
+                        </div>
+
+                        <div class="space-y-4 text-xs md:text-sm text-slate-300 leading-relaxed">
+                            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                                <h4 class="font-bold text-slate-200 mb-2 flex items-center gap-2">📊 決策績效回饋</h4>
+                                <p>${feedbackText}</p>
+                            </div>
+
+                            <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700 space-y-4">
+                                <h4 class="font-bold text-slate-200 border-b border-slate-800 pb-2">🛰️ NODASS 空間環境特徵對比表</h4>
+                                
+                                <div class="space-y-3">
+                                    <div>
+                                        <span class="text-cyan-400 font-bold">彰化王功外海 (A) 與 苗栗竹南外海 (D)</span>
+                                        <p class="text-slate-400 mt-1">歷史極端浪高分別達 2.46 公尺與 2.35 公尺。波浪剪力顯著超過藍碳植物幼苗初期扎根的 1.5 公尺安全臨界點，在自然條件下，幼苗流失與棲地沖毀的物理風險相對顯著。</p>
+                                    </div>
+                                    <div class="border-t border-slate-800/50 pt-2">
+                                        <span class="text-cyan-400 font-bold">澎湖青螺濕地 (C) 與 花蓮石梯坪 (E)</span>
+                                        <p class="text-slate-400 mt-1">三年份 AIS 船舶日常軌跡統計顯示，不重複活動船隻頻率分數達 95 與 85。該海域屬於相對繁忙的航道或漁業活動區，空間重疊程度高，在此規劃復育區將面臨相對顯著的利害關係人干擾與社會溝通成本。</p>
+                                    </div>
+                                    <div class="border-t border-slate-800/50 pt-2">
+                                        <span class="text-cyan-400 font-bold">花蓮石梯坪 (E) 特有地形特徵</span>
+                                        <p class="text-slate-400 mt-1">屬於東部陡峭斜坡地形，水深達 -152.0 公尺。深海環境導致重型防波工程的建置成本在公式加權後呈現幾何級數增加，對專案的財務預算具有相對顯著的衝擊。</p>
+                                    </div>
+                                    <div class="border-t border-slate-800/50 pt-2">
+                                        <span class="text-cyan-400 font-bold">桃園觀塘海岸 (F)</span>
+                                        <p class="text-slate-400 mt-1">主要標籤為沙質網格。在缺乏前線屏障與足夠泥質沉積的條件下，該網格環境相對不易形成高效固碳所需的厭氧沉積層。</p>
+                                    </div>
+                                    <div class="border-t border-slate-800/50 pt-2">
+                                        <span class="text-emerald-400 font-bold">嘉義東石沿岸 (B) 綜合評估</span>
+                                        <p class="text-slate-400 mt-1">浪高 0.83 公尺、船舶密度 10，底質為沙泥混合網格。該場址在外圍具備外傘頂洲作為純沙質沙洲地形，對台灣海峽的波浪具有相對顯著的消能作用；內側則形成了相對平靜的潟湖與泥灘環境。在物理衝擊、航道干擾與空間成本的綜合評估下，該區域表現出相對均衡的復育適宜性。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                slidersContainer.classList.remove('hidden');
+                reportPanel.classList.add('hidden');
+            }
+        }
 
         function updateUI() {
             const s = window.teamState;
@@ -911,7 +977,7 @@
 
                         if(btnContainer) {
                             if(['engineer', 'eco', 'pr', 'cfo'].includes(role)) {
-                                btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-xl font-bold text-sm bg-red-900/40 text-red-400 border border-red-800 hover:bg-red-800 hover:text-white transition-colors cursor-pointer truncate px-2 min-w-0">❌ 宣告${roleMap[role]}否決</button>`;
+                                btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-xl font-bold text-sm bg-red-900/40 text-red-400 border border-red-800 hover:bg-red-800 hover:text-white transition-colors cursor-pointer truncate px-2 min-w-0">❌ 宣告${roleMap[role]}不宜</button>`;
                             } else if(role === 'policy') {
                                 btnContainer.innerHTML = `<div class="w-full py-2 rounded-xl font-bold text-sm bg-cyan-900/30 text-cyan-500 text-center border border-cyan-800/50 truncate px-2 min-w-0">點擊卡片選定</div>`;
                             } else {
@@ -934,9 +1000,9 @@
                         if(btnContainer) {
                             if(['engineer', 'eco', 'pr', 'cfo'].includes(role)) {
                                 if(rejections.includes(role)) {
-                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-xl font-bold text-sm bg-slate-600 text-slate-300 border border-slate-500 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer truncate px-2 min-w-0">↺ 撤銷否決</button>`;
+                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-xl font-bold text-sm bg-slate-600 text-slate-300 border border-slate-500 hover:bg-slate-500 hover:text-white transition-colors cursor-pointer truncate px-2 min-w-0">↺ 撤銷考量</button>`;
                                 } else {
-                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-xl font-bold text-sm bg-red-900/20 text-red-500 border border-red-900/50 hover:bg-red-900 hover:text-white transition-colors cursor-pointer truncate px-2 min-w-0">❌ 加簽否決</button>`;
+                                    btnContainer.innerHTML = `<button onclick="toggleReject('${key}')" class="w-full py-2 rounded-xl font-bold text-sm bg-red-900/20 text-red-500 border border-red-900/50 hover:bg-red-900 hover:text-white transition-colors cursor-pointer truncate px-2 min-w-0">❌ 宣告不宜</button>`;
                                 }
                             } else {
                                 btnContainer.innerHTML = `<div class="w-full py-2 rounded-xl font-bold text-sm bg-slate-800 text-slate-500 text-center border border-slate-700 truncate px-2 min-w-0">已遭否決</div>`;
@@ -964,7 +1030,7 @@
                         lockMsg.className = "text-sm text-red-500 font-bold block animate-pulse text-center w-full truncate";
                         lockBtn.disabled = true;
                         lockBtn.classList.remove('animate-pulse');
-                    } else if (validCount <= 2) {
+                    } else {
                         lockMsg.innerText = s.site ? "目標已鎖定" : "請點選場址";
                         lockMsg.className = "text-sm font-bold block text-center w-full truncate " + (s.site ? "text-cyan-400" : "text-amber-500");
                         
@@ -975,11 +1041,6 @@
                             lockBtn.disabled = true;
                             lockBtn.classList.remove('animate-pulse');
                         }
-                    } else {
-                        lockMsg.innerText = "需淘汰至剩下 2 個以內";
-                        lockMsg.className = "text-sm text-red-400 font-bold block text-center w-full truncate";
-                        lockBtn.disabled = true;
-                        lockBtn.classList.remove('animate-pulse');
                     }
                 }
             } else {
@@ -1035,6 +1096,8 @@
                         btnIcon.setAttribute('data-lucide', 'send');
                     }
                 }
+
+                updateReportUI(s);
             }
             lucide.createIcons();
         }
@@ -1046,9 +1109,9 @@
                 const txt = document.getElementById(`val-${id}`);
                 const labels = {
                     'safety': ['無防護','基礎防護','標準','強化護岸','重型防波堤'],
-                    'pr': ['零互動','單向宣導','標準','說明會','高額回饋金'],
+                    'pr': ['零互動','單向宣導','標準','說明會','高額回饋'],
                     'eco': ['單一試驗','小規模','標準','多物種','大規模復育'],
-                    'cfo': ['極度緊縮','偏低預算','標準預算','寬鬆預算','無上限']
+                    'cfo': ['高度緊縮','偏低預算','標準預算','寬鬆預算','無預算上限']
                 };
                 if(txt) txt.innerText = labels[id][val-1] || '標準';
             }
@@ -1114,13 +1177,14 @@
             
             const siteKeys = Object.keys(NODASS_DB);
             const firstKey = siteKeys.length > 0 ? siteKeys[0] : null;
-            const base = NODASS_DB[st.site] || NODASS_DB[firstKey] || { s:0, e:0, o:0, wave:0, ais:0 };
+            const base = NODASS_DB[st.site] || NODASS_DB[firstKey] || { s:0, e:0, o:0, wave:0, ais:0, depth: -5.0 };
             const safety = parseInt(st.safety) || 3;
             const eco = parseInt(st.eco) || 2;
             const pr = parseInt(st.pr) || 2;
             const cfo = parseInt(st.cfo) || 3;
 
-            let cost = (safety * 15) + (eco * 20) + (pr * 15); 
+            let depthFactor = Math.log(Math.abs(base.depth) + 1);
+            let cost = Math.round((safety * 15 * depthFactor) + (eco * 20) + (pr * 15 * (1 + (base.ais / 100)))); 
             let budgetLimit = 50 + (cfo * 30);
             let isOverBudget = cost > budgetLimit;
             let budgetPenalty = isOverBudget ? (cost - budgetLimit) * 1.5 : 0;
@@ -1160,7 +1224,7 @@
                 const limitMarker = document.getElementById('budget-limit-marker');
                 const budgetStatus = document.getElementById('budget-status');
                 
-                const uiMax = 250;
+                const uiMax = 450;
                 let costPct = Math.min(100, (res.cost / uiMax) * 100);
                 let limitPct = Math.min(100, (res.budgetLimit / uiMax) * 100);
                 
@@ -1174,10 +1238,10 @@
                 
                 if(budgetStatus) {
                     if(res.isOverBudget) {
-                        budgetStatus.innerText = `超支警告 (-${parseInt((res.cost - res.budgetLimit)*1.5)} 經濟分)`;
+                        budgetStatus.innerText = `超出安全防禦線 (-${parseInt((res.cost - res.budgetLimit)*1.5)} 經濟分)`;
                         budgetStatus.className = "text-xs md:text-sm font-bold px-2 py-1 rounded bg-red-900 text-red-400 border border-red-500 animate-pulse whitespace-nowrap shrink-0 max-w-full truncate";
                     } else {
-                        budgetStatus.innerText = "預算安全";
+                        budgetStatus.innerText = "配置預算安全";
                         budgetStatus.className = "text-xs md:text-sm font-bold px-2 py-1 rounded bg-purple-900/50 text-purple-300 border border-purple-700 whitespace-nowrap shrink-0";
                     }
                 }
