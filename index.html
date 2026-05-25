@@ -365,7 +365,7 @@
 
         async function loadGameData() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/tanji2026/ccus/main/bluecarbon_sites.json'); 
+                const response = await fetch('https://raw.githubusercontent.com/tanji2026/bluecarbon/main/js/bluecarbon_sites.json'); 
                 if (!response.ok) throw new Error();
                 NODASS_DB = await response.json();
                 window.teamState.rejections = getDefaultRejections();
