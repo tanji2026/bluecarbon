@@ -1,0 +1,8 @@
+{
+  "A": { "name": "彰化王功外海", "icon": "🦀", "wave": 2.46, "depth": -4.5, "substrate": "泥灘", "ais": 35, "costLvl": "中等", "s": 65, "e": 73, "o": 65 },
+  "B": { "name": "嘉義東石沿岸", "icon": "🌱", "wave": 0.83, "depth": -2.5, "substrate": "沙泥網格(潟湖)", "ais": 10, "costLvl": "相對低", "s": 88, "e": 85, "o": 90 },
+  "C": { "name": "澎湖青螺濕地", "icon": "🏝️", "wave": 1.73, "depth": -3.8, "substrate": "沙質", "ais": 95, "costLvl": "相對高", "s": 72, "e": 43, "o": 5 },
+  "D": { "name": "苗栗竹南外海", "icon": "🏭", "wave": 2.35, "depth": -14.2, "substrate": "沙質", "ais": 65, "costLvl": "相對高", "s": 45, "e": 58, "o": 35 },
+  "E": { "name": "花蓮石梯坪",   "icon": "🌊", "wave": 2.91, "depth": -152.0, "substrate": "岩礁", "ais": 85, "costLvl": "高度偏高", "s": 35, "e": 48, "o": 15 },
+  "F": { "name": "桃園觀塘海岸", "icon": "🐠", "wave": 1.10, "depth": -8.5, "substrate": "沙質", "ais": 20, "costLvl": "相對低", "s": 52, "e": 80, "o": 80 }
+}
